@@ -1,0 +1,421 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "test",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "paths": {
+    "/police": {
+     "get": {
+       "summary": "Details about a police department",
+       "operationId": "getPoliceDpt",
+       "tags": [
+         "police"
+       ],
+       "parameters": [
+         {
+           "name": "ORI_code",
+           "in": "query",
+           "description": "ORI code of a police department",
+           "required": true,
+           "schema": {
+             "type": "string"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about a police department",
+           "headers": {
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/PoliceDpt"
+               }
+             }
+           }
+         },
+         "default": {
+           "description": "unexpected error",
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Error"
+               }
+             }
+           }
+         }
+       }
+     }
+   },
+   "/listPolice": {
+     "get": {
+       "summary": "Details about all police departments",
+       "operationId": "listPoliceDpts",
+       "tags": [
+         "police"
+       ],
+       "parameters": [
+         {
+           "name": "pag_token",
+           "in": "query",
+           "description": "Pagination token for getting next page of data",
+           "required": false,
+           "schema": {
+             "type": "integer",
+             "format": "int64"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about all police departments",
+           "headers": {
+             "x-next": {
+               "description": "A link to the next page of responses",
+               "schema": {
+                 "type": "string"
+               }
+             }
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/PoliceDpt"
+               }
+             }
+           }
+         },
+         "default": {
+           "description": "unexpected error",
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Error"
+               }
+             }
+           }
+         }
+       }
+     }
+   },
+   "/crime": {
+     "get": {
+       "summary": "Details about a crime",
+       "operationId": "getCrime",
+       "tags": [
+         "crime"
+       ],
+       "parameters": [
+         {
+           "name": "id",
+           "in": "query",
+           "description": "ID of a crime",
+           "required": true,
+           "schema": {
+             "type": "string"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about a crime",
+           "headers": {
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Crime"
+               }
+             }
+           }
+         },
+         "default": {
+           "description": "unexpected error",
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Error"
+               }
+             }
+           }
+         }
+       }
+     }
+   },
+    "/listCrimes": {
+     "get": {
+       "summary": "Details about all crimes",
+       "operationId": "listCrimes",
+       "tags": [
+         "crime"
+       ],
+       "parameters": [
+         {
+           "name": "pag_token",
+           "in": "query",
+           "description": "Pagination token for getting next page of data",
+           "required": false,
+           "schema": {
+             "type": "integer",
+             "format": "int64"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about all crimes",
+           "headers": {
+             "x-next": {
+               "description": "A link to the next page of responses",
+               "schema": {
+                 "type": "string"
+               }
+             }
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Crime"
+               }
+             }
+           }
+         },
+         "default": {
+           "description": "unexpected error",
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Error"
+               }
+             }
+           }
+         }
+       }
+     }
+   },
+   "/city": {
+     "get": {
+       "summary": "Details about a city",
+       "operationId": "getCity",
+       "tags": [
+         "city"
+       ],
+       "parameters": [
+         {
+           "name": "id",
+           "in": "query",
+           "description": "ID of a city",
+           "required": true,
+           "schema": {
+             "type": "string"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about a city",
+           "headers": {
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/City"
+               }
+             }
+           }
+         },
+         "default": {
+           "description": "unexpected error",
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Error"
+               }
+             }
+           }
+         }
+       }
+     }
+   },
+    "/listCities": {
+     "get": {
+       "summary": "Details about all cities",
+       "operationId": "listCities",
+       "tags": [
+         "police"
+       ],
+       "parameters": [
+         {
+           "name": "pag_token",
+           "in": "query",
+           "description": "Pagination token for getting next page of data",
+           "required": false,
+           "schema": {
+             "type": "integer",
+             "format": "int64"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about all cities",
+           "headers": {
+             "x-next": {
+               "description": "A link to the next page of responses",
+               "schema": {
+                 "type": "string"
+               }
+             }
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/City"
+               }
+             }
+           }
+         },
+         "default": {
+           "description": "unexpected error",
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Error"
+               }
+             }
+           }
+         }
+       }
+     }
+   }
+  },
+  "components": {
+    "schemas": {
+      "PoliceDpt": {
+        "type": "object",
+        "required": [
+           "ori",
+    	   "city",
+           "name",
+    	   "population",
+    	   "num_officers",
+    	   "num_arrests"
+        ],
+        "properties": {
+         "ori": {
+           "type": "string"
+         },
+         "city": {
+           "type": "string"
+         },
+         "name": {
+           "type": "string"
+         },
+         "population": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "num_officers": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "num_arrests": {
+           "type": "integer",
+	         "format": "int64"
+         }
+        }
+      },
+    "Crime": {
+       "type": "object",
+       "required": [
+         "id",
+	       "type",
+           "time",
+	       "location",
+	       "offender_age",
+	       "offender_sex"
+       ],
+       "properties": {
+         "id": {
+           "type": "string"
+         },
+         "type": {
+           "type": "string"
+         },
+         "time": {
+           "type": "string"
+         },
+         "location": {
+           "type": "string"
+         },
+         "offender_age": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "offender_sex": {
+           "type": "string"
+         }
+       }
+     },
+    "City": {
+       "type": "object",
+       "required": [
+         "id",
+	       "state",
+           "population",
+	       "zone",
+	       "median_income",
+	       "area"
+       ],
+       "properties": {
+         "id": {
+           "type": "string"
+         },
+         "state": {
+           "type": "string"
+         },
+         "population": {
+           "type": "string"
+         },
+         "zone": {
+           "type": "string"
+         },
+         "median_income": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "area": {
+           "type": "integer",
+	         "format": "int32"
+         }
+       }
+     },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
