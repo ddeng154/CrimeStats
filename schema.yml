@@ -43,6 +43,40 @@
                }
              }
            }
+         }
+       }
+      }
+    },
+    "/policeByCity": {
+     "get": {
+       "summary": "Details about police departments within a city",
+       "operationId": "getPoliceDptInCity",
+       "tags": [
+         "police"
+       ],
+       "parameters": [
+         {
+           "name": "id",
+           "in": "query",
+           "description": "Id of a city",
+           "required": true,
+           "schema": {
+             "type": "string"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about police departments within a city",
+           "headers": {
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/PoliceDpt"
+               }
+             }
+           }
          },
          "default": {
            "description": "unexpected error",
@@ -108,10 +142,10 @@
        }
      }
    },
-   "/crime": {
+   "/crimesByCity": {
      "get": {
-       "summary": "Details about a crime",
-       "operationId": "getCrime",
+       "summary": "Details about crimes within a city",
+       "operationId": "getCrimesInCity",
        "tags": [
          "crime"
        ],
@@ -119,7 +153,7 @@
          {
            "name": "id",
            "in": "query",
-           "description": "ID of a crime",
+           "description": "ID of a city",
            "required": true,
            "schema": {
              "type": "string"
@@ -128,7 +162,51 @@
        ],
        "responses": {
          "200": {
-           "description": "Details about a crime",
+           "description": "Details about crimes in a city",
+           "headers": {
+           },
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Crime"
+               }
+             }
+           }
+         },
+         "default": {
+           "description": "unexpected error",
+           "content": {
+             "application/json": {
+               "schema": {
+                 "$ref": "#/components/schemas/Error"
+               }
+             }
+           }
+         }
+       }
+     }
+   },
+   "/crime": {
+     "get": {
+       "summary": "Details about a crime",
+       "operationId": "getCrimesInCity",
+       "tags": [
+         "crime"
+       ],
+       "parameters": [
+         {
+           "name": "id",
+           "in": "query",
+           "description": "ID of a city",
+           "required": true,
+           "schema": {
+             "type": "string"
+           }
+         }
+       ],
+       "responses": {
+         "200": {
+           "description": "Details about crimes within a city",
            "headers": {
            },
            "content": {
