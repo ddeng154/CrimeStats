@@ -189,7 +189,7 @@
    "/crime": {
      "get": {
        "summary": "Details about a crime",
-       "operationId": "getCrimesInCity",
+       "operationId": "getCrime",
        "tags": [
          "crime"
        ],
@@ -197,7 +197,7 @@
          {
            "name": "id",
            "in": "query",
-           "description": "ID of a city",
+           "description": "ID of a crime",
            "required": true,
            "schema": {
              "type": "string"
@@ -206,7 +206,7 @@
        ],
        "responses": {
          "200": {
-           "description": "Details about crimes within a city",
+           "description": "Details about crimes",
            "headers": {
            },
            "content": {
