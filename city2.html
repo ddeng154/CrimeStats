@@ -7,29 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-      .bg {
-        /* The image used */
-        background-image: url("background_image.jpg");
-      
-        /* Full height */
-        width: 100%;
-        height: 100%;
-      
-        /* Center and scale the image nicely */
-        background-position-x: fixed-bottom;
-        background-repeat: no-repeat;
-        background-size: cover ;
-        margin-bottom: 0px;
-        position: fixed;
-        top: 0;
-        left: 0;
-      }
-    </style>
-    <title>Crime Stats</title>
 
+    <title>Crime Stats</title>
   </head>
-  <body class= "bg">
+  <body style="background-color: #e3f2fd;">
     <nav class="navbar navbar-expand-sm navbar-light" style= "background-color: #B3ECFF; box-shadow: 2px 3px 2px grey">
       <a class="navbar-brand" href="/">Crime Stats</a>
     
@@ -49,8 +30,29 @@
       </ul>
     </nav>
 
-    <h1 style="position: relative; top:280px; color: #0099ff" class="text-center display-1 lead">Welcome</h1>
-    <p style="position: relative; top:285px; font-size:x-large; text-shadow: 2px 2px grey;" class="text-center">Click an option from navigation bar to get started</p>
+    <div class="text-center">
+      <h1>Detroit</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <img class="img-fluid" src="detroit.jpg">
+          </div>
+          <div class="col">
+            <p>Police Departments: <a href="police2.html">Detriot PD</a></p>
+            <p>Population: 713,777</p>
+            <p>Median Income: $36,842</p>
+            <p>Area Size (mi<sup>2</sup>): 142.89</p>
+            <p>Rural/Urban/Suburban: Urban</p>
+            <p>State: Michigan</p>      
+            <p>Primary Land Use: Commercial</p>
+            <p>Primary Race: Black</p>
+            <p>Coordinates: 42.3314° N, 83.0458° W</p>
+            <p>Minority Owned Firms: 50,946</p>
+            <p>Recent Crimes: <a href="crime2.html">2</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-light">
       <ul class="navbar-nav ml-auto">

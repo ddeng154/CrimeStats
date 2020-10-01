@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Crime Stats</title>
+  </head>
+  <body style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-sm navbar-light" style= "background-color: #B3ECFF; box-shadow: 2px 3px 2px grey">
+      <a class="navbar-brand" href="/">Crime Stats</a>
+    
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="cities.html">Cities</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="polices.html">Police Departments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crimes.html">Crimes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <h1 class="text-center">About</h1>
+
+    <div class="text-center">
+      <h2>General Information</h2>
+      <p>This site is an educational tool to inform people about the facts of the relationship between police presence and crime.</p>
+      <p>Too often in the media do we see incendiary information from both sides of the political spectrum. This leads to a further division of our society, which our site hopes to change.</p>
+    </div>
+
+    <div class="container text-center">
+      <h2>Meet Our Team</h2>
+      <div class="row">
+        <div class="col">
+          <img class="img-fluid" src="danielpic.jpg">
+          <p>Daniel Deng</p>
+          <p>I am a junior interested in front end development with some internship experience in backend development.</p>
+          <p>Front End Developer and Data Gathering</p>
+          <p>Commits: <span id="daniel-commits">0</span></p>
+          <p>Issues: <span id="daniel-issues">0</span></p>
+          <p>Unit Tests: <span id="daniel-unittests">0</span></p>
+        </div>
+        <div class="col">
+          <img class="img-fluid" src="alypic.jpg">
+          <p>Aly Hirani</p>
+          <p>I am a junior with internship and project experience in web and mobile app development. I am most interested in full stack development.</p>
+          <p>Front End Developer and AWS</p>
+          <p>Commits: <span id="aly-commits">0</span></p>
+          <p>Issues: <span id="aly-issues">0</span></p>
+          <p>Unit Tests: <span id="aly-unittests">0</span></p>
+        </div>
+        <div class="col">
+          <img class="img-fluid" src="ishanpic.jpg">
+          <p>Ishan Phadke</p>
+          <p>I'm a junior interested in full stack development. I have experience with web development, database design, and RESTful APIs</p>
+          <p>API Design and Data Gathering</p>
+          <p>Commits: <span id="ishan-commits">0</span></p>
+          <p>Issues: <span id="ishan-issues">0</span></p>
+          <p>Unit Tests: <span id="ishan-unittests">0</span></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <img class="img-fluid" src="safinpic.jpg">
+          <p>Safin Kasturi</p> 
+          <p>I’m a third year CS major and an aspiring software engineer, with interests in web design and data science.</p>
+          <p>Front End Developer and API Design</p>
+          <p>Commits: <span id="safin-commits">0</span></p>
+          <p>Issues: <span id="safin-issues">0</span></p>
+          <p>Unit Tests: <span id="safin-unittests">0</span></p>
+        </div>
+        <div class="col">
+          <img class="img-fluid" src="shreyaspic.jpg">
+          <p>Shreyas Konana</p>
+          <p>I am junior interested in back-end software development, with experience in Data Engineering and ML.</p>
+          <p>API Design and Data Gathering</p>
+          <p>Commits: <span id="shreyas-commits">0</span></p>
+          <p>Issues: <span id="shreyas-issues">0</span></p>
+          <p>Unit Tests: <span id="shreyas-unittests">0</span></p>
+        </div>
+        <div class="col">
+          <img class="img-fluid" src="anishpic.jpg">
+          <p>Anish Yellaturu</p>
+          <p>I am a junior with internship experience in data science and machine learning, and personal experience with web design. I’m most interested in back-end development.</p> 
+          <p>Technical Report and Data Gathering</p> 
+          <p>Commits: <span id="anish-commits">0</span></p>
+          <p>Issues: <span id="anish-issues">0</span></p>
+          <p>Unit Tests: <span id="anish-unittests">0</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <h2>Total Stats</h2>
+      <p>Commits: <span id="total-commits">0</span></p>
+      <p>Issues: <span id="total-issues">0</span></p>
+      <p>Unit Tests: <span id="total-unittests">0</span></p>
+    </div>
+
+    <div class="text-center">
+      <h2>Data Sources</h2>
+      <h6><a href="https://crime-data-explorer.fr.cloud.gov/api">FBI Crime Data</a></h6>
+      <h6><a href="https://www.census.gov/data/developers/data-sets/acs-1year.html">United States Census Data</a></h6>
+      <h6><a href="https://developers.google.com/maps/premium/previous-licenses/image">Google Maps API</a></h6>
+    </div>
+
+    <div class="text-center">
+      <h2>Tools</h2>
+      <h6>Postman</h6>
+      <p>We used Postman to design our RESTful API. It ensured our schema had no errors and generated documentation for us</p>
+      <h6>Bootstrap</h6>
+      <p>Bootstrap was used to make a starting template for our pages. Eventually, as we add more functionality and features, we will expand on Bootstrap's usage in designing our front end.</p>
+    </div>
+    
+    <div class="text-center">
+      <h2>Links</h2>
+      <h6><a href="https://gitlab.com/alyhirani/crimestats">GitLab Repo</a></h6>
+      <h6><a href="https://documenter.getpostman.com/view/12923323/TVRdAX2W">Postman API Documentation</a></h6>
+    </div>
+
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cities.html">Cities</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="polices.html">Police Departments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crimes.html">Crimes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <script src="script.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
