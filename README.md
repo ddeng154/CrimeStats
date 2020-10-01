@@ -1,44 +1,43 @@
 # Crime Stats
 
-name: Daniel Deng
-eid: 
-gitlab ID:
-estimated work time:
-actual work time:
+## General Info
+* Git SHA: 
+* Project Leader: Aly Hirani
+* Website: www.crimestats.me
+* Pipelines: N/A
 
-name: Aly Hirani
-eid: 
-gitlab ID:
-estimated work time:
-actual work time:
+## Daniel Deng
+* EID: 
+* GitLab ID: @ddeng154
+* Estimated work time: 7 hrs
+* Actual work time: 8 hrs
 
-name: Ishan Phadke
-eid: iap392
-gitlab ID: ishanphadke
-estimated work time: 8 hrs
-actual work time: 9 hrs
+## Aly Hirani
+* EID: amh7366
+* GitLab ID: @alyhirani
+* Estimated work time: 10 hrs
+* Actual work time: 15 hrs
 
-name: Safin Kasturi
-eid: ssk2386
-gitlab ID: safinkasturi
-estimated work time: 8 hrs
-actual work time: 9 hrs
+## Ishan Phadke
+* EID: iap392
+* GitLab ID: @ishanphadke
+* Estimated work time: 8 hrs
+* Actual work time: 9 hrs
 
-name: Shreyas Konana
-eid: spk486
-gitlab ID: skonana
-estimated work time: 7 hrs
-actual work time: 9 hrs
+## Safin Kasturi
+* EID: ssk2386
+* GitLab ID: @safinkasturi
+* Estimated work time: 8 hrs
+* Actual work time: 9 hrs
 
-name: Anish Yellaturu
-eid aly362
-gitlab ID: anishyellaturu
-estimated work time: 6 hrs
-actual work time: 7 hrs
+## Shreyas Konana
+* EID: spk486
+* GitLab ID: @skonana
+* Estimated work time: 7 hrs
+* Actual work time: 9 hrs
 
-project leader: Aly Hirani
-
-website: www.crimestats.me
-
-git SHA:
-
+## Anish Yellaturu
+* EID: aly362
+* GitLab ID: @anishyellaturu
+* Estimated work time: 6 hrs
+* Actual work time: 7 hrs
