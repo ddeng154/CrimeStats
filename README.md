@@ -7,7 +7,7 @@
 * Pipelines: N/A
 
 ## Daniel Deng
-* EID: 
+* EID: dd29464
 * GitLab ID: @ddeng154
 * Estimated work time: 7 hrs
 * Actual work time: 8 hrs
@@ -37,7 +37,7 @@
 * Actual work time: 9 hrs
 
 ## Anish Yellaturu
-* EID: aly362
+* EID: ary362
 * GitLab ID: @anishyellaturu
 * Estimated work time: 6 hrs
 * Actual work time: 7 hrs

@@ -24,8 +24,10 @@ function getCommitNames(commit) {
 
 function getIssueNames(issue) {
     let names = []
-    for (assignee of issue.assignees) {
-        names.push(shortenName(assignee.name))
+    if (issue.state === "closed") {
+        for (assignee of issue.assignees) {
+            names.push(shortenName(assignee.name))
+        }
     }
     return names
 }
