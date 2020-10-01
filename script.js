@@ -1,7 +1,7 @@
 const headers = {'private_token': '1b13PazxJ5_DELouxJ3-'}
 
-const commitsURL = "https://gitlab.com/api/v4/projects/21298954/repository/commits?all=true"
-const issuesURL = "https://gitlab.com/api/v4/projects/21298954/issues"
+const commitsURL = "https://gitlab.com/api/v4/projects/21298954/repository/commits?per_page=100"
+const issuesURL = "https://gitlab.com/api/v4/projects/21298954/issues?per_page=100"
 
 fetch(commitsURL, {headers: headers})
 .then(res=>{return res.json()})
