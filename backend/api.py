@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api
 
-from gitlabstats import GitLabStats
+from gitlab import Stats as GitLabStats
 
 app = Flask(__name__)
 api = Api(app)
