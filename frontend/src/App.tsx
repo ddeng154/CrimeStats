@@ -7,6 +7,7 @@ import PoliceDepartments from './PoliceDepartments';
 import Crimes from './Crimes';
 import About from './About';
 import Splash from './Splash';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }
