@@ -8,6 +8,7 @@ import Crimes from './Crimes';
 import About from './About';
 import Splash from './Splash';
 import Footer from './Footer';
+import './Footer.css';
 
 function App() {
   return (
