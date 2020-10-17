@@ -4,7 +4,6 @@ import Nav from 'react-bootstrap/Nav';
 
 export function Header() {
     return (
-        
         <div>
         <Navbar bg="light" expand="sm">
           <Navbar.Brand href="/">Crime Stats</Navbar.Brand>

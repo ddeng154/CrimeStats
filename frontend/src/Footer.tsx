@@ -6,32 +6,16 @@ function Footer() {
     return (
         <div className = "main-footer">
             <div className = "container">
-                <div className = "row">
-                    {/* Column 1 */}
-                    <div className = "col">
-                        <h4 style={{color: "red"}}>Hello Style!</h4>
-                        <ul className = "list-unstyled">
-                            <Link to="/counties">Counties</Link>
-                        </ul>
-                    </div>
-                    {/* Colum 2 */}
-                    <div className = "col">
-                        <h4>PLACEHOLDER</h4>
-                        <ul className = "list-unstyled">
-                            <li>temp</li>
-                            <li>temp</li>
-                            <li>temp</li>
-                        </ul>
-                    </div>
-                    {/* Colum 3 */}
-                    <div className = "col">
-                        <h4>PLACEHOLDER</h4>
-                        <ul className = "list-unstyled">
-                            <li>temp</li>
-                            <li>temp</li>
-                            <li>temp</li>
-                        </ul>
-                    </div>
+                <div className = "footer-link-items">
+                    <h2>Explore</h2>
+                    <Link to = "/counties">Counties</Link>
+                    <Link to = "/policedepartments">Police Departments</Link>
+                    <Link to = "/crimes">Crimes</Link>
+                    <Link to = "/about">About</Link>
+                </div>
+                <div className = "footer-text">
+                    <h4>About Us</h4>
+                    <p>We want to teach society on the relation between police presence and crime</p>
                 </div>
                 <hr />
                 <div className = "row">
