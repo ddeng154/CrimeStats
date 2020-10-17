@@ -1,7 +1,13 @@
 import React from 'react';
+import SplashBanner from './SplashBanner';
+
 
 function Splash() {
-    return <h1>Crime Stats</h1>;
+    return (
+        <div>
+            <SplashBanner />
+        </div>
+    );
 }
 
 export default Splash;
