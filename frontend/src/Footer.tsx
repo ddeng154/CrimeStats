@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
@@ -10,9 +11,7 @@ function Footer() {
                     <div className = "col">
                         <h4 style={{color: "red"}}>Hello Style!</h4>
                         <ul className = "list-unstyled">
-                            <li>Downing</li>
-                            <li>like</li>
-                            <li>Shreyas</li>
+                            <Link to="/counties">Counties</Link>
                         </ul>
                     </div>
                     {/* Colum 2 */}
