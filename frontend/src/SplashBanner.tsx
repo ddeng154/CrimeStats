@@ -8,7 +8,7 @@ function SplashBanner() {
             <h1>Crime Stats</h1>
             <p>See how police presence relates to crime</p>
             <Button variant = "primary" size = "lg">
-                Click Me
+                Will be a search function next week
             </Button>
         </div>
     )
