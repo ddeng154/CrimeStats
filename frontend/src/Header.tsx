@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-export function Header() {
+function Header() {
     return (
         <div>
         <Navbar bg="light" expand="sm">

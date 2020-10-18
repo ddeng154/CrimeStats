@@ -33,7 +33,7 @@ class Team extends React.Component {
     type PersonStats = { name: string, commits: number, issues: number, tests: number };
     axios.get<PersonStats[]>("/api/gitlabstats").then(response => {
       const info = new Map<string, Info>();
-      Team.names.forEach(n => {
+      for (let n of Team.names) {
         const stats = response.data.find(s => s.name === n);
         const b: string = Team.bios[n];
         const r: string = Team.roles[n];
@@ -41,7 +41,7 @@ class Team extends React.Component {
         const i = stats ? stats.issues : 0;
         const t = stats ? stats.tests : 0;
         info.set(n, new Info(n, b, r, c, i, t));
-      });
+      }
       this.setState({ info, isLoading: false });
     });
   }
@@ -87,9 +87,9 @@ class Info {
 }
 
 type PersonProps = {
-  fullName: string,
-  info: Info
-}
+  fullName: string;
+  info: Info;
+};
 
 function Person({ fullName, info }: PersonProps) {
   const image = require('./images/' + info.name + '.jpg');
