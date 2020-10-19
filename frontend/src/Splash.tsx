@@ -7,7 +7,6 @@ function Splash() {
     return (
         <div>
             <SplashBanner />
-            <Cards />
         </div>
     );
 }
