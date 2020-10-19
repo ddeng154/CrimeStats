@@ -8,6 +8,14 @@ type CountyData = {
   id: string;
   name: string;
   police_departments: { id: number; name: string }[];
+  state: string;
+  median_income: number;
+  total_pop: number;
+  black_pop: number;
+  white_pop: number;
+  pacific_pop: number;
+  native_pop: number;
+  asian_pop: number;
 };
 
 type CountyState = {
@@ -35,6 +43,14 @@ class County extends React.Component<IDParams> {
       return (
         <div>
           <h1>{this.state.county.name}</h1>
+          <h1>{this.state.county.id}</h1>
+          <h1>{this.state.county.state}</h1>
+          <h1>{this.state.county.median_income}</h1>
+          <h1>{this.state.county.total_pop}</h1>
+          <h1>{this.state.county.black_pop}</h1>
+          <h1>{this.state.county.pacific_pop}</h1>
+          <h1>{this.state.county.native_pop}</h1>
+          <h1>{this.state.county.asian_pop}</h1>
           <h4>Police Departments</h4>
           <ul>
             { this.state.county.police_departments.map(p => <Nav.Link key={p.id} href={"/policedepartments/" + p.id}>{p.name}</Nav.Link>) }
