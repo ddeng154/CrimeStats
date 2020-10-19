@@ -1,10 +1,17 @@
-from flask import Flask
+from flask import Flask, render_template
+from flask_cors import CORS
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
 from gitlab import Stats as GitLabStats
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/build/static', template_folder='../frontend/build')
+CORS(app)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
+    return render_template('index.html')
 
 api = Api(app)
 api.add_resource(GitLabStats, '/api/gitlabstats')
@@ -50,4 +57,4 @@ AddEndpoint(PoliceDepartment, 'police_departments', policeDepartmentSingle)
 AddEndpoint(Crime, 'crimes')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80, threaded=True, debug=True)
