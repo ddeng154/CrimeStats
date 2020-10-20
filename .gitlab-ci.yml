@@ -1,0 +1,14 @@
+build:
+    script:
+        - ls
+    stage: build
+
+test:
+    script:
+        - ls
+    stage: test
+
+deploy:
+    script:
+        - ls
+    stage: deploy

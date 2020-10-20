@@ -1,48 +1,61 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/esm/Button';
 import Card from 'react-bootstrap/esm/Card';
-import img1 from './images/splash-image.jpg'
+import { Link } from 'react-router-dom';
+import img1 from './images/county-image.jpg'
+import img2 from './images/police-image.jpg'
+import img3 from './images/crime-image.jpg'
 
 function Cards (){
     return (
         <div className = "cards">
-            <div className = "cards-container">
-                <ul className = "cards-items">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={img1} />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                            </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={img1} />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                            </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={img1} />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                            </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-                </ul>
-            </div>
+            <Container fluid className = "cards-container">
+                <Row className = "justify-content-md-center">
+                    <Col>
+                        <Card>
+                            <Card.Img variant="top" src={img1} />
+                            <Card.Body>
+                                <Card.Title>Counties</Card.Title>
+                                    <Card.Text>
+                                     Will be updated to look better with animation in the future.
+                                    </Card.Text>
+                                <Button variant="info">
+                                    <Link to = "/crimes">Counties</Link>
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card>
+                            <Card.Img variant="top" src={img2} />
+                            <Card.Body>
+                                <Card.Title>Police Deparments</Card.Title>
+                                    <Card.Text>
+                                    Will be updated to look better with animation in the future.
+                                    </Card.Text>
+                                <Button variant="info">
+                                    <Link to = "/crimes">Police Deparments</Link>
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card>
+                            <Card.Img variant="top" src={img3} />
+                            <Card.Body>
+                                <Card.Title>Crimes</Card.Title>
+                                    <Card.Text>
+                                    Will be updated to look better with animation in the future.
+                                    </Card.Text>
+                                <Button variant="info">
+                                    <Link to = "/crimes">Crimes</Link>
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }
