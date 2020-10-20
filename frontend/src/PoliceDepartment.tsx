@@ -5,9 +5,18 @@ import { Redirect } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 
 type PoliceDepartmentData = {
-  id: string;
+  ori: string;
   name: string;
-  counties: { id: number; name: string }[];
+  pop: number;
+  num_male_officers: number;
+  num_female_officers: number;
+  num_civilians: number;
+  dept_type: string;
+  div_name: string;
+  reg_name: string;
+  density_per_1000: number;
+  counties: { id: string; name: string }[];
+  crimes: { id: string; type: string }[];
 };
 
 type PoliceDepartmentState = {
@@ -35,9 +44,21 @@ class PoliceDepartment extends React.Component<IDParams> {
       return (
         <div>
           <h1>{this.state.policeDepartment.name}</h1>
+          <h1>{this.state.policeDepartment.pop}</h1>
+          <h1>{this.state.policeDepartment.num_male_officers}</h1>
+          <h1>{this.state.policeDepartment.num_female_officers}</h1>
+          <h1>{this.state.policeDepartment.num_civilians}</h1>
+          <h1>{this.state.policeDepartment.dept_type}</h1>
+          <h1>{this.state.policeDepartment.div_name}</h1>
+          <h1>{this.state.policeDepartment.reg_name}</h1>
+          <h1>{this.state.policeDepartment.density_per_1000}</h1>
           <h4>Counties</h4>
           <ul>
             { this.state.policeDepartment.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>) }
+          </ul>
+          <h4>Crimes</h4>
+          <ul>
+            { this.state.policeDepartment.crimes.map(c => <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.type}</Nav.Link>) }
           </ul>
         </div>
       );

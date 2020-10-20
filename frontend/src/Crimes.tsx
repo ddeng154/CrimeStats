@@ -5,8 +5,19 @@ import Button from 'react-bootstrap/Button';
 import { APIResponse } from './common';
 
 type CrimeData = {
-  id: string;
-  name: string;
+  id: number;
+  ori: string;
+  type: string;
+  o_white: number;
+  o_black: number;
+  o_pacific: number;
+  o_native: number;
+  o_asian: number;
+  v_white: number;
+  v_black: number;
+  v_pacific: number;
+  v_native: number;
+  v_asian: number;
 };
 
 class Crimes extends React.Component {
@@ -73,7 +84,20 @@ class Crimes extends React.Component {
 
 function CrimeRow(c: CrimeData) {
   return (
-    <Nav.Link href={"/crimes/" + c.id}>{c.id} {c.name}</Nav.Link>
+    <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.id}
+    {c.ori}
+    {c.type}
+    {c.o_white}
+    {c.o_black}
+    {c.o_pacific}
+    {c.o_native}
+    {c.o_asian}
+    {c.v_white}
+    {c.v_black}
+    {c.v_pacific}
+    {c.v_native}
+    {c.v_asian}
+    </Nav.Link>
   );
 }
 

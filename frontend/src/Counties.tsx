@@ -7,6 +7,17 @@ import { APIResponse } from './common';
 type CountyData = {
   id: string;
   name: string;
+  state: string;
+  median_income: number;
+  total_pop: number;
+  black_pop: number;
+  white_pop: number;
+  pacific_pop: number;
+  native_pop: number;
+  asian_pop: number;
+  area: number;
+  longitude: number;
+  latitude: number;
 };
 
 class Counties extends React.Component {
@@ -73,7 +84,19 @@ class Counties extends React.Component {
 
 function CountyRow(c: CountyData) {
   return (
-    <Nav.Link href={"/counties/" + c.id}>{c.id} {c.name}</Nav.Link>
+    <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.id} {c.name}
+      {c.state}
+      {c.median_income}
+      {c.total_pop}
+      {c.black_pop}
+      {c.white_pop}
+      {c.pacific_pop}
+      {c.native_pop}
+      {c.asian_pop}
+      {c.area}
+      {c.longitude}
+      {c.latitude}
+    </Nav.Link>
   );
 }
 

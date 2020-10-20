@@ -7,7 +7,6 @@ import Nav from 'react-bootstrap/Nav';
 type CountyData = {
   id: string;
   name: string;
-  police_departments: { id: number; name: string }[];
   state: string;
   median_income: number;
   total_pop: number;
@@ -16,6 +15,11 @@ type CountyData = {
   pacific_pop: number;
   native_pop: number;
   asian_pop: number;
+  area: number;
+  longitude: number;
+  latitude: number;
+  police_departments: { ori: string; name: string }[];
+  crimes: { id: number; type: string; pd_name: string; }[];
 };
 
 type CountyState = {
@@ -43,7 +47,6 @@ class County extends React.Component<IDParams> {
       return (
         <div>
           <h1>{this.state.county.name}</h1>
-          <h1>{this.state.county.id}</h1>
           <h1>{this.state.county.state}</h1>
           <h1>{this.state.county.median_income}</h1>
           <h1>{this.state.county.total_pop}</h1>
@@ -51,9 +54,18 @@ class County extends React.Component<IDParams> {
           <h1>{this.state.county.pacific_pop}</h1>
           <h1>{this.state.county.native_pop}</h1>
           <h1>{this.state.county.asian_pop}</h1>
+          <h1>{this.state.county.area}</h1>
+          <h1>{this.state.county.longitude}</h1>
+          <h1>{this.state.county.latitude}</h1>
+          <iframe title="map" width="600" height="450" frameBorder="0" style={{border: 0}}
+src={"https://www.google.com/maps/embed/v1/view?zoom=9&center=" + this.state.county.latitude + "," + this.state.county.longitude + "&key=AIzaSyC-QNudTN-ssaDXHh5h3_5dk19wxsatSRg"} allowFullScreen></iframe>
           <h4>Police Departments</h4>
           <ul>
-            { this.state.county.police_departments.map(p => <Nav.Link key={p.id} href={"/policedepartments/" + p.id}>{p.name}</Nav.Link>) }
+            { this.state.county.police_departments.map(p => <Nav.Link key={p.ori} href={"/policedepartments/" + p.ori}>{p.name}</Nav.Link>) }
+          </ul>
+          <h4>Crimes</h4>
+          <ul>
+            { this.state.county.crimes.map(c => <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.pd_name} {c.type}</Nav.Link>) }
           </ul>
         </div>
       );

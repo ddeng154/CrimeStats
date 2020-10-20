@@ -5,8 +5,16 @@ import Button from 'react-bootstrap/Button';
 import { APIResponse } from './common';
 
 type PoliceDepartmentData = {
-    id: string;
+    ori: string;
     name: string;
+    pop: number;
+    num_male_officers: number;
+    num_female_officers: number;
+    num_civilians: number;
+    dept_type: string;
+    div_name: string;
+    reg_name: string;
+    density_per_1000: number;
 };
 
 class PoliceDepartments extends React.Component {
@@ -73,7 +81,17 @@ class PoliceDepartments extends React.Component {
 
 function PoliceDepartmentRow(pd: PoliceDepartmentData) {
   return (
-    <Nav.Link href={"/policedepartments/" + pd.id}>{pd.id} {pd.name}</Nav.Link>
+    <Nav.Link key={pd.ori} href={"/policedepartments/" + pd.ori}>{pd.ori} {pd.name}
+      {pd.ori}
+      {pd.name}
+      {pd.pop}
+      {pd.num_male_officers}
+      {pd.num_female_officers}
+      {pd.dept_type}
+      {pd.div_name}
+      {pd.reg_name}
+      {pd.density_per_1000}
+    </Nav.Link>
   );
 }
 
