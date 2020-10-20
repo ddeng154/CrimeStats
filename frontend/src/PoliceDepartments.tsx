@@ -3,6 +3,7 @@ import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import { APIResponse } from './common';
+import Table from 'react-bootstrap/Table';
 
 type PoliceDepartmentData = {
     ori: string;
@@ -19,39 +20,40 @@ type PoliceDepartmentData = {
 
 class PoliceDepartments extends React.Component {
   state = {
-    policeDepartments: new Array<PoliceDepartmentData>(),
     elements: new Array<PoliceDepartmentData>(),
-    currentPage: 0,
-    totalPages: 0,
-    perPage: 10,
+    currentPage: 1,
+    totalPages: -1,
     isLoading: true
   };
 
   componentDidMount() {
-    axios.get<APIResponse<PoliceDepartmentData>>("/api/police_departments").then(response => {
+    this.fetchElements();
+  }
+
+  fetchElements = () => {
+    this.setState({ isLoading: true });
+    axios.get<APIResponse<PoliceDepartmentData>>("/api/police_departments?page=" + this.state.currentPage).then(response => {
       this.setState({
-        policeDepartments: response.data.objects,
-        totalPages: Math.ceil(response.data.objects.length / this.state.perPage),
+        elements: response.data.objects,
+        totalPages: response.data.total_pages,
         isLoading: false
-      }, () => { this.setElements(); });
+      });
     });
   }
 
-  setElements() {
-    const offset = this.state.currentPage * this.state.perPage;
-    const elements = this.state.policeDepartments.slice(offset, offset + this.state.perPage);
-    this.setState({ elements });
-  }
-
   previousPage = () => {
-    if (this.state.currentPage >= 1) {
-      this.setState({ currentPage: this.state.currentPage - 1 }, () => { this.setElements(); });
+    if (this.state.currentPage > 1) {
+      this.setState({ currentPage: this.state.currentPage - 1 }, this.fetchElements);
+    } else if (this.state.totalPages > 1) {
+      this.setState({ currentPage: this.state.totalPages }, this.fetchElements);
     }
   }
 
   nextPage = () => {
-    if (this.state.currentPage < this.state.totalPages - 1) {
-      this.setState({ currentPage: this.state.currentPage + 1 }, () => { this.setElements(); });
+    if (this.state.currentPage < this.state.totalPages) {
+      this.setState({ currentPage: this.state.currentPage + 1 }, this.fetchElements);
+    } else if (this.state.totalPages > 1) {
+      this.setState({ currentPage: 1 }, this.fetchElements);
     }
   }
 
@@ -63,7 +65,7 @@ class PoliceDepartments extends React.Component {
     const Pagination = (
       <div>
         <Button onClick={this.previousPage}>Previous</Button>
-        {" " + (this.state.currentPage + 1) + " "}
+        {" " + this.state.currentPage + " "}
         <Button onClick={this.nextPage}>Next</Button>
       </div>
     );
@@ -72,7 +74,25 @@ class PoliceDepartments extends React.Component {
       <div className="text-center">
         <h1>Police Departments</h1>
         { Pagination }
-        { this.state.elements.map(PoliceDepartmentRow) }
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>ORI</th>
+              <th>Name</th>
+              <th>Population</th>
+              <th>No. Male Officers</th>
+              <th>No. Female Officers</th>
+              <th>No. Civilians</th>
+              <th>Department Type</th>
+              <th>Division Name</th>
+              <th>Region Name</th>
+              <th>Density per 1000</th>
+            </tr>
+          </thead>
+          <tbody>
+            { this.state.elements.map(PoliceDepartmentRow) }
+          </tbody>
+        </Table>
         { Pagination }
       </div>
     );
@@ -81,17 +101,18 @@ class PoliceDepartments extends React.Component {
 
 function PoliceDepartmentRow(pd: PoliceDepartmentData) {
   return (
-    <Nav.Link key={pd.ori} href={"/policedepartments/" + pd.ori}>{pd.ori} {pd.name}
-      {pd.ori}
-      {pd.name}
-      {pd.pop}
-      {pd.num_male_officers}
-      {pd.num_female_officers}
-      {pd.dept_type}
-      {pd.div_name}
-      {pd.reg_name}
-      {pd.density_per_1000}
-    </Nav.Link>
+    <tr key={pd.ori}>
+      <td>{pd.ori}</td>
+      <td><Nav.Link key={pd.name} href={"/policedepartments/" + pd.ori}>{pd.name}</Nav.Link></td>
+      <td>{pd.pop}</td>
+      <td>{pd.num_male_officers}</td>
+      <td>{pd.num_female_officers}</td>
+      <td>{pd.num_civilians}</td>
+      <td>{pd.dept_type}</td>
+      <td>{pd.div_name}</td>
+      <td>{pd.reg_name}</td>
+      <td>{pd.density_per_1000}</td>
+    </tr>
   );
 }
 

@@ -46,20 +46,59 @@ class Crime extends React.Component<IDParams> {
     } else if (this.state.crime) {
       return (
         <div>
-          <h1>{this.state.crime.type}</h1>
-          <h1><a href={"/policedepartments/" + this.state.crime.ori}>{this.state.crime.pd_name}</a></h1>
-          <h1>{this.state.crime.o_white}</h1>
-          <h1>{this.state.crime.o_black}</h1>
-          <h1>{this.state.crime.o_pacific}</h1>
-          <h1>{this.state.crime.o_native}</h1>
-          <h1>{this.state.crime.o_asian}</h1>
-          <h1>{this.state.crime.v_white}</h1>
-          <h1>{this.state.crime.v_black}</h1>
-          <h1>{this.state.crime.v_pacific}</h1>
-          <h1>{this.state.crime.v_native}</h1>
-          <h1>{this.state.crime.v_asian}</h1>
-          <h1>Counties</h1>
-          { this.state.crime.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>) }
+          <h4> {this.state.crime.type} </h4>
+          <table className = "table">
+            <tbody>
+              <tr>
+                <th scope = "row">Police Dept.</th>
+                <td> <a href={"/policedepartments/" + this.state.crime.ori}>{this.state.crime.pd_name}</a> </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of White Offenders</th>
+                <td> {this.state.crime.o_white} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Black Offenders</th>
+                <td> {this.state.crime.o_black} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Pacific Offenders</th>
+                <td> {this.state.crime.o_pacific} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Native Offenders</th>
+                <td> {this.state.crime.o_native} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Asian Offenders</th>
+                <td> {this.state.crime.o_asian} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of White Victims</th>
+                <td> {this.state.crime.v_white} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Black Victims</th>
+                <td> {this.state.crime.v_black} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Pacific Victims</th>
+                <td> {this.state.crime.v_pacific} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Native Victims</th>
+                <td> {this.state.crime.v_native} </td>
+              </tr>
+              <tr>
+                <th scope = "row">No. of Asian Victims</th>
+                <td> {this.state.crime.v_asian} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Counties</th>
+                <td> { this.state.crime.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>)} </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       );
     } else {

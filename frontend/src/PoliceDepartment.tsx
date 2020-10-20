@@ -44,22 +44,54 @@ class PoliceDepartment extends React.Component<IDParams> {
       return (
         <div>
           <h1>{this.state.policeDepartment.name}</h1>
-          <h1>{this.state.policeDepartment.pop}</h1>
-          <h1>{this.state.policeDepartment.num_male_officers}</h1>
-          <h1>{this.state.policeDepartment.num_female_officers}</h1>
-          <h1>{this.state.policeDepartment.num_civilians}</h1>
-          <h1>{this.state.policeDepartment.dept_type}</h1>
-          <h1>{this.state.policeDepartment.div_name}</h1>
-          <h1>{this.state.policeDepartment.reg_name}</h1>
-          <h1>{this.state.policeDepartment.density_per_1000}</h1>
-          <h4>Counties</h4>
-          <ul>
-            { this.state.policeDepartment.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>) }
-          </ul>
-          <h4>Crimes</h4>
-          <ul>
-            { this.state.policeDepartment.crimes.map(c => <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.type}</Nav.Link>) }
-          </ul>
+          <table className = "table">
+            <tbody>
+              <tr>
+                <th scope = "row">Population</th>
+                <td> {this.state.policeDepartment.pop} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Male officers</th>
+                <td> {this.state.policeDepartment.num_male_officers} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Female officers</th>
+                <td> {this.state.policeDepartment.num_female_officers} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Civilians</th>
+                <td> {this.state.policeDepartment.num_civilians} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Dept. type</th>
+                <td> {this.state.policeDepartment.dept_type} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Division name</th>
+                <td> {this.state.policeDepartment.div_name} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Region name</th>
+                <td> {this.state.policeDepartment.reg_name} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Density (per 1000)</th>
+                <td> {this.state.policeDepartment.density_per_1000} </td>
+              </tr>
+              <tr>
+                <th scope = "row">Counties</th>
+                <td> 
+                  <ul>{ this.state.policeDepartment.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>) }</ul> 
+                </td>
+              </tr>
+              <tr>
+                <th scope = "row">Crimes</th>
+                <td> 
+                  <ul>{ this.state.policeDepartment.crimes.map(c => <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.type}</Nav.Link>) }</ul> 
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       );
     } else {
