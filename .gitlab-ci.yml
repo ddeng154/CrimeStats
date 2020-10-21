@@ -1,14 +1,5 @@
-build:
-    script:
-        - ls
-    stage: build
-
 test:
     script:
-        - ls
+        - cat Makefile
+        - make testbackend
     stage: test
-
-deploy:
-    script:
-        - ls
-    stage: deploy
