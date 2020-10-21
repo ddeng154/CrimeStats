@@ -25,4 +25,5 @@ selenium:
     stage: test
     image: python
     script:
+        - pip install selenium
         - make testui
