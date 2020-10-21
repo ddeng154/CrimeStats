@@ -22,5 +22,6 @@ frontend:
 
 selenium:
     stage: test
+    image: python
     script:
-        - pwd
+        - make testui
