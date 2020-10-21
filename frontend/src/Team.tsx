@@ -16,12 +16,12 @@ class Team extends React.Component {
   };
 
   static roles: any = {
-    daniel: "Front End Developer and Data Gathering",
-    aly: "Front End Developer and AWS",
-    ishan: "API Design and Data Gathering",
-    safin: "Front End Developer and API Design",
-    shreyas: "API Design and Data Gathering",
-    anish: "Technical Report and Data Gathering"
+    daniel: "Frontend Developer",
+    aly: "Full Stack Developer",
+    ishan: "Backend Developer",
+    safin: "Frontend Developer",
+    shreyas: "Full Stack Developer",
+    anish: "Technical Report and Frontend Developer"
   };
 
   state = {
