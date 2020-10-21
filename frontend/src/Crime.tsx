@@ -3,6 +3,8 @@ import axios from 'axios';
 import { IDParams } from './common';
 import { Redirect } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
+import { PieChart } from 'react-minimal-pie-chart';
+import './Piechart.css';
 
 type CrimeData = {
   id: number;
@@ -31,6 +33,24 @@ class Crime extends React.Component<IDParams> {
   state: CrimeState = {
     isLoading: true
   };
+
+  getTotalOffenders() {
+    if (this.state.crime) {
+      return this.state.crime?.o_asian + this.state.crime?.o_black + this.state.crime?.o_white 
+      + this.state.crime?.o_native + this.state.crime?.o_pacific;
+    } else {
+      return 0;
+    }
+  }
+
+  getTotalVictims() {
+    if (this.state.crime) {
+      return this.state.crime?.v_asian + this.state.crime?.v_black + this.state.crime?.v_white 
+      + this.state.crime?.v_native + this.state.crime?.v_pacific;
+    } else {
+      return 0;
+    }
+  }
 
   componentDidMount() {
     axios.get<CrimeData>("/api/crimes/" + this.props.id).then(response => {
@@ -99,6 +119,97 @@ class Crime extends React.Component<IDParams> {
               </tr>
             </tbody>
           </table>
+
+          <h4>Racial Breakdown of Offenders:</h4>
+          <label style={{color:"#E38627", fontSize:"35px"}}>Black: {(this.state.crime.o_black / this.getTotalOffenders() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#C13C37", fontSize:"35px"}}>White: {(this.state.crime.o_white / this.getTotalOffenders() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#6A2135", fontSize:"35px"}}>Pacific: {(this.state.crime.o_pacific / this.getTotalOffenders() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#2757E3", fontSize:"35px"}}>Native: {(this.state.crime.o_native / this.getTotalOffenders() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#E327B7", fontSize:"35px"}}>Asian: {(this.state.crime.o_asian / this.getTotalOffenders() * 100).toFixed(2)}%</label>
+          <div className="chart-container">
+              <PieChart
+                  animate
+                  animationDuration={2000}
+                  center={[50, 50]}
+                  data={[
+                      {
+                      color: "#E38627",
+                      title: "White",
+                      value: this.state.crime.o_black,
+                      },
+                      {
+                      color: "#C13C37",
+                      title: "White Pop.",
+                      value: this.state.crime.o_white,
+                      },
+                      {
+                      color: "#6A2135",
+                      title: "Pacific Pop.",
+                      value: this.state.crime.o_pacific,
+                      },
+                      {
+                        color: "#2757E3",
+                        title: "Native Pop.",
+                        value: this.state.crime.o_native,
+                      },
+                      {
+                        color: "#E327B7",
+                        title: "Asian Pop.",
+                        value: this.state.crime.o_asian,
+                      },
+                  ]}
+              />
+          </div>
+
+          <h4>Racial Breakdown of Victims:</h4>
+          <label style={{color:"#E38627", fontSize:"35px"}}>Black: {(this.state.crime.v_black / this.getTotalVictims() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#C13C37", fontSize:"35px"}}>White: {(this.state.crime.o_white / this.getTotalVictims() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#6A2135", fontSize:"35px"}}>Pacific: {(this.state.crime.o_pacific / this.getTotalVictims() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#2757E3", fontSize:"35px"}}>Native: {(this.state.crime.o_native / this.getTotalVictims() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#E327B7", fontSize:"35px"}}>Asian: {(this.state.crime.o_asian / this.getTotalVictims() * 100).toFixed(2)}%</label>
+          <div className="chart-container">
+        
+              <PieChart
+                  animate
+                  animationDuration={2000}
+                  center={[50, 50]}
+                  data={[
+                      {
+                      color: "#E38627",
+                      title: "Black Pop.",
+                      value: this.state.crime.v_black,
+                      },
+                      {
+                      color: "#C13C37",
+                      title: "White Pop.",
+                      value: this.state.crime.v_white,
+                      },
+                      {
+                      color: "#6A2135",
+                      title: "Pacific Pop.",
+                      value: this.state.crime.v_pacific,
+                      },
+                      {
+                        color: "#2757E3",
+                        title: "Native Pop.",
+                        value: this.state.crime.v_native,
+                      },
+                      {
+                        color: "#E327B7",
+                        title: "Asian Pop.",
+                        value: this.state.crime.v_asian,
+                      },
+                  ]}
+              />
+          </div>
         </div>
       );
     } else {

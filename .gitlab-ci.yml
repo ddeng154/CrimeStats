@@ -1,14 +1,13 @@
-build:
-    script:
-        - ls
-    stage: build
-
-test:
-    script:
-        - ls
+backend:
     stage: test
-
-deploy:
     script:
-        - ls
-    stage: deploy
+        - make testbackend
+
+postman:
+    stage: test
+    image:
+        name: postman/newman_alpine33
+        entrypoint: [""]
+    script:
+        - newman --version
+        - newman run postman.json

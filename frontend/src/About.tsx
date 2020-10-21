@@ -27,12 +27,20 @@ function About() {
 
         <div>
           <h2>Tools</h2>
+          <h5>Flask</h5>
+          <p>We used Flask as well as several extensions for it to build our backend.</p>
+          <h5>Axios</h5>
+          <p>We used axios to make HTTP requests from our frontend to our backend.</p>
           <h5>Postman</h5>
           <p>We used Postman to design our RESTful API.</p>
           <p>It ensured our schema had no errors and generated documentation for us.</p>
+          <h5>React-Favicon</h5>
+          <p>We used this too to add a favicon for our website.</p>
           <h5>React-Bootstrap</h5>
           <p>Bootstrap was used to make a starting template for our pages.</p>
           <p>Eventually, as we add more functionality and features, we will expand on Bootstrap's usage in designing our front end.</p>
+          <h5>React-Router</h5>
+          <p>We used this tool in order to add new pages and links between each page.</p>
         </div>
         
         <div>
