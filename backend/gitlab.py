@@ -1,10 +1,13 @@
 from flask_restful import Resource
 import requests
 
-class Stats(Resource):
-    headers = {'private_token': '1b13PazxJ5_DELouxJ3-'}
 
-    commitsURL = "https://gitlab.com/api/v4/projects/21298954/repository/commits?per_page=100"
+class Stats(Resource):
+    headers = {"private_token": "1b13PazxJ5_DELouxJ3-"}
+
+    commitsURL = (
+        "https://gitlab.com/api/v4/projects/21298954/repository/commits?per_page=100"
+    )
     issuesURL = "https://gitlab.com/api/v4/projects/21298954/issues?per_page=100"
 
     def get(self):
