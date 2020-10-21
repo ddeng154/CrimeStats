@@ -1,7 +1,7 @@
 backend:
     stage: test
     script:
-        - make backend
+        - make testbackend
 
 postman:
     stage: test
@@ -10,3 +10,4 @@ postman:
         entrypoint: [""]
     script:
         - newman --version
+        - newman run postman.json

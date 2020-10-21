@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "2392f0aa-c178-491d-bdf7-deeebab12b0a",
+		"name": "TestCrimeStats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "police departments",
+			"item": [
+				{
+					"name": "Details about all police departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/police_departments?pag_token=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"police_departments"
+							],
+							"query": [
+								{
+									"key": "pag_token",
+									"value": "<long>",
+									"description": "Pagination token for getting next page of data"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/police_departments?pag_token=<long>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"police_departments"
+									],
+									"query": [
+										{
+											"key": "pag_token",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": 404,\n \"message\": \"Resource does not exist\"\n}"
+						},
+						{
+							"name": "Details about all police departments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/police_departments?pag_token=<long>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"police_departments"
+									],
+									"query": [
+										{
+											"key": "pag_token",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-next",
+									"value": "exercitat",
+									"description": "A link to the next page of responses"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"ori\": \"in laborum laboris molli\",\n \"name\": \"cupidatat ut\",\n \"pop\": -42698067,\n \"num_male_officers\": -47837007,\n \"num_female_officers\": 85060430,\n \"num_civilians\": 64314774,\n \"dept_type\": \"irure\",\n \"div_name\": \"non adipisicing in reprehenderit\",\n \"reg_name\": \"fugiat Excepteur\",\n \"density_per_1000\": 40983490,\n \"county\": \"Excepteur pariatur irure et\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Details about a police department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/police_departments/:ori",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"police_departments",
+								":ori"
+							],
+							"variable": [
+								{
+									"id": "e6eaa395-18a7-404a-b8b9-3b905264fb5c",
+									"key": "ori",
+									"value": "<string>",
+									"type": "string",
+									"description": "(Required) ORI code of a police department"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Details about a police department",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/police_departments/:ori",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"police_departments",
+										":ori"
+									],
+									"variable": [
+										{
+											"key": "ori"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"ori\": \"reprehenderit culpa sunt in\",\n \"name\": \"labore non do\",\n \"pop\": -71311246,\n \"num_male_officers\": 32194021,\n \"num_female_officers\": -27783332,\n \"num_civilians\": -70796374,\n \"dept_type\": \"et\",\n \"div_name\": \"enim voluptate qui laborum velit\",\n \"reg_name\": \"dolor qui Excepteur velit\",\n \"density_per_1000\": 45873704,\n \"county\": \"reprehenderit \"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "crimes",
+			"item": [
+				{
+					"name": "Details about all crimes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/crimes?pag_token=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"crimes"
+							],
+							"query": [
+								{
+									"key": "pag_token",
+									"value": "<long>",
+									"description": "Pagination token for getting next page of data"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/crimes?pag_token=<long>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"crimes"
+									],
+									"query": [
+										{
+											"key": "pag_token",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": 404,\n \"message\": \"Resource does not exist\"\n}"
+						},
+						{
+							"name": "Details about all crimes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/crimes?pag_token=<long>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"crimes"
+									],
+									"query": [
+										{
+											"key": "pag_token",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-next",
+									"value": "exercitat",
+									"description": "A link to the next page of responses"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": -74193742,\n \"ori\": \"Ut ea non culpa pariatur\",\n \"type\": \"velit ipsum ut\",\n \"o_white\": -38172136,\n \"o_black\": 80430569,\n \"o_pacific\": 22841614,\n \"o_native\": -66408269,\n \"o_asian\": 59345830,\n \"v_white\": -14775391,\n \"v_black\": 68468502,\n \"v_pacific\": 35234568,\n \"v_native\": 30343039,\n \"v_asian\": -45807806\n}"
+						}
+					]
+				},
+				{
+					"name": "Details about a crime",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/crimes/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"crimes",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "c1e395ee-7885-4b27-bc8f-718ab95db8ca",
+									"key": "id",
+									"value": "<string>",
+									"type": "string",
+									"description": "(Required) ID of a crime"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Details about crimes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/crimes/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"crimes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 255,\n \"ori\": \"AR0080200\",\n \"type\": \"robbery\",\n \"o_white\": 4,\n \"o_black\": 0,\n \"o_pacific\": 0,\n \"o_native\": 0,\n \"o_asian\": 0,\n \"v_white\": 3,\n \"v_black\": 0,\n \"v_pacific\": 0,\n \"v_native\": 0,\n \"v_asian\": 0\n}"
+						},
+						{
+							"name": "unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/crimes/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"crimes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": 404,\n \"message\": \"Resource does not exist\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "counties",
+			"item": [
+				{
+					"name": "Details about all counties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/counties?pag_token=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"counties"
+							],
+							"query": [
+								{
+									"key": "pag_token",
+									"value": "<long>",
+									"description": "Pagination token for getting next page of data"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Details about all cities",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/counties?pag_token=<long>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"counties"
+									],
+									"query": [
+										{
+											"key": "pag_token",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-next",
+									"value": "exercitat",
+									"description": "A link to the next page of responses"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"officia anim\",\n \"name\": \"consectetur voluptate officia Excepteur\",\n \"state\": \"labore voluptate\",\n \"median_income\": -69814141,\n \"total_pop\": 25349059,\n \"black_pop\": -6316588,\n \"white_pop\": 24249280,\n \"pacific_pop\": 14023205,\n \"native_pop\": 22417371,\n \"asian_pop\": -18056305,\n \"area\": -17139586.32518269,\n \"longitude\": -49056296.29961003,\n \"latitude\": 85901970.00911775\n}"
+						},
+						{
+							"name": "unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/counties?pag_token=<long>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"counties"
+									],
+									"query": [
+										{
+											"key": "pag_token",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": 404,\n \"message\": \"Resource does not exist\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Details about a county",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c98d908c-5c6a-4401-a77f-0a4e5f770792",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"pm.test(\"get county by id\", function () {\r",
+									"    var responseJson = pm.response.json();\r",
+									"    expectedJson = {\r",
+									"        \"area\": 890.125,\r",
+									"        \"asian_pop\": 64,\r",
+									"        \"black_pop\": 7965,\r",
+									"        \"crimes\": [],\r",
+									"        \"id\": \"01107\",\r",
+									"        \"latitude\": 33.296809,\r",
+									"        \"longitude\": -88.096878,\r",
+									"        \"median_income\": 32551,\r",
+									"        \"name\": \"Pickens County\",\r",
+									"        \"native_pop\": 51,\r",
+									"        \"pacific_pop\": 70,\r",
+									"        \"police_departments\": [\r",
+									"            {\r",
+									"                \"name\": \"Gordo Police Department\",\r",
+									"                \"ori\": \"AL0540200\"\r",
+									"            },\r",
+									"            {\r",
+									"                \"name\": \"Pickensville Police Department\",\r",
+									"                \"ori\": \"AL0540500\"\r",
+									"            },\r",
+									"            {\r",
+									"                \"name\": \"Reform Police Department\",\r",
+									"                \"ori\": \"AL0540300\"\r",
+									"            },\r",
+									"            {\r",
+									"                \"name\": \"Carrollton Police Department\",\r",
+									"                \"ori\": \"AL0540400\"\r",
+									"            },\r",
+									"            {\r",
+									"                \"name\": \"Aliceville Police Department\",\r",
+									"                \"ori\": \"AL0540100\"\r",
+									"            },\r",
+									"            {\r",
+									"                \"name\": \"Pickens County Sheriff's Office\",\r",
+									"                \"ori\": \"AL0540000\"\r",
+									"            }\r",
+									"        ],\r",
+									"        \"state\": \" Alabama\",\r",
+									"        \"total_pop\": 19930,\r",
+									"        \"white_pop\": 11568\r",
+									"}\r",
+									"    pm.expect(responseJson).to.eql(expectedJson);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/counties/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"counties",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "18dba75d-b26a-479e-9052-0b333b80c875",
+									"key": "id",
+									"value": "<string>",
+									"type": "string",
+									"description": "(Required) ID of a county"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/counties/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"counties",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": 404,\n \"message\": \"Resource does not exist\"\n}"
+						},
+						{
+							"name": "Details about a county",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/counties/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"counties",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"eu pariatur dolor labore\",\n \"name\": \"magna sunt veniam amet\",\n \"state\": \"eiusmod\",\n \"median_income\": 63356873,\n \"total_pop\": 65943808,\n \"black_pop\": 54835754,\n \"white_pop\": 78015727,\n \"pacific_pop\": 65725003,\n \"native_pop\": -5274391,\n \"asian_pop\": -69812873,\n \"area\": 64800441.31658986,\n \"longitude\": -72189592.56401458,\n \"latitude\": -42757078.155786\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "http://crimestats.me/api",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

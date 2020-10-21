@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
 
     def testapi(self):
         actual = set(api.db.engine.table_names())
-        expected = {'police', 'crime', 'county', 'police_county_link'}
+        expected = {"police", "crime", "county", "police_county_link"}
         self.assertEqual(actual, expected)
 
 

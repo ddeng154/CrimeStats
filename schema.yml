@@ -9,11 +9,11 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api"
+      "url": "http://crimestats.me/api"
     }
   ],
   "paths": {
-    "/police": {
+    "/police_departments/{ori}": {
      "get": {
        "summary": "Details about a police department",
        "operationId": "getPoliceDpt",
@@ -22,8 +22,8 @@
        ],
        "parameters": [
          {
-           "name": "ORI_code",
-           "in": "query",
+           "name": "ori",
+           "in": "path",
            "description": "ORI code of a police department",
            "required": true,
            "schema": {
@@ -39,7 +39,7 @@
            "content": {
              "application/json": {
                "schema": {
-                 "$ref": "#/components/schemas/PoliceDpt"
+                 "$ref": "#/components/schemas/Police"
                }
              }
            }
@@ -47,51 +47,7 @@
        }
       }
     },
-    "/policeByCity": {
-     "get": {
-       "summary": "Details about police departments within a city",
-       "operationId": "getPoliceDptInCity",
-       "tags": [
-         "police"
-       ],
-       "parameters": [
-         {
-           "name": "id",
-           "in": "query",
-           "description": "Id of a city",
-           "required": true,
-           "schema": {
-             "type": "string"
-           }
-         }
-       ],
-       "responses": {
-         "200": {
-           "description": "Details about police departments within a city",
-           "headers": {
-           },
-           "content": {
-             "application/json": {
-               "schema": {
-                 "$ref": "#/components/schemas/PoliceDpt"
-               }
-             }
-           }
-         },
-         "default": {
-           "description": "unexpected error",
-           "content": {
-             "application/json": {
-               "schema": {
-                 "$ref": "#/components/schemas/Error"
-               }
-             }
-           }
-         }
-       }
-     }
-   },
-   "/listPolice": {
+   "/police_departments": {
      "get": {
        "summary": "Details about all police departments",
        "operationId": "listPoliceDpts",
@@ -124,7 +80,7 @@
            "content": {
              "application/json": {
                "schema": {
-                 "$ref": "#/components/schemas/PoliceDpt"
+                 "$ref": "#/components/schemas/PoliceArray"
                }
              }
            }
@@ -142,51 +98,7 @@
        }
      }
    },
-   "/crimesByCity": {
-     "get": {
-       "summary": "Details about crimes within a city",
-       "operationId": "getCrimesInCity",
-       "tags": [
-         "crime"
-       ],
-       "parameters": [
-         {
-           "name": "id",
-           "in": "query",
-           "description": "ID of a city",
-           "required": true,
-           "schema": {
-             "type": "string"
-           }
-         }
-       ],
-       "responses": {
-         "200": {
-           "description": "Details about crimes in a city",
-           "headers": {
-           },
-           "content": {
-             "application/json": {
-               "schema": {
-                 "$ref": "#/components/schemas/Crime"
-               }
-             }
-           }
-         },
-         "default": {
-           "description": "unexpected error",
-           "content": {
-             "application/json": {
-               "schema": {
-                 "$ref": "#/components/schemas/Error"
-               }
-             }
-           }
-         }
-       }
-     }
-   },
-   "/crime": {
+   "/crimes/{id}": {
      "get": {
        "summary": "Details about a crime",
        "operationId": "getCrime",
@@ -196,7 +108,7 @@
        "parameters": [
          {
            "name": "id",
-           "in": "query",
+           "in": "path",
            "description": "ID of a crime",
            "required": true,
            "schema": {
@@ -230,7 +142,7 @@
        }
      }
    },
-    "/listCrimes": {
+    "/crimes": {
      "get": {
        "summary": "Details about all crimes",
        "operationId": "listCrimes",
@@ -263,7 +175,7 @@
            "content": {
              "application/json": {
                "schema": {
-                 "$ref": "#/components/schemas/Crime"
+                 "$ref": "#/components/schemas/CrimeArray"
                }
              }
            }
@@ -281,18 +193,18 @@
        }
      }
    },
-   "/city": {
+   "/counties/{id}": {
      "get": {
-       "summary": "Details about a city",
-       "operationId": "getCity",
+       "summary": "Details about a county",
+       "operationId": "getCounty",
        "tags": [
-         "city"
+         "county"
        ],
        "parameters": [
          {
            "name": "id",
-           "in": "query",
-           "description": "ID of a city",
+           "in": "path",
+           "description": "ID of a county",
            "required": true,
            "schema": {
              "type": "string"
@@ -301,13 +213,13 @@
        ],
        "responses": {
          "200": {
-           "description": "Details about a city",
+           "description": "Details about a county",
            "headers": {
            },
            "content": {
              "application/json": {
                "schema": {
-                 "$ref": "#/components/schemas/City"
+                 "$ref": "#/components/schemas/County"
                }
              }
            }
@@ -325,10 +237,10 @@
        }
      }
    },
-    "/listCities": {
+    "/counties": {
      "get": {
-       "summary": "Details about all cities",
-       "operationId": "listCities",
+       "summary": "Details about all counties",
+       "operationId": "county",
        "tags": [
          "police"
        ],
@@ -358,7 +270,7 @@
            "content": {
              "application/json": {
                "schema": {
-                 "$ref": "#/components/schemas/City"
+                 "$ref": "#/components/schemas/CountyArray"
                }
              }
            }
@@ -379,104 +291,543 @@
   },
   "components": {
     "schemas": {
-      "PoliceDpt": {
+      "Police": {
         "type": "object",
         "required": [
-           "ori",
-    	   "city",
-           "name",
-    	   "population",
-    	   "num_officers",
-    	   "num_arrests"
+            "ori",
+            "name",
+            "pop",
+            "num_male_officers",
+            "num_female_officers",
+            "num_civilians",
+            "dept_type",
+            "div_name",
+            "reg_name",
+            "density_per_1000"
         ],
         "properties": {
          "ori": {
            "type": "string"
          },
-         "city": {
+         "county": {
            "type": "string"
          },
          "name": {
            "type": "string"
          },
-         "population": {
+         "pop": {
            "type": "integer",
 	         "format": "int64"
          },
-         "num_officers": {
+         "num_male_officers": {
            "type": "integer",
 	         "format": "int64"
          },
-         "num_arrests": {
+         "num_female_officers": {
            "type": "integer",
 	         "format": "int64"
+         },
+         "num_civilians": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "dept_type": {
+           "type": "string"
+         },
+         "div_name": {
+           "type": "string"
+         },
+         "reg_name": {
+           "type": "string"
+         },
+         "density_per_1000": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "counties": {
+             "type" : "array"
+         },
+         "crimes": {
+             "type" : "array"
          }
+        },
+        "example" : {
+            "ori": "AL0190000",
+            "name": "Coffee County Sheriff's Office",
+            "pop": "18592",
+            "num_male_officers": 29,
+            "num_female_officers": 0,
+            "num_civilians": 31,
+            "dept_type": "County",
+            "div_name": "East South Central",
+            "reg_name": "South",
+            "density_per_1000": 3.23
         }
       },
+    "PoliceArray": {
+        "type": "array",
+        "required": [
+            "ori",
+            "name",
+            "pop",
+            "num_male_officers",
+            "num_female_officers",
+            "num_civilians",
+            "dept_type",
+            "div_name",
+            "reg_name",
+            "density_per_1000"
+        ],
+        "properties": {
+         "ori": {
+           "type": "string"
+         },
+         "county": {
+           "type": "string"
+         },
+         "name": {
+           "type": "string"
+         },
+         "pop": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "num_male_officers": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "num_female_officers": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "num_civilians": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "dept_type": {
+           "type": "string"
+         },
+         "div_name": {
+           "type": "string"
+         },
+         "reg_name": {
+           "type": "string"
+         },
+         "density_per_1000": {
+           "type": "integer",
+	         "format": "int64"
+         },
+         "counties": {
+             "type" : "array"
+         },
+         "crimes": {
+             "type" : "array"
+         }
+        },
+        "example" : [{
+            "ori": "AL0190000",
+            "name": "Coffee County Sheriff's Office",
+            "pop": "18592",
+            "num_male_officers": 29,
+            "num_female_officers": 0,
+            "num_civilians": 31,
+            "dept_type": "County",
+            "div_name": "East South Central",
+            "reg_name": "South",
+            "density_per_1000": 3.23
+        },
+        {
+            "ori": "AL0014000",
+            "name": "Lawson State Community College",
+            "pop": 0,
+            "num_male_officers": 4,
+            "num_female_officers": 2,
+            "num_civilians": 1,
+            "dept_type": "University or College",
+            "div_name": "East South Central",
+            "reg_name": "South",
+            "density_per_1000":  0
+        }]
+    },
     "Crime": {
        "type": "object",
        "required": [
-         "id",
-	       "type",
-           "time",
-	       "location",
-	       "offender_age",
-	       "offender_sex"
+        "id",
+        "ori",
+        "type",
+        "o_white",
+        "o_black",
+        "o_pacific",
+        "o_native",
+        "o_asian",
+        "v_white",
+        "v_black",
+        "v_pacific",
+        "v_native",
+        "v_asian"
        ],
        "properties": {
          "id": {
+           "type": "integer",
+	         "format" : "int32"
+         },
+         "ori": {
            "type": "string"
          },
          "type": {
            "type": "string"
          },
-         "time": {
-           "type": "string"
-         },
-         "location": {
-           "type": "string"
-         },
-         "offender_age": {
+         "o_white": {
            "type": "integer",
 	        "format" : "int32"
          },
-         "offender_sex": {
-           "type": "string"
+         "o_black": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "o_pacific": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "o_native": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "o_asian": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_white": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_black": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_pacific": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_native": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_asian": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "counties": {
+             "type" : "array"
          }
+       },
+       "example" : {
+            "id" : 255,
+            "ori" : "AR0080200",
+            "type" : "robbery",
+            "o_white": 4,
+            "o_black": 0,
+            "o_pacific": 0,
+            "o_native": 0,
+            "o_asian": 0,
+            "v_white": 3,
+            "v_black": 0,
+            "v_pacific": 0,
+            "v_native": 0,
+            "v_asian": 0
        }
      },
-    "City": {
+    "CrimeArray": {
+       "type": "array",
+       "required": [
+        "id",
+        "ori",
+        "type",
+        "o_white",
+        "o_black",
+        "o_pacific",
+        "o_native",
+        "o_asian",
+        "v_white",
+        "v_black",
+        "v_pacific",
+        "v_native",
+        "v_asian"
+       ],
+       "properties": {
+         "id": {
+           "type": "integer",
+	         "format" : "int32"
+         },
+         "ori": {
+           "type": "string"
+         },
+         "type": {
+           "type": "string"
+         },
+         "o_white": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "o_black": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "o_pacific": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "o_native": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "o_asian": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_white": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_black": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_pacific": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_native": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "v_asian": {
+           "type": "integer",
+	        "format" : "int32"
+         },
+         "counties": {
+             "type" : "array"
+         }
+       },
+       "example" : [{
+            "id" : 255,
+            "ori" : "AR0080200",
+            "type" : "robbery",
+            "o_white": 4,
+            "o_black": 0,
+            "o_pacific": 0,
+            "o_native": 0,
+            "o_asian": 0,
+            "v_white": 3,
+            "v_black": 0,
+            "v_pacific": 0,
+            "v_native": 0,
+            "v_asian": 0
+       },
+       {
+            "id" : 250,
+            "ori" : "AR0080200",
+            "type" : "aggravated-assault",
+            "o_white": 13,
+            "o_black": 2,
+            "o_pacific": 0,
+            "o_native": 0,
+            "o_asian": 0,
+            "v_white": 15,
+            "v_black": 0,
+            "v_pacific": 0,
+            "v_native": 0,
+            "v_asian": 0
+       }]
+    },
+    "County": {
        "type": "object",
        "required": [
-         "id",
-	       "state",
-           "population",
-	       "zone",
-	       "median_income",
-	       "area"
+            "id",
+            "name",
+            "state",
+            "median_income",
+            "total_pop",
+            "black_pop",
+            "white_pop",
+            "pacific_pop",
+            "native_pop",
+            "asian_pop",
+            "area",
+            "longitude",
+            "latitude"
        ],
        "properties": {
          "id": {
            "type": "string"
          },
+         "name": {
+           "type": "string"
+         },
          "state": {
-           "type": "string"
-         },
-         "population": {
-           "type": "string"
-         },
-         "zone": {
            "type": "string"
          },
          "median_income": {
            "type": "integer",
 	         "format": "int32"
          },
-         "area": {
+         "total_pop": {
            "type": "integer",
 	         "format": "int32"
+         },
+         "black_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "white_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "pacific_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "native_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "asian_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "area": {
+           "type": "number"
+         },
+         "longitude": {
+           "type": "number"
+         },
+         "latitude": {
+           "type": "number"
+         },
+         "police_departments": {
+             "type" : "array"
+         },
+         "crimes": {
+             "type" : "array"
          }
-       }
+       },
+        "example": {
+            "id" : "01107",
+            "name" : "Pickens County",
+            "state" : "Alabama",
+            "median_income" : 32551,
+            "total_pop" : 19930,
+            "black_pop" : 7965,
+            "white_pop" : 11568,
+            "pacific_pop" : 70,
+            "native_pop" : 51,
+            "asian_pop" : 64,
+            "area" : 890.125,
+            "longitude" : -88.096878,
+            "latitude" : 33.296809
+        }
+     },
+    "CountyArray": {
+       "type": "array",
+       "required": [
+            "id",
+            "name",
+            "state",
+            "median_income",
+            "total_pop",
+            "black_pop",
+            "white_pop",
+            "pacific_pop",
+            "native_pop",
+            "asian_pop",
+            "area",
+            "longitude",
+            "latitude"
+       ],
+       "properties": {
+         "id": {
+           "type": "string"
+         },
+         "name": {
+           "type": "string"
+         },
+         "state": {
+           "type": "string"
+         },
+         "median_income": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "total_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "black_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "white_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "pacific_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "native_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "asian_pop": {
+           "type": "integer",
+	         "format": "int32"
+         },
+         "area": {
+           "type": "number"
+         },
+         "longitude": {
+           "type": "number"
+         },
+         "latitude": {
+           "type": "number"
+         },
+         "police_departments": {
+             "type" : "array"
+         },
+         "crimes": {
+             "type" : "array"
+         }
+       },
+        "example": [{
+            "id" : "01107",
+            "name" : "Pickens County",
+            "state" : "Alabama",
+            "median_income" : 32551,
+            "total_pop" : 19930,
+            "black_pop" : 7965,
+            "white_pop" : 11568,
+            "pacific_pop" : 70,
+            "native_pop" : 51,
+            "asian_pop" : 64,
+            "area" : 890.125,
+            "longitude" : -88.096878,
+            "latitude" : 33.296809
+        },
+        {
+            "id" : "06091",
+            "name" : "Sierra County",
+            "state" : "California",
+            "median_income" : 46615,
+            "total_pop" : 3005,
+            "black_pop" : 21,
+            "white_pop" : 2783,
+            "pacific_pop" : 4,
+            "native_pop" : 77,
+            "asian_pop" : 26,
+            "area" : 962.21,
+            "longitude" : -120.521993,
+            "latitude" : 39.576925
+        }]
      },
       "Error": {
         "type": "object",
@@ -492,6 +843,10 @@
           "message": {
             "type": "string"
           }
+        },
+        "example" : {
+            "code" : 404,
+            "message" : "Resource does not exist"
         }
       }
     }
