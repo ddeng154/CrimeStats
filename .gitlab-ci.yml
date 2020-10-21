@@ -1,5 +1,12 @@
-test:
-    script:
-        - cat Makefile
-        - make testbackend
+backend:
     stage: test
+    script:
+        - make backend
+
+postman:
+    stage: test
+    image:
+        name: postman/newman_alpine33
+        entrypoint: [""]
+    script:
+        - newman --version
