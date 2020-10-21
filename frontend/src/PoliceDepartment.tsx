@@ -3,6 +3,8 @@ import axios from 'axios';
 import { IDParams } from './common';
 import { Redirect } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
+import { PieChart } from 'react-minimal-pie-chart';
+import './Piechart.css';
 
 type PoliceDepartmentData = {
   ori: string;
@@ -28,6 +30,15 @@ class PoliceDepartment extends React.Component<IDParams> {
   state: PoliceDepartmentState = {
     isLoading: true
   };
+
+  getPoliceSize() {
+    if (this.state.policeDepartment) {
+      return this.state.policeDepartment.num_male_officers + this.state.policeDepartment.num_female_officers 
+      + this.state.policeDepartment.num_civilians;
+    } else {
+      return 0;
+    }
+  }
 
   componentDidMount() {
     axios.get<PoliceDepartmentData>("/api/police_departments/" + this.props.id).then(response => {
@@ -92,6 +103,37 @@ class PoliceDepartment extends React.Component<IDParams> {
               </tr>
             </tbody>
           </table>
+
+          <h4>Breakdown of Police Force:</h4>
+          <label style={{color:"#E38627", fontSize:"35px"}}>Male Officers: {(this.state.policeDepartment.num_male_officers / this.getPoliceSize() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#C13C37", fontSize:"35px"}}>Female Officers: {(this.state.policeDepartment.num_female_officers / this.getPoliceSize() * 100).toFixed(2)}%</label>
+          <br />
+          <label style={{color:"#6A2135", fontSize:"35px"}}>Civilians: {(this.state.policeDepartment.num_civilians / this.getPoliceSize() * 100).toFixed(2)}%</label>
+          <div className="chart-container">
+              <PieChart
+                  animate
+                  animationDuration={2000}
+                  center={[50, 50]}
+                  data={[
+                      {
+                      color: "#E38627",
+                      title: "White",
+                      value: this.state.policeDepartment.num_male_officers,
+                      },
+                      {
+                      color: "#C13C37",
+                      title: "White Pop.",
+                      value: this.state.policeDepartment.num_female_officers,
+                      },
+                      {
+                      color: "#6A2135",
+                      title: "Pacific Pop.",
+                      value: this.state.policeDepartment.num_civilians,
+                      },
+                  ]}
+              />
+          </div>
         </div>
       );
     } else {

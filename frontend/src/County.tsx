@@ -104,15 +104,15 @@ class County extends React.Component<IDParams> {
           <iframe title="map" width="600" height="450" frameBorder="0" style={{border: 0}}
 src={"https://www.google.com/maps/embed/v1/view?zoom=9&center=" + this.state.county.latitude + "," + this.state.county.longitude + "&key=AIzaSyC-QNudTN-ssaDXHh5h3_5dk19wxsatSRg"} allowFullScreen></iframe>
           <h4>Racial Breakdown of County Population:</h4>
-          <label style={{color:"#E38627", fontSize:"35px"}}>Black Population</label>
+          <label style={{color:"#E38627", fontSize:"35px"}}>Black Population: {(this.state.county.black_pop / this.state.county.total_pop * 100).toFixed(2)}%</label>
           <br />
-          <label style={{color:"#C13C37", fontSize:"35px"}}>White Population</label>
+          <label style={{color:"#C13C37", fontSize:"35px"}}>White Population: {(this.state.county.white_pop / this.state.county.total_pop * 100).toFixed(2)}%</label>
           <br />
-          <label style={{color:"#6A2135", fontSize:"35px"}}>Pacific Population</label>
+          <label style={{color:"#6A2135", fontSize:"35px"}}>Pacific Population: {(this.state.county.pacific_pop / this.state.county.total_pop * 100).toFixed(2)}%</label>
           <br />
-          <label style={{color:"#2757E3", fontSize:"35px"}}>Native Population</label>
+          <label style={{color:"#2757E3", fontSize:"35px"}}>Native Population: {(this.state.county.native_pop / this.state.county.total_pop * 100).toFixed(2)}%</label>
           <br />
-          <label style={{color:"#E327B7", fontSize:"35px"}}>Asian Population</label>
+          <label style={{color:"#E327B7", fontSize:"35px"}}>Asian Population: {(this.state.county.asian_pop / this.state.county.total_pop * 100).toFixed(2)}%</label>
           
           <div className="chart-container">
         
