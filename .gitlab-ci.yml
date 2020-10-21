@@ -19,7 +19,8 @@ frontend:
     image: node
     script:
         - cd frontend
-        - yarn test
+        - npm install
+        - npm run test
 
 selenium:
     stage: test
