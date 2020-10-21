@@ -27,4 +27,5 @@ selenium:
     image: python
     script:
         - pip install selenium
+        - chmod +x ./chromedriver
         - make testui
