@@ -18,6 +18,7 @@ frontend:
     stage: test
     image: yarnpkg/node-yarn
     script:
+        - cd frontend
         - yarn test
 
 selenium:
