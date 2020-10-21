@@ -1,6 +1,7 @@
 backend:
     stage: test
     script:
+        - pip3 install -r backend/requirements.txt
         - make testbackend
 
 postman:
