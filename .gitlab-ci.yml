@@ -16,7 +16,7 @@ backend:
 
 frontend:
     stage: test
-    image: yarnpkg/node-yarn
+    image: node
     script:
         - cd frontend
         - yarn test
