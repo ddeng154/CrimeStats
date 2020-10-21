@@ -1,14 +1,13 @@
 backend:
     stage: test
+    image: python
     script:
         - pip install -r backend/requirements.txt
         - make testbackend
 
 postman:
     stage: test
-    image:
-        name: postman/newman_alpine33
-        entrypoint: [""]
+    image: postman/newman_alpine33
     script:
         - newman --version
         - newman run postman.json
