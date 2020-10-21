@@ -1,10 +1,3 @@
-backend:
-    stage: test
-    image: python
-    script:
-        - pip install -r backend/requirements.txt
-        - make testbackend
-
 postman:
     stage: test
     image:
@@ -13,3 +6,20 @@ postman:
     script:
         - newman --version
         - newman run postman.json
+
+backend:
+    stage: test
+    image: python
+    script:
+        - pip install -r backend/requirements.txt
+        - make testbackend
+
+frontend:
+    stage: test
+    script:
+        - pwd
+
+selenium:
+    stage: test
+    script:
+        - pwd
