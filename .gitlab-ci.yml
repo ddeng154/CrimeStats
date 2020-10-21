@@ -16,8 +16,9 @@ backend:
 
 frontend:
     stage: test
+    image: node-yarn
     script:
-        - pwd
+        - yarn test
 
 selenium:
     stage: test

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Button from 'react-bootstrap/esm/Button';
-import Card from 'react-bootstrap/esm/Card';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import img1 from './images/county-image.jpg'
-import img2 from './images/police-image.jpg'
-import img3 from './images/crime-image.jpg'
+import img1 from './images/county-image.jpg';
+import img2 from './images/police-image.jpg';
+import img3 from './images/crime-image.jpg';
 
 function Cards (){
     return (
@@ -60,4 +60,4 @@ function Cards (){
     )
 }
 
-export default Cards
+export default Cards;
