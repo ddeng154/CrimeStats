@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-PATH = "/chromedriver"
+PATH = "./chromedriver"
 
 driver = webdriver.Chrome(PATH)
 driver.get("https://www.crimestats.me")
