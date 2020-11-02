@@ -21,7 +21,7 @@ function Cards (){
                                      Will be updated to look better with animation in the future.
                                     </Card.Text>
                                 <Button variant="info">
-                                    <Link to = "/crimes">Counties</Link>
+                                    <Link to = "/counties">Counties</Link>
                                 </Button>
                             </Card.Body>
                         </Card>
@@ -35,7 +35,7 @@ function Cards (){
                                     Will be updated to look better with animation in the future.
                                     </Card.Text>
                                 <Button variant="info">
-                                    <Link to = "/crimes">Police Deparments</Link>
+                                    <Link to = "/policedepartments">Police Deparments</Link>
                                 </Button>
                             </Card.Body>
                         </Card>
