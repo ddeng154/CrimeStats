@@ -1,12 +1,12 @@
 import unittest
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
+#from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.utils import ChromeType
 
 class SeleniumTests(unittest.TestCase):
     def setUp(self):
         # create Chrome session
-        self.driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
 
         # navigate to webpage
