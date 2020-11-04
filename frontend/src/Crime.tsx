@@ -34,6 +34,10 @@ class Crime extends React.Component<IDParams> {
     isLoading: true
   };
 
+  hasCounties() {
+    return this.state.crime?.counties.length != 0;
+  }
+
   getTotalOffenders() {
     if (this.state.crime) {
       return this.state.crime?.o_asian + this.state.crime?.o_black + this.state.crime?.o_white 
@@ -113,10 +117,13 @@ class Crime extends React.Component<IDParams> {
                 <th scope = "row">No. of Asian Victims</th>
                 <td> {this.state.crime.v_asian} </td>
               </tr>
-              <tr>
-                <th scope = "row">Counties</th>
-                <td> { this.state.crime.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>)} </td>
-              </tr>
+              {
+                this.hasCounties() &&
+                <tr>
+                  <th scope = "row">Counties</th>
+                  <td> { this.state.crime.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>)} </td>
+                </tr>
+              }
             </tbody>
           </table>
 

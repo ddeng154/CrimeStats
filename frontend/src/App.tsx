@@ -40,6 +40,7 @@ function App() {
             <Route path="/about" exact component = {About} />
             <Route path="/" exact component = {Splash} />
             <Route path="/404" exact component={NotFound} />
+            <Route path="/search" exact component={Search} />
             <Route path="*"><Redirect to="/404"/></Route>
         </Switch>
         <Footer />

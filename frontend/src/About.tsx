@@ -46,7 +46,7 @@ function About() {
         <div>
           <h2>Links</h2>
           <h6><a href="https://gitlab.com/alyhirani/crimestats">GitLab Repo</a></h6>
-          <h6><a href="https://documenter.getpostman.com/view/12923323/TVRdAX2W">Postman API Documentation</a></h6>
+          <h6><a href="https://documenter.getpostman.com/view/12923323/TVYJ4vyk">Postman API Documentation</a></h6>
         </div>
       </div>
     );
