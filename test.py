@@ -9,7 +9,7 @@ class SeleniumTests(unittest.TestCase):
         self.driver.implicitly_wait(10)
 
         # navigate to webpage
-        self.driver.get("http://localhost:3000")
+        self.driver.get("www.crimestats.me")
     
     
     def test1(self):
