@@ -1,27 +1,8 @@
 import React from 'react';
 import { InstantSearch, SearchBox, Hits, Highlight, Index } from 'react-instantsearch-dom';
-<<<<<<< HEAD
 import algoliasearch from 'algoliasearch'
-=======
-import algoliasearch from 'algoliasearch';
->>>>>>> 6662d6e3cf1ac3429e6c390f82975529751252c9
 import { IDParams } from './common';
 import './Search.css'
-import { connectHits } from 'react-instantsearch-dom';
-
-type h = {
-  name: string
-}
-
-// const Hts = ({ name }: h) => (
-//   <ol>
-//     {hits.map(hit => (
-//       <li key={hit.objectID}>{hit.name}</li>
-//     ))}
-//   </ol>
-// );
-
-// const CustomHits = connectHits(Hts);
 
 const client = algoliasearch('ICWNC13X5J', '4c22be32a809130f195c1d42981c39d8');
 class Search extends React.Component<IDParams> {

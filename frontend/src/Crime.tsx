@@ -187,63 +187,65 @@ class Crime extends React.Component<IDParams> {
                   />
               </Col>
               <Col>
-                <h4>Racial Breakdown of Victims:</h4>
-                <label style={{color:"#E38627", fontSize:"28px"}}>Black: 
-                  {(this.state.crime.v_black / this.getTotalVictims() 
-                  * 100).toFixed(2)}%</label>
-                <br />
-                <label style={{color:"#C13C37", fontSize:"28px"}}>White: 
-                  {(this.state.crime.o_white / this.getTotalVictims() 
-                  * 100).toFixed(2)}%</label>
-                <br />
-                <label style={{color:"#6A2135", fontSize:"28px"}}>Pacific: 
-                  {(this.state.crime.o_pacific / this.getTotalVictims() 
-                  * 100).toFixed(2)}%</label>
-                <br />
-                <label style={{color:"#2757E3", fontSize:"28px"}}>Native: 
-                  {(this.state.crime.o_native / this.getTotalVictims() 
-                  * 100).toFixed(2)}%</label>
-                <br />
-                <label style={{color:"#E327B7", fontSize:"28px"}}>Asian: 
-                  {(this.state.crime.o_asian / this.getTotalVictims() 
-                  * 100).toFixed(2)}%</label>
-              </Col>
-              <Col>
-                <PieChart
-                    animate
-                    animationDuration={2000}
-                    center={[50, 50]}
-                    data={[
-                        {
-                        color: "#E38627",
-                        title: "Black Pop.",
-                        value: this.state.crime.v_black,
-                        },
-                        {
-                        color: "#C13C37",
-                        title: "White Pop.",
-                        value: this.state.crime.v_white,
-                        },
-                        {
-                        color: "#6A2135",
-                        title: "Pacific Pop.",
-                        value: this.state.crime.v_pacific,
-                        },
-                        {
-                          color: "#2757E3",
-                          title: "Native Pop.",
-                          value: this.state.crime.v_native,
-                        },
-                        {
-                          color: "#E327B7",
-                          title: "Asian Pop.",
-                          value: this.state.crime.v_asian,
-                        },
-                    ]}
-                  />
+              <h4>Racial Breakdown of Victims:</h4>
+              <label style={{color:"#E38627", fontSize:"28px"}}>Black: 
+                {(this.state.crime.v_black / this.getTotalVictims() 
+                * 100).toFixed(2)}%</label>
+              <br />
+              <label style={{color:"#C13C37", fontSize:"28px"}}>White: 
+                {(this.state.crime.o_white / this.getTotalVictims() 
+                * 100).toFixed(2)}%</label>
+              <br />
+              <label style={{color:"#6A2135", fontSize:"28px"}}>Pacific: 
+                {(this.state.crime.o_pacific / this.getTotalVictims() 
+                * 100).toFixed(2)}%</label>
+              <br />
+              <label style={{color:"#2757E3", fontSize:"28px"}}>Native: 
+                {(this.state.crime.o_native / this.getTotalVictims() 
+                * 100).toFixed(2)}%</label>
+              <br />
+              <label style={{color:"#E327B7", fontSize:"28px"}}>Asian: 
+                {(this.state.crime.o_asian / this.getTotalVictims() 
+                * 100).toFixed(2)}%</label>
               </Col>
             </div>
           </Container>
+
+          <div className="chart-container">
+        
+              <PieChart
+                  animate
+                  animationDuration={2000}
+                  center={[50, 50]}
+                  data={[
+                      {
+                      color: "#E38627",
+                      title: "Black Pop.",
+                      value: this.state.crime.v_black,
+                      },
+                      {
+                      color: "#C13C37",
+                      title: "White Pop.",
+                      value: this.state.crime.v_white,
+                      },
+                      {
+                      color: "#6A2135",
+                      title: "Pacific Pop.",
+                      value: this.state.crime.v_pacific,
+                      },
+                      {
+                        color: "#2757E3",
+                        title: "Native Pop.",
+                        value: this.state.crime.v_native,
+                      },
+                      {
+                        color: "#E327B7",
+                        title: "Asian Pop.",
+                        value: this.state.crime.v_asian,
+                      },
+                  ]}
+              />
+          </div>
         </div>
       );
     } else {
