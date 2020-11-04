@@ -42,4 +42,4 @@ selenium:
         # - curl -o- -L https://yarnpkg.com/install.sh | bash
         - npm install
         - cd ..
-        - python3 test.py
+        - python3 test/test.py
