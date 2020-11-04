@@ -2,15 +2,16 @@ import unittest
 from selenium import webdriver
 #from webdriver_manager.chrome import ChromeDriverManager
 #from webdriver_manager.utils import ChromeType
+import os
+
 
 class SeleniumTests(unittest.TestCase):
     def setUp(self):
         # create Chrome session
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome("./chromedriver")
         self.driver.implicitly_wait(10)
-
         # navigate to webpage
-        self.driver.get("www.crimestats.me")
+        self.driver.get("http://www.crimestats.me")
     
     
     def test1(self):
@@ -25,7 +26,7 @@ class SeleniumTests(unittest.TestCase):
         pd_element.click()
 
         self.driver.implicitly_wait(10)
-        self.assertEqual("Police Departments", self.driver.find_element_by_xpath("/html/body/div/div/div/div/div[2]/h1").text)        
+        self.assertEqual("Police Departments", self.driver.find_element_by_xpath("/html/body/div/div/div/div/div[2]/h1").text)
         
 if __name__ == '__main__':
     unittest.main()
