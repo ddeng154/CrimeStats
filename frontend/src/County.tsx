@@ -36,11 +36,11 @@ class County extends React.Component<IDParams> {
   };
 
   hasCrimes() {
-    return this.state.county?.crimes.length != 0;
+    return this.state.county?.crimes.length !== 0;
   }
 
   hasPDs() {
-    return this.state.county?.police_departments.length != 0;
+    return this.state.county?.police_departments.length !== 0;
   }
 
   componentDidMount() {
