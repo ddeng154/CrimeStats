@@ -25,4 +25,4 @@ frontend:
 selenium:
     stage: test
     script:
-        - pwd
+        - python3 test.py
