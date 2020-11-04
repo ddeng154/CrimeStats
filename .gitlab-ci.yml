@@ -27,4 +27,5 @@ selenium:
     script:
         - pip install selenium
         - pip install webdriver_manager
+        - pip install chromedriver
         - python3 test.py
