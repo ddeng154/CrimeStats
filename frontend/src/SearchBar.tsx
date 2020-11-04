@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 
 const SearchBar = ({ query, onChange, onSubmit} : {query: string, onChange: any, onSubmit: any}) => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { InstantSearch, SearchBox, Hits, Highlight, Index } from 'react-instantsearch-dom';
-import algoliasearch from 'algoliasearch'
-import Nav from 'react-bootstrap/Nav';
+import algoliasearch from 'algoliasearch';
 import { IDParams } from './common';
 import './Search.css'
 
