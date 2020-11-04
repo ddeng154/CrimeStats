@@ -19,11 +19,12 @@ frontend:
     image: node
     script:
         - cd frontend
-        - npm install
-        - npm run test
+        - yarn install
+        - yarn run test
 
 selenium:
     stage: test
+    image: python
     script:
         - pip install selenium
         - pip install webdriver_manager
