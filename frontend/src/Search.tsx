@@ -1,6 +1,10 @@
 import React from 'react';
 import { InstantSearch, SearchBox, Hits, Highlight, Index } from 'react-instantsearch-dom';
+<<<<<<< HEAD
 import algoliasearch from 'algoliasearch'
+=======
+import algoliasearch from 'algoliasearch';
+>>>>>>> 6662d6e3cf1ac3429e6c390f82975529751252c9
 import { IDParams } from './common';
 import './Search.css'
 import { connectHits } from 'react-instantsearch-dom';
