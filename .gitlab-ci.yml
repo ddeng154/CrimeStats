@@ -25,4 +25,6 @@ frontend:
 selenium:
     stage: test
     script:
+        - pip install selenium
+        - pip install webdriver_manager
         - python3 test.py
