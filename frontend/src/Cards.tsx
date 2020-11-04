@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { CardDeck, Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
@@ -11,50 +11,47 @@ function Cards (){
     return (
         <div className = "cards">
             <Container fluid className = "cards-container">
-                <Row className = "justify-content-md-center">
+                <div className="d-flex justify-content-between">
                     <Col>
+                    <Link to = "/counties">
                         <Card>
                             <Card.Img variant="top" src={img1} />
                             <Card.Body>
                                 <Card.Title>Counties</Card.Title>
                                     <Card.Text>
-                                     Will be updated to look better with animation in the future.
+                                     Look up statistics on crime data for each county in the U.S.
                                     </Card.Text>
-                                <Button variant="info">
-                                    <Link to = "/counties">Counties</Link>
-                                </Button>
                             </Card.Body>
                         </Card>
+                        </Link>
                     </Col>
                     <Col>
+                    <Link to = "/policedepartments">
                         <Card>
                             <Card.Img variant="top" src={img2} />
                             <Card.Body>
-                                <Card.Title>Police Deparments</Card.Title>
+                                <Card.Title>Police Departments</Card.Title>
                                     <Card.Text>
-                                    Will be updated to look better with animation in the future.
+                                    Look up statistics for police departments in the U.S.
                                     </Card.Text>
-                                <Button variant="info">
-                                    <Link to = "/policedepartments">Police Deparments</Link>
-                                </Button>
                             </Card.Body>
                         </Card>
+                    </Link>
                     </Col>
                     <Col>
+                    <Link to = "/crimes">
                         <Card>
                             <Card.Img variant="top" src={img3} />
                             <Card.Body>
                                 <Card.Title>Crimes</Card.Title>
                                     <Card.Text>
-                                    Will be updated to look better with animation in the future.
+                                    Look up details for each individual crime that occurred.
                                     </Card.Text>
-                                <Button variant="info">
-                                    <Link to = "/crimes">Crimes</Link>
-                                </Button>
                             </Card.Body>
                         </Card>
+                        </Link>
                     </Col>
-                </Row>
+                </div>
             </Container>
         </div>
     )

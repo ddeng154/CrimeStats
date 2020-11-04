@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import { PieChart } from 'react-minimal-pie-chart';
 import './Piechart.css';
+import { BarChart, CartesianGrid, Bar, YAxis, XAxis, Tooltip, Legend } from 'recharts';
 
 type PoliceDepartmentData = {
   ori: string;
@@ -18,7 +19,7 @@ type PoliceDepartmentData = {
   reg_name: string;
   density_per_1000: number;
   counties: { id: string; name: string }[];
-  crimes: { id: string; type: string }[];
+  crimes: { id: string; type: string, total: number }[];
 };
 
 type PoliceDepartmentState = {
@@ -38,6 +39,19 @@ class PoliceDepartment extends React.Component<IDParams> {
     } else {
       return 0;
     }
+  }
+
+  getCrimes() {
+    var ans:{name: string, value: number}[] = [];
+
+    if (this.state.policeDepartment) {
+      this.state.policeDepartment.crimes.forEach(c => {
+        if (c.total > 0)
+          ans.push({name: c.type, value: c.total})
+      });
+    }
+    
+    return ans;
   }
 
   componentDidMount() {
@@ -133,6 +147,25 @@ class PoliceDepartment extends React.Component<IDParams> {
                       },
                   ]}
               />
+          </div>
+          <div className='chart-container'>
+            <BarChart
+              height={300}
+              width={800}
+              margin={
+                { top: 100, right: 5, bottom: 5, left: 5 }
+              }
+              data={
+                this.getCrimes()
+              }
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="value" fill="#8884d8" />
+            </BarChart>
           </div>
         </div>
       );

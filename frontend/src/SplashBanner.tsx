@@ -1,13 +1,14 @@
 import React from 'react'
 import './SplashBanner.css';
-import Search from './Search'
+import img from './images/scrolldown.png';
 
 function SplashBanner() {
     return (
         <div className = "banner-container">
+            
             <h1>Crime Stats</h1>
             <p>See how police presence relates to crime</p>
-            <Search/>
+            <img src={img} alt="Error" width={44} height={44}></img> 
         </div>
     )
 }
