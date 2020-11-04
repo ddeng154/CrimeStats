@@ -101,8 +101,14 @@ class County extends React.Component<IDParams> {
               </tr>
             </tbody>
           </table>
-          <iframe title="map" width="600" height="450" frameBorder="0" style={{border: 0}}
-src={"https://www.google.com/maps/embed/v1/view?zoom=9&center=" + this.state.county.latitude + "," + this.state.county.longitude + "&key=AIzaSyC-QNudTN-ssaDXHh5h3_5dk19wxsatSRg"} allowFullScreen></iframe>
+          <div className="split left">
+            <iframe title="map" width="600" height="450" frameBorder="0" style={{border: 0}}
+              src={"https://www.google.com/maps/embed/v1/view?zoom=9&center=" 
+              + this.state.county.latitude + "," 
+              + this.state.county.longitude + "&key=AIzaSyC-QNudTN-ssaDXHh5h3_5dk19wxsatSRg"} 
+              allowFullScreen>
+            </iframe>
+          </div>
           <h4>Racial Breakdown of County Population:</h4>
           <label style={{color:"#E38627", fontSize:"35px"}}>Black Population: {(this.state.county.black_pop / this.state.county.total_pop * 100).toFixed(2)}%</label>
           <br />
@@ -114,7 +120,7 @@ src={"https://www.google.com/maps/embed/v1/view?zoom=9&center=" + this.state.cou
           <br />
           <label style={{color:"#E327B7", fontSize:"35px"}}>Asian Population: {(this.state.county.asian_pop / this.state.county.total_pop * 100).toFixed(2)}%</label>
           
-          <div className="chart-container">
+          <div className="chart-container split right">
         
               <PieChart
                   animate

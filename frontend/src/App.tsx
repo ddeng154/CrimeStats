@@ -12,6 +12,7 @@ import PoliceDepartments from './PoliceDepartments';
 import Crimes from './Crimes';
 import About from './About';
 import NotFound from './NotFound';
+import Search from './Search'
 import './App.css';
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route path="/crimes/:id">
               <ModelPage component={Crime}></ModelPage>
+            </Route>
+            <Route path="/search/:id">
+              <ModelPage component={Search}></ModelPage>
             </Route>
             <Route path="/counties" exact component = {Counties} />
             <Route path="/policedepartments" exact component = {PoliceDepartments} />

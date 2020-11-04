@@ -5,7 +5,7 @@ import Cards from './Cards';
 function Splash() {
     return (
         <div>
-            <SplashBanner />
+            <SplashBanner/>
             <Cards/>
         </div>
     );

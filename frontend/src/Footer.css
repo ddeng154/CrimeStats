@@ -4,8 +4,11 @@
     padding: 43m 0 2rem 0;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     justify-content: center;
     align-self: center;  
+    margin-top: 1rem;
+    height: 100%;
 }
 
 .container {
