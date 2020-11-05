@@ -26,8 +26,11 @@ selenium:
     stage: test
     image: python
     script:
+        - pwd
         - pip install selenium
         - pip install webdriver_manager
+        - apt-get update -q -y
+        - apt-get install nodejs npm -y
         - cd frontend
         # - curl -o- -L https://yarnpkg.com/install.sh | bash
         - npm install
