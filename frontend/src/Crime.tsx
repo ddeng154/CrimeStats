@@ -193,19 +193,19 @@ class Crime extends React.Component<IDParams> {
                 * 100).toFixed(2)}%</label>
               <br />
               <label style={{color:"#C13C37", fontSize:"28px"}}>White: 
-                {(this.state.crime.o_white / this.getTotalVictims() 
+                {(this.state.crime.v_white / this.getTotalVictims() 
                 * 100).toFixed(2)}%</label>
               <br />
               <label style={{color:"#6A2135", fontSize:"28px"}}>Pacific: 
-                {(this.state.crime.o_pacific / this.getTotalVictims() 
+                {(this.state.crime.v_pacific / this.getTotalVictims() 
                 * 100).toFixed(2)}%</label>
               <br />
               <label style={{color:"#2757E3", fontSize:"28px"}}>Native: 
-                {(this.state.crime.o_native / this.getTotalVictims() 
+                {(this.state.crime.v_native / this.getTotalVictims() 
                 * 100).toFixed(2)}%</label>
               <br />
               <label style={{color:"#E327B7", fontSize:"28px"}}>Asian: 
-                {(this.state.crime.o_asian / this.getTotalVictims() 
+                {(this.state.crime.v_asian / this.getTotalVictims() 
                 * 100).toFixed(2)}%</label>
               </Col>
             </div>

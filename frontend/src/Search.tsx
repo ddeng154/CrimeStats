@@ -3,8 +3,11 @@ import { InstantSearch, SearchBox, Hits, Highlight, Index } from 'react-instants
 import algoliasearch from 'algoliasearch'
 import { IDParams } from './common';
 import './Search.css'
+import Table from 'react-bootstrap/table'
+import Crime from './Crime';
 
 const client = algoliasearch('ICWNC13X5J', '4c22be32a809130f195c1d42981c39d8');
+
 class Search extends React.Component<IDParams> {
   render() {
     return (
@@ -12,26 +15,38 @@ class Search extends React.Component<IDParams> {
         <InstantSearch indexName="dev_CRIMESTATS" searchClient={client}>
           <div className="right-panel">
             <SearchBox defaultRefinement={this.props.id}/>
-            <div className="column">
               <Index indexName="dev_CRIMESTATS">
-                <table>
-                  <th>Counties</th>        
-                  <td><Hits hitComponent={HitCo} /> </td>
-                </table>
+                <h2>Counties</h2>        
+                <Hits hitComponent={HitCo} />
               </Index>
-            </div>
-            <div className="column">
               <Index indexName="dev_PD">
                 <h2>Police Depts</h2>
                 <Hits hitComponent={HitPo} />
               </Index>
-            </div>
-            <div className="column">
               <Index indexName="dev_CRIMES">
                 <h2>Crimes</h2>
-                <Hits hitComponent={HitCr} />
+                <Table striped hover>
+                  <thead>
+                    <tr>
+                      <th>ORI</th>
+                      <th>Type</th>
+                      <th>No. White Offenders</th>
+                      <th>No. Black Offenders</th>
+                      <th>No. Pacific Offenders</th>
+                      <th>No. Native Offenders</th>
+                      <th>No. Asian Offenders</th>
+                      <th>No. White Victims</th>
+                      <th>No. Black Victims</th>
+                      <th>No. Pacific Victims</th>
+                      <th>No. Native Victims</th>
+                      <th>No. Asian Victims</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <Hits hitComponent={HitCr} />
+                  </tbody>
+                </Table>
               </Index>
-            </div>
           </div>
         </InstantSearch>
       </div>
@@ -104,50 +119,21 @@ function HitPo(props: any) {
 
 function HitCr(props: any) {
   return (
-    <div>
-      <div className="hit-name">
-        <a href={"/crimes/" + props.hit.id}><Highlight attribute="type" hit={props.hit} /></a>
-      </div>
-      <div className="hit-ori">
-        <Highlight attribute="ori" hit={props.hit} />
-      </div>
-      <div className="hit-type">
-        <Highlight attribute="type" hit={props.hit} />
-      </div>
-      <div className="hit-id">
-        <Highlight attribute="id" hit={props.hit} />
-      </div>
-      <div className="hit-o_asian">
-        <Highlight attribute="o_asian" hit={props.hit} />
-      </div>
-      <div className="hit-o_black">
-        <Highlight attribute="o_black" hit={props.hit} />
-      </div>
-      <div className="hit-o_native">
-        <Highlight attribute="o_native" hit={props.hit} />
-      </div>
-      <div className="hit-o_pacific">
-        <Highlight attribute="o_pacific" hit={props.hit} />
-      </div>
-      <div className="hit-o_white">
-        <Highlight attribute="o_white" hit={props.hit} />
-      </div>
-      <div className="hit-v_asian">
-        <Highlight attribute="v_asian" hit={props.hit} />
-      </div>
-      <div className="hit-v_black">
-        <Highlight attribute="v_black" hit={props.hit} />
-      </div>
-      <div className="hit-v_native">
-        <Highlight attribute="v_native" hit={props.hit} />
-      </div>
-      <div className="hit-v_pacific">
-        <Highlight attribute="v_pacific" hit={props.hit} />
-      </div>
-      <div className="hit-v_white">
-        <Highlight attribute="v_white" hit={props.hit} />
-      </div>
-    </div>
+
+      <tr key={props.hit}>
+        <td><a href={"/crimes/" + props.hit.id}><Highlight attribute="type" hit={props.hit} /></a></td>
+        <td> <Highlight attribute="o_white" hit={props.hit} />  </td>
+        <td> <Highlight attribute="o_black" hit={props.hit} /> </td>
+        <td> <Highlight attribute="o_pacific" hit={props.hit} /> </td>
+        <td> <Highlight attribute="o_native" hit={props.hit} /> </td>
+        <td> <Highlight attribute="o_asian" hit={props.hit} /> </td>
+        <td> <Highlight attribute="v_white" hit={props.hit} /> </td>
+        <td> <Highlight attribute="v_black" hit={props.hit} /> </td>
+        <td> <Highlight attribute="v_pacific" hit={props.hit} /> </td>
+        <td> <Highlight attribute="v_native" hit={props.hit} /> </td>
+        <td> <Highlight attribute="v_asian" hit={props.hit} /> </td>
+      </tr>  
+
   );
 }
 

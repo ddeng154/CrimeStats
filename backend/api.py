@@ -113,7 +113,7 @@ def policeSingle(result):
         {"id": cid, "name": County.query.get(cid).name} for cid in cids
     ]
     result["crimes"] = [
-        {"id": c.id, "type": c.type}
+        {"id": c.id, "type": c.type, "total": c.o_white + c.o_black + c.o_asian + c.o_pacific + c.o_native}
         for c in Crime.query.filter_by(ori=result["ori"]).all()
     ]
 
