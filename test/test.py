@@ -8,7 +8,7 @@ import os
 class SeleniumTests(unittest.TestCase):
     def setUp(self):
         # create Chrome session
-        self.driver = webdriver.Chrome("./chromedriver")
+        self.driver = webdriver.Chrome("./chromedriver_linux")
         self.driver.implicitly_wait(10)
         # navigate to webpage
         self.driver.get("http://www.crimestats.me")
