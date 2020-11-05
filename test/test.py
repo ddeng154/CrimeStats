@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 class SeleniumTests(unittest.TestCase):
     def setUp(self):
         # create Firefox session
-        firefox_binary = FirefoxBinary("./geckodriver")
+        firefox_binary = FirefoxBinary("/builds/alyhirani/crimestats/test/geckodriver")
         options = FirefoxOptions()
         options.add_argument("--headless")
         self.driver = webdriver.Firefox(firefox_binary=firefox_binary, options=options)
