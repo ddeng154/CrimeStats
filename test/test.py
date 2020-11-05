@@ -14,7 +14,7 @@ class SeleniumTests(unittest.TestCase):
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument("window-size=1024,768")
         chrome_options.add_argument("--no-sandbox")
-        self.driver = webdriver.Chrome(chrome_path, chrome_options)
+        self.driver = webdriver.Chrome(chrome_path, chrome_options=chrome_options)
         self.driver.implicitly_wait(10)
         # navigate to webpage
         self.driver.get("http://www.crimestats.me")
