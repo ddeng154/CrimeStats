@@ -4,15 +4,16 @@ from selenium import webdriver
 #from webdriver_manager.utils import ChromeType
 import os
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
 class SeleniumTests(unittest.TestCase):
     def setUp(self):
         # create Firefox session
-        firefox_path = "./geckodriver"
+        firefox_binary = FirefoxBinary("./geckodriver")
         options = FirefoxOptions()
         options.add_argument("--headless")
-        self.driver = webdriver.Firefox(executable_path=firefox_path, options=options)
+        self.driver = webdriver.Firefox(firefox_binary=firefox_binary, options=options)
         
         # create Chrome session
         #        chrome_path = "./chromedriver_linux"
