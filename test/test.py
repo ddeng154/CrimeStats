@@ -12,7 +12,7 @@ class SeleniumTests(unittest.TestCase):
         firefox_path = "./geckodriver"
         options = FirefoxOptions()
         options.add_argument("--headless")
-        self.driver = webdriver.Firefox(firefox_path, options=options)
+        self.driver = webdriver.Firefox(executable_path=firefox_path, options=options)
         
         # create Chrome session
         #        chrome_path = "./chromedriver_linux"
