@@ -36,7 +36,7 @@ class Crime extends React.Component<IDParams> {
   };
 
   hasCounties() {
-    return this.state.crime?.counties.length != 0;
+    return this.state.crime?.counties.length !== 0;
   }
 
   getTotalOffenders() {

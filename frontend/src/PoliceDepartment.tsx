@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import { PieChart } from 'react-minimal-pie-chart';
 import './Piechart.css';
-import { BarChart, CartesianGrid, Bar, YAxis, XAxis, Tooltip, Legend } from 'recharts';
+import { BarChart, CartesianGrid, Bar, YAxis, XAxis, Tooltip } from 'recharts';
 import { Col, Container } from 'react-bootstrap';
 
 type PoliceDepartmentData = {
@@ -34,11 +34,11 @@ class PoliceDepartment extends React.Component<IDParams> {
   };
 
   hasCounties() {
-    return this.state.policeDepartment?.counties.length != 0;
+    return this.state.policeDepartment?.counties.length !== 0;
   }
 
   hasCrimes() {
-    return this.state.policeDepartment?.crimes.length != 0;
+    return this.state.policeDepartment?.crimes.length !== 0;
   }
 
   getPoliceSize() {
