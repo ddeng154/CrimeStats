@@ -4,8 +4,10 @@ format:
 	black backend/test.py
 	black guitests.py
 
-testbackend: 
-	python3 backend/test.py
+testbackend:
+	cd backend
+	python3 test.py
 
 testui:
-	python3 guitests/guitests.py
+	cd guitests
+	python3 guitests.py
