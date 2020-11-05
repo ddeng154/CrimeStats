@@ -6,7 +6,10 @@ import os
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-driver = webdriver.Chrome(executable_path="./chromedriver_linux.exe")
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(executable_path="./chromedriver_linux.exe", chrome_options=chrome_options)
 driver.set_window_size(1080, 800)
 
 class SeleniumTests(unittest.TestCase):
