@@ -3,8 +3,7 @@ import { InstantSearch, SearchBox, Hits, Highlight, Index } from 'react-instants
 import algoliasearch from 'algoliasearch'
 import { IDParams } from './common';
 import './Search.css'
-import Table from 'react-bootstrap/table'
-import Crime from './Crime';
+import Table from 'react-bootstrap/Table'
 
 const client = algoliasearch('ICWNC13X5J', '4c22be32a809130f195c1d42981c39d8');
 
@@ -119,8 +118,8 @@ function HitPo(props: any) {
 
 function HitCr(props: any) {
   return (
-
-      <tr key={props.hit}>
+<div>
+      {/* <tr key={props.hit}> */}
         <td><a href={"/crimes/" + props.hit.id}><Highlight attribute="type" hit={props.hit} /></a></td>
         <td> <Highlight attribute="o_white" hit={props.hit} />  </td>
         <td> <Highlight attribute="o_black" hit={props.hit} /> </td>
@@ -132,8 +131,8 @@ function HitCr(props: any) {
         <td> <Highlight attribute="v_pacific" hit={props.hit} /> </td>
         <td> <Highlight attribute="v_native" hit={props.hit} /> </td>
         <td> <Highlight attribute="v_asian" hit={props.hit} /> </td>
-      </tr>  
-
+      {/* </tr>   */}
+      </div>
   );
 }
 
