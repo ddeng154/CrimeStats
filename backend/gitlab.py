@@ -1,7 +1,7 @@
 from flask_restful import Resource
 import requests
 
-
+# Retrieves and formats user stats from gitlab
 class Stats(Resource):
     headers = {"private_token": "1b13PazxJ5_DELouxJ3-"}
 
@@ -10,6 +10,8 @@ class Stats(Resource):
     )
     issuesURL = "https://gitlab.com/api/v4/projects/21298954/issues?per_page=100"
 
+    # Retrieves commits, issues, and name
+    # returns formatted commits, issues, and names
     def get(self):
         commits = requests.get(self.commitsURL, headers=self.headers).json()
         issues = requests.get(self.issuesURL, headers=self.headers).json()

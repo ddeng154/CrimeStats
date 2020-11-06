@@ -5,7 +5,6 @@ from webdriver_manager.utils import ChromeType
 import os
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--headless")
@@ -15,8 +14,9 @@ driver = webdriver.Chrome(
 )
 driver.set_window_size(1080, 800)
 
-
+#selenium testing suite for testing the website gui
 class SeleniumTests(unittest.TestCase):
+    #test that attempts to navigate to the counties page
     def test1(self):
         driver.get("http://crimestats.me")
         driver.implicitly_wait(5)
@@ -28,9 +28,10 @@ class SeleniumTests(unittest.TestCase):
         driver.implicitly_wait(10)
         self.assertEqual(
             "Counties",
-            driver.find_element_by_xpath("/html/body/div/div/div/div/div[2]/h1").text,
+            driver.find_element_by_xpath(
+                "/html/body/div/div/div/div/div[2]/h1").text,
         )
-
+    # test that attempts to navigate to the police departments page
     def test2(self):
         driver.get("http://crimestats.me")
         driver.implicitly_wait(5)
@@ -42,7 +43,8 @@ class SeleniumTests(unittest.TestCase):
         driver.implicitly_wait(10)
         self.assertEqual(
             "Police Departments",
-            driver.find_element_by_xpath("/html/body/div/div/div/div/div[2]/h1").text,
+            driver.find_element_by_xpath(
+                "/html/body/div/div/div/div/div[2]/h1").text,
         )
 
 
