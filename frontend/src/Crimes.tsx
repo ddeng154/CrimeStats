@@ -6,7 +6,9 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Table from 'react-bootstrap/Table';
 import { APIResponse } from './common';
-
+import Loading from './Loading'
+//code for the page for browsing crimes
+//information for each crime
 type CrimeData = {
   id: number;
   ori: string;
@@ -22,13 +24,15 @@ type CrimeData = {
   v_native: number;
   v_asian: number;
 };
-
+//possible values for the type of each crime, to filter by
 const FilterVals = new Map([
   ["type", [
-    'aggravated-assault', 'arson', 'burglary', 'homicide', 'larceny', 'motor-vehicle-theft', 'property-crime', 'rape', 'robbery', 'violent-crime'
+    'aggravated-assault', 'arson', 'burglary', 'homicide',
+    'larceny', 'motor-vehicle-theft', 'property-crime',
+    'rape', 'robbery', 'violent-crime'
   ]]
 ]);
-
+//class for the current state of the crimes pagination
 class Crimes extends React.Component {
   state = {
     elements: new Array<CrimeData>(),
@@ -40,11 +44,11 @@ class Crimes extends React.Component {
     val: "",
     isLoading: true
   };
-
+//mounts the component and tries to load the data
   componentDidMount() {
     this.fetchElements();
   }
-
+//fetches the requested data for this page
   fetchElements = () => {
     this.setState({ isLoading: true });
     const order_by = [{ field: this.state.sort, direction: this.state.asc }];
@@ -54,6 +58,7 @@ class Crimes extends React.Component {
     }
     const q = JSON.stringify({ order_by, filters });
     const url = `/api/crimes?q=${q}&page=${this.state.page}`;
+    // if data has been loaded, updates the state accordingly
     axios.get<APIResponse<CrimeData>>(url).then(response => {
       this.setState({
         elements: response.data.objects,
@@ -62,7 +67,7 @@ class Crimes extends React.Component {
       });
     });
   }
-
+  //the previous page from what's currently displayed
   previousPage = () => {
     if (this.state.page > 1) {
       this.setState({ page: this.state.page - 1 }, this.fetchElements);
@@ -70,7 +75,7 @@ class Crimes extends React.Component {
       this.setState({ page: this.state.totalPages }, this.fetchElements);
     }
   }
-
+//the next page from what's currently displayed
   nextPage = () => {
     if (this.state.page < this.state.totalPages) {
       this.setState({ page: this.state.page + 1 }, this.fetchElements);
@@ -78,23 +83,23 @@ class Crimes extends React.Component {
       this.setState({ page: 1 }, this.fetchElements);
     }
   }
-
+//changing the sort order
   changeSort = (sort: string) => {
     this.setState({ sort }, this.fetchElements);
   }
-
+//changing the association
   changeAsc = (asc: string) => {
     this.setState({ asc }, this.fetchElements);
   }
-
+//changing the filtering
   changeFilter = (filter: string) => {
     this.setState({ filter, val: "" }, this.fetchElements);
   }
-
+//changing the current value for filtering
   changeVal = (val: string) => {
     this.setState({ val }, this.fetchElements);
   }
-
+//element to display option to sort by
   SortingItem = (attributeName: string, displayName: string) => {
     return (
       <Dropdown.Item active={ this.state.sort === attributeName }
@@ -103,7 +108,7 @@ class Crimes extends React.Component {
       </Dropdown.Item>
     );
   }
-
+//button to press to change sorting
   SortingButton = (asc: string, name: string) => {
     return (
       <Button variant={ this.state.asc === asc ? "primary" : "secondary" }
@@ -112,7 +117,7 @@ class Crimes extends React.Component {
       </Button>
     );
   }
-
+//options displayed to turn on filter
   FilterItem = (attributeName: string, displayName: string) => {
     return (
       <Dropdown.Item active={ this.state.filter === attributeName }
@@ -121,7 +126,8 @@ class Crimes extends React.Component {
       </Dropdown.Item>
     );
   }
-
+ //options displayed to change filter by
+  //in this case, the type of crime
   ValueItem = (name: string) => {
     return (
       <Dropdown.Item key={name} active={ this.state.val === name }
@@ -130,7 +136,7 @@ class Crimes extends React.Component {
       </Dropdown.Item>
     );
   }
-
+//provides the interface to go to previous/next pages
   Pagination = () => {
     return (
       <div>
@@ -140,7 +146,7 @@ class Crimes extends React.Component {
       </div>
     );
   }
-
+//element to display options to sort by
   Sorting = () => {
     return (
       <div>
@@ -160,7 +166,7 @@ class Crimes extends React.Component {
       </div>
     );
   }
-
+  //element to display options to filter by
   Filters = () => {
     return (
       <div>
@@ -177,7 +183,7 @@ class Crimes extends React.Component {
       </div>
     );
   }
-
+//display values to filter by, in this case, the state
   Values = () => {
     const vals = FilterVals.get(this.state.filter);
     if (vals) {
@@ -195,13 +201,14 @@ class Crimes extends React.Component {
       );
     }
   }
-
+  //show loading screen if loading
   render() {
     if (this.state.isLoading) {
-      return <h1>Loading...</h1>;
+      return <Loading/>;
     }
-
+    //otherwise, we return the actual page
     return (
+      // title, sort/filter options, and page changing
       <div className="text-center">
         <h1>Crimes</h1>
         <this.Sorting />
@@ -210,6 +217,7 @@ class Crimes extends React.Component {
         <br />
         <this.Pagination />
         <br />
+        {/* display the table of the crimes for the current page */}
         <Table striped hover>
           <thead>
             <tr>
@@ -236,9 +244,10 @@ class Crimes extends React.Component {
     );
   }
 }
-
+//row of data about a given crime
 function CrimeRow(c: CrimeData) {
   return (
+    //police dept. involved, and link to detailed crime page
     <tr key={c.id}>
       <td>
         <Nav.Link key={c.type} href={"/policedepartments/" + c.ori}>

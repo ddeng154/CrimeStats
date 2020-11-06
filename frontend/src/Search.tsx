@@ -3,7 +3,7 @@ import { InstantSearch, SearchBox, Hits, Highlight, Index } from 'react-instants
 import algoliasearch from 'algoliasearch'
 import { IDParams } from './common';
 import './Search.css'
-import Table from 'react-bootstrap/table'
+import Table from 'react-bootstrap/Table'
 import Crime from './Crime';
 
 const client = algoliasearch('ICWNC13X5J', '4c22be32a809130f195c1d42981c39d8');
@@ -17,15 +17,61 @@ class Search extends React.Component<IDParams> {
             <SearchBox defaultRefinement={this.props.id}/>
               <Index indexName="dev_CRIMESTATS">
                 <h2>Counties</h2>        
-                <Hits hitComponent={HitCo} />
+                <Table className="table">
+                  <thead>
+                    <tr>
+                      <th>County</th>
+                      <th>State</th>
+                      <th>Median Income</th>
+                      <th>Total Population</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><Hits hitComponent={HitCo0}></Hits></td>
+                      <td>{HitCo("state")}</td>
+                      <td>{HitCo("median_income")}</td>
+                      <td>{HitCo("total_pop")}</td>
+                    </tr>
+                  </tbody>
+                </Table>
               </Index>
               <Index indexName="dev_PD">
                 <h2>Police Depts</h2>
-                <Hits hitComponent={HitPo} />
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>ORI</th>
+                      <th>Name</th>
+                      <th>Population</th>
+                      <th>No. Male Officers</th>
+                      <th>No. Female Officers</th>
+                      <th>No. Civilians</th>
+                      <th>Department Type</th>
+                      <th>Division Name</th>
+                      <th>Region Name</th>
+                      <th>Density per 1000</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{HitPo("ori")}</td>
+                      <td><Hits hitComponent={HitPo0}></Hits></td>
+                      <td>{HitPo("pop")}</td>
+                      <td>{HitPo("density_per_1000")}</td>
+                      <td>{HitPo("dept_type")}</td>
+                      <td>{HitPo("div_name")}</td>
+                      <td>{HitPo("num_civilians")}</td>
+                      <td>{HitPo("num_female_officers")}</td>
+                      <td>{HitPo("num_male_officers")}</td>
+                      <td>{HitPo("reg_name")}</td>
+                    </tr>
+                  </tbody>
+                </Table>
               </Index>
               <Index indexName="dev_CRIMES">
                 <h2>Crimes</h2>
-                <Table striped hover>
+                <Table>
                   <thead>
                     <tr>
                       <th>ORI</th>
@@ -43,7 +89,20 @@ class Search extends React.Component<IDParams> {
                     </tr>
                   </thead>
                   <tbody>
-                    <Hits hitComponent={HitCr} />
+                    <tr>
+                      <td>{HitCr("ori")}</td>
+                      <td><Hits hitComponent={HitCr0}></Hits></td>
+                      <td>{HitCr("o_white")}</td>
+                      <td>{HitCr("o_black")}</td>
+                      <td>{HitCr("o_pacific")}</td>
+                      <td>{HitCr("o_native")}</td>
+                      <td>{HitCr("o_asian")}</td>
+                      <td>{HitCr("v_white")}</td>
+                      <td>{HitCr("v_black")}</td>
+                      <td>{HitCr("v_pacific")}</td>
+                      <td>{HitCr("v_native")}</td>
+                      <td>{HitCr("v_asian")}</td>
+                    </tr>
                   </tbody>
                 </Table>
               </Index>
@@ -54,88 +113,37 @@ class Search extends React.Component<IDParams> {
   }
 }
 
+function HitCo(attribute: string) {
+  const Hit = ({ hit }: any) => <Highlight hit={hit} attribute={attribute} />;
+  return <Hits hitComponent={Hit} />
+}
 
-function HitCo(props: any) {
+function HitCo0(props: any) {
   return (
-    <div>
-      <div className="hit-name">
-        <a href={"/counties/" + props.hit.id}><Highlight attribute="name" hit={props.hit} /></a>
-      </div>
-      <div className="hit-state">
-        <Highlight attribute="state" hit={props.hit} />
-      </div>
-      <div className="hit-median_income">
-        <Highlight attribute="median_income" hit={props.hit} />
-      </div>
-      <div className="hit-total_pop">
-        <Highlight attribute="total_pop" hit={props.hit} />
-      </div>
-      
-      <table>
-        <tr>
-          <td><Highlight attribute="state" hit={props.hit.state} /></td>
-        </tr>
-      </table>
-    </div>
+    <a href={"/counties/" + props.hit.id}><Highlight attribute="name" hit={props.hit} /></a>
   );
 }
 
-function HitPo(props: any) {
+function HitPo(attribute: string) {
+  const Hit = ({ hit }: any) => <Highlight hit={hit} attribute={attribute} />;
+  return <Hits hitComponent={Hit} />
+}
+
+function HitPo0(props: any) {
   return (
-    <div>
-      <div className="hit-name">
-        <a href={"/policedepartments/" + props.hit.ori}><Highlight attribute="name" hit={props.hit} /></a>
-      </div>
-      <div className="hit-ori">
-        <Highlight attribute="ori" hit={props.hit} />
-      </div>
-      <div className="hit-pop">
-        <Highlight attribute="pop" hit={props.hit} />
-      </div>
-      <div className="hit-density_per_1000">
-        <Highlight attribute="density_per_1000" hit={props.hit} />
-      </div>
-      <div className="hit-dept_type">
-        <Highlight attribute="dept_type" hit={props.hit} />
-      </div>
-      <div className="hit-div_name">
-        <Highlight attribute="div_name" hit={props.hit} />
-      </div>
-      <div className="hit-num_civilians">
-        <Highlight attribute="num_civilians" hit={props.hit} />
-      </div>
-      <div className="hit-num_female_officers">
-        <Highlight attribute="num_female_officers" hit={props.hit} />
-      </div>
-      <div className="hit-num_male_officers">
-        <Highlight attribute="num_male_officers" hit={props.hit} />
-      </div>
-      <div className="hit-reg_name">
-        <Highlight attribute="reg_name" hit={props.hit} />
-      </div>
-    </div>
+    <a href={"/policedepartments/" + props.hit.id}><Highlight attribute="name" hit={props.hit} /></a>
   );
 }
 
-function HitCr(props: any) {
-  return (
-
-      <tr key={props.hit}>
-        <td><a href={"/crimes/" + props.hit.id}><Highlight attribute="type" hit={props.hit} /></a></td>
-        <td> <Highlight attribute="o_white" hit={props.hit} />  </td>
-        <td> <Highlight attribute="o_black" hit={props.hit} /> </td>
-        <td> <Highlight attribute="o_pacific" hit={props.hit} /> </td>
-        <td> <Highlight attribute="o_native" hit={props.hit} /> </td>
-        <td> <Highlight attribute="o_asian" hit={props.hit} /> </td>
-        <td> <Highlight attribute="v_white" hit={props.hit} /> </td>
-        <td> <Highlight attribute="v_black" hit={props.hit} /> </td>
-        <td> <Highlight attribute="v_pacific" hit={props.hit} /> </td>
-        <td> <Highlight attribute="v_native" hit={props.hit} /> </td>
-        <td> <Highlight attribute="v_asian" hit={props.hit} /> </td>
-      </tr>  
-
-  );
+function HitCr(attribute: string) {
+  const Hit = ({ hit }: any) => <Highlight hit={hit} attribute={attribute} />;
+  return <Hits hitComponent={Hit} />
 }
 
+function HitCr0(props: any) {
+  return (
+    <a href={"/crimes/" + props.hit.id}><Highlight attribute="type" hit={props.hit} /></a>
+  );
+}
 
 export default Search;

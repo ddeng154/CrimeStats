@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import { PieChart } from 'react-minimal-pie-chart';
 import './Piechart.css';
+import Loading from './Loading'
 import { BarChart, CartesianGrid, Bar, YAxis, XAxis, Tooltip } from 'recharts';
 import { Col, Container } from 'react-bootstrap';
 
@@ -73,7 +74,7 @@ class PoliceDepartment extends React.Component<IDParams> {
 
   render() {
     if (this.state.isLoading) {
-      return <h1>Loading...</h1>;
+      return <Loading/>;
     } else if (this.state.policeDepartment) {
       return (
         <div>

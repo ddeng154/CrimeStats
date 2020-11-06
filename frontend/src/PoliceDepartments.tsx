@@ -6,6 +6,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Table from 'react-bootstrap/Table';
 import { APIResponse } from './common';
+import Loading from './Loading'
 
 type PoliceDepartmentData = {
   ori: string;
@@ -205,7 +206,7 @@ class PoliceDepartments extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <h1>Loading...</h1>;
+      return <Loading/>;
     }
 
     return (

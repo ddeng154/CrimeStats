@@ -6,7 +6,10 @@ import Nav from 'react-bootstrap/Nav';
 import { PieChart } from 'react-minimal-pie-chart';
 import { Col, Container } from 'react-bootstrap';
 import './Piechart.css';
-
+import Loading from './Loading'
+//code for the page for showing detailed information about one
+//crime in particular
+//associated information for each crime
 type CrimeData = {
   id: number;
   ori: string;
@@ -24,39 +27,41 @@ type CrimeData = {
   pd_name: string;
   counties: { id: string; name: string; }[];
 };
-
+//state of whether the page has loaded, and the information about the crime
 type CrimeState = {
   crime?: CrimeData;
   isLoading: boolean;
 };
-
+//class for the crime page and what to display
 class Crime extends React.Component<IDParams> {
   state: CrimeState = {
     isLoading: true
   };
-
+//does it have counties associated?
   hasCounties() {
     return this.state.crime?.counties.length !== 0;
   }
-
+//what were the total number of offenders involved?
   getTotalOffenders() {
     if (this.state.crime) {
-      return this.state.crime?.o_asian + this.state.crime?.o_black + this.state.crime?.o_white 
+      return this.state.crime?.o_asian + 
+      this.state.crime?.o_black + this.state.crime?.o_white 
       + this.state.crime?.o_native + this.state.crime?.o_pacific;
     } else {
       return 0;
     }
   }
-
+//what were the total number of victims involved?
   getTotalVictims() {
     if (this.state.crime) {
-      return this.state.crime?.v_asian + this.state.crime?.v_black + this.state.crime?.v_white 
+      return this.state.crime?.v_asian + this.state.crime?.v_black
+       + this.state.crime?.v_white 
       + this.state.crime?.v_native + this.state.crime?.v_pacific;
     } else {
       return 0;
     }
   }
-
+//try to check if page has loaded or not
   componentDidMount() {
     axios.get<CrimeData>("/api/crimes/" + this.props.id).then(response => {
       this.setState({ crime: response.data });
@@ -64,11 +69,14 @@ class Crime extends React.Component<IDParams> {
       this.setState({ isLoading: false });
     });
   }
-
+//display page
   render() {
     if (this.state.isLoading) {
-      return <h1>Loading...</h1>;
-    } else if (this.state.crime) {
+      return <Loading/>;
+    } 
+    //if page has loaded, display table of info
+    //about crime, such as police department involved
+    else if (this.state.crime) {
       return (
         <div>
           <h4> {this.state.crime.type} </h4>
@@ -118,19 +126,23 @@ class Crime extends React.Component<IDParams> {
                 <th scope = "row">No. of Asian Victims</th>
                 <td> {this.state.crime.v_asian} </td>
               </tr>
+              {/* if crime has counties involved, show them */}
               {
                 this.hasCounties() &&
                 <tr>
                   <th scope = "row">Counties</th>
-                  <td> { this.state.crime.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>)} </td>
+                  <td> { this.state.crime.counties.map(c =>
+                     <Nav.Link key={c.id} href={"/counties/" +
+                      c.id}>{c.name}</Nav.Link>)} </td>
                 </tr>
               }
             </tbody>
           </table>
-
+          {/* container to show graphics */}
           <Container fluid>
             <div className="d-flex justify-content-between">
               <Col>
+              {/* display pie chart of demographics of offenders */}
                 <h4>Racial Breakdown of Offenders:</h4>
                 <label style={{color:"#E38627", fontSize:"28px"}}>Black: 
                   {(this.state.crime.o_black / this.getTotalOffenders()
@@ -187,6 +199,7 @@ class Crime extends React.Component<IDParams> {
                   />
               </Col>
               <Col>
+              {/* display pie chart of demographics of victims */}
               <h4>Racial Breakdown of Victims:</h4>
               <label style={{color:"#E38627", fontSize:"28px"}}>Black: 
                 {(this.state.crime.v_black / this.getTotalVictims() 
@@ -248,7 +261,9 @@ class Crime extends React.Component<IDParams> {
           </div>
         </div>
       );
-    } else {
+    } 
+    //if crime does not exist, redirect to 404
+    else {
       return <Redirect to="/404" />;
     }
   }
