@@ -22,16 +22,27 @@ class SeleniumTests(unittest.TestCase):
         driver.get("https://crimestats.me")
         driver.implicitly_wait(10)
 
-        self.assertEqual("Counties", driver.find_element_by_xpath("/html/body/div/div/div/div/div[1]/nav/div[1]/a[1]").text)
+        self.assertEqual("Counties", driver.find_element_by_xpath
+        ("/html/body/div/div/div/div/div[1]/nav/div[1]/a[1]").text)
     
+    # Check police departments tab
     def test2(self):
         driver.get("https://crimestats.me")
         driver.implicitly_wait(10)
 
-        self.assertEqual("Police Departments", driver.find_element_by_xpath("/html/body/div/div/div/div/div[1]/nav/div[1]/a[2]").text)
+        self.assertEqual("Police Departments", driver.find_element_by_xpath
+        ("/html/body/div/div/div/div/div[1]/nav/div[1]/a[2]").text)
+    
+    # Check crimes tab
+    def test3(self):
+        driver.get("https://crimestats.me")
+        driver.implicitly_wait(10)
+
+        self.assertEqual("Crimes", driver.find_element_by_xpath
+        ("/html/body/div/div/div/div/div[1]/nav/div[1]/a[3]").text)
     
     #test that attempts to navigate to the counties page
-    def Test3(self):
+    def Test4(self):
         driver.get("https://crimestats.me/counties")
         driver.implicitly_wait(10)
 
@@ -41,7 +52,7 @@ class SeleniumTests(unittest.TestCase):
                 "/html/body/div/div/div/div/div[2]/h1").text,
         )
     # test that attempts to navigate to the police departments page
-    def Test4(self):
+    def Test5(self):
         driver.get("https://crimestats.me/policedepartments")
 
         driver.implicitly_wait(10)
@@ -51,7 +62,6 @@ class SeleniumTests(unittest.TestCase):
             driver.find_element_by_xpath(
                 "/html/body/div/div/div/div/div[2]/h1").text,
         )
-
 
 if __name__ == "__main__":
     unittest.main()
