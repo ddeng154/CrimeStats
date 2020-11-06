@@ -19,7 +19,12 @@ driver.set_window_size(1080, 800)
 class SeleniumTests(unittest.TestCase):
     def test1(self):
         driver.get("http://crimestats.me/counties")
-        driver.implicitly_wait(10)
+        #driver.implicitly_wait(10)
+
+        element = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.NAME, "Counties"))
+        )
+
         self.assertEqual(
             "Counties",
             driver.find_element_by_xpath("/html/body/div/div/div/div/div[2]/h1").text,
@@ -28,7 +33,12 @@ class SeleniumTests(unittest.TestCase):
     def test2(self):
         driver.get("http://crimestats.me/policedepartments")
 
-        driver.implicitly_wait(10)
+        #driver.implicitly_wait(10)
+
+        element = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.NAME, "Police Departments"))
+        )
+
         self.assertEqual(
             "Police Departments",
             driver.find_element_by_xpath("/html/body/div/div/div/div/div[2]/h1").text,
