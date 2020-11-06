@@ -63,13 +63,13 @@ class Search extends React.Component<IDParams> {
                       <td>{HitPo("ori")}</td>
                       <td><Hits hitComponent={HitPo0}></Hits></td>
                       <td>{HitPo("pop")}</td>
-                      <td>{HitPo("density_per_1000")}</td>
+                      <td>{HitPo("num_male_officers")}</td>
+                      <td>{HitPo("num_female_officers")}</td>
+                      <td>{HitPo("num_civilians")}</td>
                       <td>{HitPo("dept_type")}</td>
                       <td>{HitPo("div_name")}</td>
-                      <td>{HitPo("num_civilians")}</td>
-                      <td>{HitPo("num_female_officers")}</td>
-                      <td>{HitPo("num_male_officers")}</td>
                       <td>{HitPo("reg_name")}</td>
+                      <td>{HitPo("density_per_1000")}</td>
                     </tr>
                   </tbody>
                 </Table>
