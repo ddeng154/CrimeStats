@@ -1,0 +1,54 @@
+.hit-name {
+  margin-bottom: 0.5rem;
+}
+
+.hit-description {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 0.5em;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  /* height: 300px; */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.ais-Highlight-highlighted, .ais-Snippet-highlighted {
+  background-color: #ffc168;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.ais-InstantSearch__root {
+  display: flex;
+  border: 1px solid grey;
+}
+
+li {
+  list-style-type: none;
+}
+
+.ais-Hits-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+

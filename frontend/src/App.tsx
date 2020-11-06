@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch, useParams } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch, useParams } 
+from 'react-router-dom';
 import { IDParams } from './common';
 import Footer from './Footer';
 import Header from './Header';
@@ -12,15 +13,19 @@ import PoliceDepartments from './PoliceDepartments';
 import Crimes from './Crimes';
 import About from './About';
 import NotFound from './NotFound';
+import Search from './Search'
 import './App.css';
-
+//overall container for the webpage
 function App() {
   return (
     <div className = "page-container">
       <div className = "content-wrap">
       <BrowserRouter>
         <Header />
+        {/* loads page based on the current path */}
         <Switch>
+            {/* loads page for a specific county,
+             police department, crime, or search entry */}
             <Route path="/counties/:id">
               <ModelPage component={County}></ModelPage>
             </Route>
@@ -30,12 +35,20 @@ function App() {
             <Route path="/crimes/:id">
               <ModelPage component={Crime}></ModelPage>
             </Route>
+            <Route path="/search/:id">
+              <ModelPage component={Search}></ModelPage>
+            </Route>
+            {/* loads the overall/static pages for 
+            the county/department/crime models */}
             <Route path="/counties" exact component = {Counties} />
-            <Route path="/policedepartments" exact component = {PoliceDepartments} />
+            <Route path="/policedepartments" 
+            exact component = {PoliceDepartments} />
             <Route path="/crimes" exact component = {Crimes} />
             <Route path="/about" exact component = {About} />
             <Route path="/" exact component = {Splash} />
             <Route path="/404" exact component={NotFound} />
+            <Route path="/search" exact component={Search} />
+            {/* if url does not exist, reroute to 404 */}
             <Route path="*"><Redirect to="/404"/></Route>
         </Switch>
         <Footer />
@@ -44,7 +57,7 @@ function App() {
     </div>
   );
 }
-
+// function to return a specific model page, based on the provided id
 function ModelPage(props: { component: React.ComponentType<IDParams> }) {
   const { id } = useParams<IDParams>();
   const Component = props.component;

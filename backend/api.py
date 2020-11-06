@@ -94,14 +94,16 @@ def countySingle(result):
     result["police_departments"] = []
     result["crimes"] = []
     for ori in oris:
-        name = Police.query.get(ori).name
-        result["police_departments"].append({"ori": ori, "name": name})
-        result["crimes"].extend(
-            [
-                {"id": c.id, "type": c.type, "pd_name": name}
-                for c in Crime.query.filter_by(ori=ori).all()
-            ]
-        )
+        police = Police.query.get(ori)
+        if police is not None:
+            name = police.name
+            result["police_departments"].append({"ori": ori, "name": name})
+            result["crimes"].extend(
+                [
+                    {"id": c.id, "type": c.type, "pd_name": name}
+                    for c in Crime.query.filter_by(ori=ori).all()
+                ]
+            )
 
 
 def policeSingle(result):
@@ -111,7 +113,11 @@ def policeSingle(result):
         {"id": cid, "name": County.query.get(cid).name} for cid in cids
     ]
     result["crimes"] = [
-        {"id": c.id, "type": c.type}
+        {
+            "id": c.id,
+            "type": c.type,
+            "total": c.o_white + c.o_black + c.o_asian + c.o_pacific + c.o_native,
+        }
         for c in Crime.query.filter_by(ori=result["ori"]).all()
     ]
 
