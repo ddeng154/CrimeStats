@@ -1,5 +1,6 @@
 import React from 'react';
-import { InstantSearch, SearchBox, Hits, Highlight, Index } from 'react-instantsearch-dom';
+import { InstantSearch, SearchBox } from 'react-instantsearch-dom';
+import { Hits, Highlight, Index} from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch'
 import { IDParams } from './common';
 import './Search.css'
@@ -127,7 +128,9 @@ function HitCo(attribute: string) {
 
 function HitCo0(props: any) {
   return (
-    <a href={"/counties/" + props.hit.id}><Highlight attribute="name" hit={props.hit} /></a>
+    <a href={"/counties/" + props.hit.id}>
+      <Highlight attribute="name" hit={props.hit} />
+    </a>
   );
 }
 
@@ -138,7 +141,9 @@ function HitPo(attribute: string) {
 
 function HitPo0(props: any) {
   return (
-    <a href={"/policedepartments/" + props.hit.id}><Highlight attribute="name" hit={props.hit} /></a>
+    <a href={"/policedepartments/" + props.hit.id}>
+      <Highlight attribute="name" hit={props.hit} />
+    </a>
   );
 }
 
@@ -149,7 +154,9 @@ function HitCr(attribute: string) {
 
 function HitCr0(props: any) {
   return (
-    <a href={"/crimes/" + props.hit.id}><Highlight attribute="type" hit={props.hit} /></a>
+    <a href={"/crimes/" + props.hit.id}>
+      <Highlight attribute="type" hit={props.hit} />
+    </a>
   );
 }
 

@@ -12,9 +12,11 @@ class Team extends React.Component {
     daniel: "I am a junior interested in front end development with some"
     + " internship experience in backend development.",
     aly: "I am a junior with internship and project experience in web"
-    +" and mobile app development. I am most interested in full stack development.",
+    +" and mobile app development. I am most interested in full" + 
+    "stack development.",
     ishan: "I'm a junior interested in full stack development. "
-    +"I have experience with web development, database design, and RESTful APIs.",
+    +"I have experience with web development, database design, " +
+    "and RESTful APIs.",
     safin: "I’m a CS major and an aspiring software engineer," 
     +"with interests in web design and data science.",
     shreyas: "I am junior interested in back-end software development,"
@@ -38,7 +40,8 @@ class Team extends React.Component {
   };
 
   componentDidMount() {
-    type PersonStats = { name: string, commits: number, issues: number, tests: number };
+    type PersonStats = { name: string, commits: number,
+      issues: number, tests: number };
     axios.get<PersonStats[]>("/api/gitlabstats").then(response => {
       const info = new Map<string, Info>();
       for (let n of Team.names) {
@@ -62,14 +65,20 @@ class Team extends React.Component {
     return (
       <div>
         <CardDeck>
-          <Person fullName="Daniel Deng" info={this.state.info.get("daniel")!} />
-          <Person fullName="Aly Hirani" info={this.state.info.get("aly")!} />
-          <Person fullName="Ishan Phadke" info={this.state.info.get("ishan")!} />
+          <Person fullName="Daniel Deng"
+            info={this.state.info.get("daniel")!} />
+          <Person fullName="Aly Hirani"
+            info={this.state.info.get("aly")!} />
+          <Person fullName="Ishan Phadke"
+            info={this.state.info.get("ishan")!} />
         </CardDeck>
         <CardDeck>
-          <Person fullName="Safin Kasturi" info={this.state.info.get("safin")!} />
-          <Person fullName="Shreyas Konana" info={this.state.info.get("shreyas")!} />
-          <Person fullName="Anish Yellaturu" info={this.state.info.get("anish")!} />
+          <Person fullName="Safin Kasturi"
+            info={this.state.info.get("safin")!} />
+          <Person fullName="Shreyas Konana"
+            info={this.state.info.get("shreyas")!} />
+          <Person fullName="Anish Yellaturu"
+            info={this.state.info.get("anish")!} />
         </CardDeck>
       </div>
     );
@@ -84,7 +93,8 @@ class Info {
   issues: number;
   tests: number;
 
-  constructor(n: string, b: string, r: string, c: number, i: number, t: number) {
+  constructor(n: string, b: string, r: string, c: number, i: number,
+    t: number) {
     this.name = n
     this.bio = b;
     this.role = r;
