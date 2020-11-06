@@ -2,6 +2,7 @@ import React from 'react'
 import './SplashBanner.css';
 import img from './images/scrolldown.png';
 
+//Content on the main view port of the splash page
 function SplashBanner() {
     return (
         <div className = "banner-container">

@@ -220,6 +220,7 @@ class PoliceDepartments extends React.Component {
         <br />
         <this.Pagination />
         <br />
+        {/* Table of basic model data */}
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -245,6 +246,7 @@ class PoliceDepartments extends React.Component {
   }
 }
 
+//returns the table row with data for each PD
 function PoliceDepartmentRow(pd: PoliceDepartmentData) {
   return (
     <tr key={pd.ori}>

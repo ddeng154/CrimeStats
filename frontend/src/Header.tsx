@@ -16,9 +16,6 @@ class Header extends React.Component {
     console.log(this.state.query)
   }
 
-  onSubmit = (event: React.FormEvent<HTMLInputElement>) => {
-    this.setState({ screen: 'results' })
-  }
   render() {
     return (
         <div>
@@ -34,7 +31,6 @@ class Header extends React.Component {
             <SearchBar 
               query={this.state.query}
               onChange={this.onChange}
-              onSubmit={this.onSubmit}
             />
           </Nav>
         </Navbar>

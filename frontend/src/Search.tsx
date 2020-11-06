@@ -7,13 +7,17 @@ import Table from 'react-bootstrap/Table'
 
 const client = algoliasearch('ICWNC13X5J', '4c22be32a809130f195c1d42981c39d8');
 
+// Search page
 class Search extends React.Component<IDParams> {
   render() {
     return (
       <div className="ais-InstantSearch">
+        {/* Algolia Instant search wrapper */}
         <InstantSearch indexName="dev_CRIMESTATS" searchClient={client}>
           <div className="right-panel">
+            {/* Search box for queries, takes in the prop id */}
             <SearchBox defaultRefinement={this.props.id}/>
+              {/* Searches counties database */}
               <Index indexName="dev_CRIMESTATS">
                 <h2>Counties</h2>        
                 <Table className="table">
@@ -27,6 +31,7 @@ class Search extends React.Component<IDParams> {
                   </thead>
                   <tbody>
                     <tr>
+                      {/* Search matches displayed here */}
                       <td><Hits hitComponent={HitCo0}></Hits></td>
                       <td>{HitCo("state")}</td>
                       <td>{HitCo("median_income")}</td>
@@ -35,6 +40,7 @@ class Search extends React.Component<IDParams> {
                   </tbody>
                 </Table>
               </Index>
+              {/* Searches police department database */}
               <Index indexName="dev_PD">
                 <h2>Police Depts</h2>
                 <Table>
@@ -68,6 +74,7 @@ class Search extends React.Component<IDParams> {
                   </tbody>
                 </Table>
               </Index>
+              {/* Searches crimes database */}
               <Index indexName="dev_CRIMES">
                 <h2>Crimes</h2>
                 <Table>
@@ -112,6 +119,7 @@ class Search extends React.Component<IDParams> {
   }
 }
 
+// Functions that highlights and passes in attribute to find
 function HitCo(attribute: string) {
   const Hit = ({ hit }: any) => <Highlight hit={hit} attribute={attribute} />;
   return <Hits hitComponent={Hit} />
