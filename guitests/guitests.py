@@ -25,7 +25,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "Counties",
             driver.find_element_by_xpath(
-                "//*[@id=\"root\"]/div/div/div/div[2]/h1").text,
+                "/html/body/div/div/div/div/div[2]/h1").text,
         )
     # test that attempts to navigate to the police departments page
     def test2(self):
@@ -36,7 +36,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "Police Departments",
             driver.find_element_by_xpath(
-                "//*[@id=\"root\"]/div/div/div/div[2]/h1").text,
+                "/html/body/div/div/div/div/div[2]/h1").text,
         )
 
 
