@@ -19,6 +19,7 @@ driver.set_window_size(1080, 800)
 class SeleniumTests(unittest.TestCase):
     def test1(self):
         driver.get("http://crimestats.me")
+        driver.implicitly_wait(5)
         counties_element = driver.find_element_by_xpath(
             "/html/body/div/div/div/div/div[1]/nav/div[1]/a[1]"
         )
@@ -32,6 +33,7 @@ class SeleniumTests(unittest.TestCase):
 
     def test2(self):
         driver.get("http://crimestats.me")
+        driver.implicitly_wait(5)
         pd_element = driver.find_element_by_xpath(
             "/html/body/div/div/div/div/div[1]/nav/div[1]/a[2]"
         )
