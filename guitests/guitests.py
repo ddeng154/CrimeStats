@@ -19,38 +19,29 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 driver = webdriver.Chrome(
     executable_path="./chromedriver_linux.exe", chrome_options=chrome_options
 )
-driver.set_window_size(1080, 800)
 
 #selenium testing suite for testing the website gui
 class SeleniumTests(unittest.TestCase):
     #test that attempts to navigate to the counties page
     def test1(self):
         driver.get("http://crimestats.me/counties")
-        #driver.implicitly_wait(10)
-
-        element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.NAME, "Counties"))
-        )
+        driver.implicitly_wait(10)
 
         self.assertEqual(
             "Counties",
             driver.find_element_by_xpath(
-                "/html/body/div/div/div/div/div[2]/h1").text,
+                "//*[@id=\"root\"]/div/div/div/div[2]/h1").text,
         )
     # test that attempts to navigate to the police departments page
     def test2(self):
         driver.get("http://crimestats.me/policedepartments")
 
-        #driver.implicitly_wait(10)
-
-        element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.NAME, "Police Departments"))
-        )
+        driver.implicitly_wait(10)
 
         self.assertEqual(
             "Police Departments",
             driver.find_element_by_xpath(
-                "/html/body/div/div/div/div/div[2]/h1").text,
+                "//*[@id=\"root\"]/div/div/div/div[2]/h1").text,
         )
 
 
