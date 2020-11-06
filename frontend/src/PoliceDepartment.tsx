@@ -9,6 +9,7 @@ import Loading from './Loading'
 import { BarChart, CartesianGrid, Bar, YAxis, XAxis, Tooltip } from 'recharts';
 import { Col, Container } from 'react-bootstrap';
 
+//Component for each police dept model page
 type PoliceDepartmentData = {
   ori: string;
   name: string;
@@ -34,14 +35,17 @@ class PoliceDepartment extends React.Component<IDParams> {
     isLoading: true
   };
 
+  //checks if this PD has associated counties
   hasCounties() {
     return this.state.policeDepartment?.counties.length !== 0;
   }
 
+  //checks if this PD has associated crimes
   hasCrimes() {
     return this.state.policeDepartment?.crimes.length !== 0;
   }
 
+  //returns the total number of PD employees
   getPoliceSize() {
     if (this.state.policeDepartment) {
       return this.state.policeDepartment.num_male_officers + this.state.policeDepartment.num_female_officers 
@@ -51,6 +55,7 @@ class PoliceDepartment extends React.Component<IDParams> {
     }
   }
 
+  //generates a list of objects to be used as data in the bar graph
   getCrimes() {
     var ans:{name: string, value: number}[] = [];
 
@@ -79,6 +84,7 @@ class PoliceDepartment extends React.Component<IDParams> {
       return (
         <div>
           <h1>{this.state.policeDepartment.name}</h1>
+          {/* table with basic model data */}
           <table className = "table">
             <tbody>
               <tr>
@@ -114,26 +120,31 @@ class PoliceDepartment extends React.Component<IDParams> {
                 <td> {this.state.policeDepartment.density_per_1000} </td>
               </tr>
               {
+                // only show associated counties if they exist
                 this.hasCounties() &&
                 <tr>
                   <th scope = "row">Counties</th>
                   <td> 
-                    <ul>{ this.state.policeDepartment.counties.map(c => <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>) }</ul> 
+                    <ul>{ this.state.policeDepartment.counties.map(c => 
+                    <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>) }</ul> 
                   </td>
                 </tr>
               }
               {
+                // only show associated crimes if they exist
                 this.hasCrimes() &&
                 <tr>
                   <th scope = "row">Crimes</th>
                   <td> 
-                    <ul>{ this.state.policeDepartment.crimes.map(c => <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.type}</Nav.Link>) }</ul> 
+                    <ul>{ this.state.policeDepartment.crimes.map(c => 
+                    <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.type}</Nav.Link>) }</ul> 
                   </td>
                 </tr>
               }
             </tbody>
           </table>
 
+          {/* graphics for breakdown of PD employees as well as associated crimes */}
           <Container fluid>
             <div className="d-flex justify-content-between">
               <Col>

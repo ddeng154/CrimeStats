@@ -84,7 +84,8 @@ class Crime extends React.Component<IDParams> {
             <tbody>
               <tr>
                 <th scope = "row">Police Dept.</th>
-                <td> <a href={"/policedepartments/" + this.state.crime.ori}>{this.state.crime.pd_name}</a> </td>
+                <td> <a href={"/policedepartments/" + this.state.crime.ori}>
+                  {this.state.crime.pd_name}</a> </td>
               </tr>
               <tr>
                 <th scope = "row">No. of White Offenders</th>

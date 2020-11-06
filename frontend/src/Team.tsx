@@ -2,17 +2,25 @@ import React from 'react';
 import axios from 'axios';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Card from 'react-bootstrap/Card';
+import Loading from './Loading'
 
+//Component for data used in about page
 class Team extends React.Component {
   static names = ["daniel", "aly", "ishan", "safin", "shreyas", "anish"];
 
   static bios: any = {
-    daniel: "I am a junior interested in front end development with some internship experience in backend development.",
-    aly: "I am a junior with internship and project experience in web and mobile app development. I am most interested in full stack development.",
-    ishan: "I'm a junior interested in full stack development. I have experience with web development, database design, and RESTful APIs.",
-    safin: "I’m a third year CS major and an aspiring software engineer, with interests in web design and data science.",
-    shreyas: "I am junior interested in back-end software development, with experience in Data Engineering and ML.",
-    anish: "I am a junior with internship experience in data science and machine learning, and personal experience with web design."
+    daniel: "I am a junior interested in front end development with some"
+    + " internship experience in backend development.",
+    aly: "I am a junior with internship and project experience in web"
+    +" and mobile app development. I am most interested in full stack development.",
+    ishan: "I'm a junior interested in full stack development. "
+    +"I have experience with web development, database design, and RESTful APIs.",
+    safin: "I’m a CS major and an aspiring software engineer," 
+    +"with interests in web design and data science.",
+    shreyas: "I am junior interested in back-end software development,"
+    +" with experience in Data Engineering and ML.",
+    anish: "I am a junior with internship experience in data"
+    +" science and machine learning, and personal experience with web design."
   };
 
   static roles: any = {
@@ -48,7 +56,7 @@ class Team extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div>Loading...</div>;
+      return <Loading/>;
     }
 
     return (
