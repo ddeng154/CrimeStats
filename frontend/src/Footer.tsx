@@ -13,7 +13,9 @@ function Footer() {
                         <h2>Explore</h2>
                         <Link to = "/">Home</Link>
                         <Link to = "/counties">Counties</Link>
-                        <Link to = "/policedepartments">Police Departments</Link>
+                        <Link to = "/policedepartments">
+                            Police Departments
+                        </Link>
                         <Link to = "/crimes">Crimes</Link>
                         <Link to = "/about">About</Link>
                     </div>

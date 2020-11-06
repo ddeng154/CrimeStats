@@ -48,7 +48,8 @@ class PoliceDepartment extends React.Component<IDParams> {
   //returns the total number of PD employees
   getPoliceSize() {
     if (this.state.policeDepartment) {
-      return this.state.policeDepartment.num_male_officers + this.state.policeDepartment.num_female_officers 
+      return this.state.policeDepartment.num_male_officers
+      + this.state.policeDepartment.num_female_officers 
       + this.state.policeDepartment.num_civilians;
     } else {
       return 0;
@@ -70,7 +71,8 @@ class PoliceDepartment extends React.Component<IDParams> {
   }
 
   componentDidMount() {
-    axios.get<PoliceDepartmentData>("/api/police_departments/" + this.props.id).then(response => {
+    axios.get<PoliceDepartmentData>("/api/police_departments/"
+      + this.props.id).then(response => {
       this.setState({ policeDepartment: response.data });
     }).catch(_ => {}).finally(() => {
       this.setState({ isLoading: false });
@@ -126,7 +128,10 @@ class PoliceDepartment extends React.Component<IDParams> {
                   <th scope = "row">Counties</th>
                   <td> 
                     <ul>{ this.state.policeDepartment.counties.map(c => 
-                    <Nav.Link key={c.id} href={"/counties/" + c.id}>{c.name}</Nav.Link>) }</ul> 
+                      <Nav.Link key={c.id} href={"/counties/" + c.id}>
+                        {c.name}
+                      </Nav.Link>) }
+                    </ul> 
                   </td>
                 </tr>
               }
@@ -137,23 +142,28 @@ class PoliceDepartment extends React.Component<IDParams> {
                   <th scope = "row">Crimes</th>
                   <td> 
                     <ul>{ this.state.policeDepartment.crimes.map(c => 
-                    <Nav.Link key={c.id} href={"/crimes/" + c.id}>{c.type}</Nav.Link>) }</ul> 
+                      <Nav.Link key={c.id} href={"/crimes/" + c.id}>
+                        {c.type}
+                      </Nav.Link>) }
+                    </ul> 
                   </td>
                 </tr>
               }
             </tbody>
           </table>
 
-          {/* graphics for breakdown of PD employees as well as associated crimes */}
+          {/* graphics for breakdown of PD as well as associated crimes */}
           <Container fluid>
             <div className="d-flex justify-content-between">
               <Col>
                 <h4>Breakdown of Police Force:</h4>
-                <label style={{color:"#E38627", fontSize:"28px"}}>Male Officers: 
+                <label style={{color:"#E38627", fontSize:"28px"}}>
+                  Male Officers: 
                   {(this.state.policeDepartment.num_male_officers 
                   / this.getPoliceSize() * 100).toFixed(2)}%</label>
                 <br />
-                <label style={{color:"#C13C37", fontSize:"28px"}}>Female Officers: 
+                <label style={{color:"#C13C37", fontSize:"28px"}}>
+                  Female Officers: 
                   {(this.state.policeDepartment.num_female_officers 
                   / this.getPoliceSize() * 100).toFixed(2)}%</label>
                 <br />
