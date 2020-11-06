@@ -8,6 +8,7 @@ import Table from 'react-bootstrap/Table';
 import { APIResponse } from './common';
 import Loading from './Loading'
 
+//models component for Police departments
 type PoliceDepartmentData = {
   ori: string;
   name: string;
@@ -21,6 +22,7 @@ type PoliceDepartmentData = {
   density_per_1000: number;
 };
 
+//lists of values to filter by
 const FilterVals = new Map([
   ["div_name", [
     'New England', 'East North Central', 'Mountain', 'U.S. Territories',
