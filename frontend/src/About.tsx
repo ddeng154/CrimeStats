@@ -49,8 +49,8 @@ function About() {
           <h5>React-Bootstrap</h5>
           <p>Bootstrap was used to make a starting template 
             for our pages.</p>
-          <p>Eventually, as we add more functionality and features
-          ,we will expand on Bootstrap's usage in designing our front end.</p>
+          <p>Eventually, as we add more functionality and features, 
+          we will expand on Bootstrap's usage in designing our front end.</p>
           <h5>React-Router</h5>
           <p>We used this tool in order to add new pages 
             and links between each page.</p>

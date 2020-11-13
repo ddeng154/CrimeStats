@@ -3,20 +3,18 @@ import requests
 
 # Retrieves and formats user stats from gitlab
 class Stats(Resource):
-    headers = {"private_token": "1b13PazxJ5_DELouxJ3-"}
-
     commitsURL = (
-        "https://gitlab.com/api/v4/projects/21298954/repository/commits?per_page=100"
+        "https://gitlab.com/api/v4/projects/21298954/repository/commits?per_page=-1"
     )
     issuesURL = "https://gitlab.com/api/v4/projects/21298954/issues?per_page=100"
 
     # Retrieves commits, issues, and name
     # returns formatted commits, issues, and names
     def get(self):
-        commits = requests.get(self.commitsURL, headers=self.headers).json()
-        issues = requests.get(self.issuesURL, headers=self.headers).json()
+        commits = requests.get(self.commitsURL).json()
+        issues = requests.get(self.issuesURL).json()
 
-        stats = {"total": {"commits": 0, "issues": 0, "tests": 7}}
+        stats = {"total": {"commits": 0, "issues": 0, "tests": 11}}
 
         shortenName = lambda name: name.split()[0].lower()
 
@@ -25,7 +23,7 @@ class Stats(Resource):
             if name in stats:
                 stats[name]["commits"] += 1
             else:
-                stats[name] = {"commits": 1, "issues": 0, "tests": 7}
+                stats[name] = {"commits": 1, "issues": 0, "tests": 11}
             stats["total"]["commits"] += 1
 
         for i in issues:
@@ -35,7 +33,11 @@ class Stats(Resource):
                     if n in stats:
                         stats[n]["issues"] += 1
                     else:
-                        stats[n] = {"commits": 0, "issues": 1, "tests": 7}
+                        stats[n] = {"commits": 0, "issues": 1, "tests": 11}
+                if not names:
+                    for s in stats:
+                        if s != "total":
+                            stats[s]["issues"] += 1
                 stats["total"]["issues"] += 1
 
         return [{"name": n, **stats[n]} for n in stats]

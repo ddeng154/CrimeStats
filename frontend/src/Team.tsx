@@ -6,7 +6,15 @@ import Loading from './Loading'
 
 //Component for data used in about page
 class Team extends React.Component {
-  static names = ["daniel", "aly", "ishan", "safin", "shreyas", "anish"];
+  static names = [
+    "daniel",
+    "aly",
+    "ishan",
+    "safin",
+    "shreyas",
+    "anish",
+    "total"
+  ];
 
   static bios: any = {
     daniel: "I am a junior interested in front end development with some"
@@ -80,6 +88,10 @@ class Team extends React.Component {
           <Person fullName="Anish Yellaturu"
             info={this.state.info.get("anish")!} />
         </CardDeck>
+        <h2>Total Stats</h2>
+        <p>Commits: {this.state.info.get("total")!.commits}</p>
+        <p>Issues: {this.state.info.get("total")!.issues}</p>
+        <p>Unit Tests: {this.state.info.get("total")!.tests}</p>
       </div>
     );
   }
