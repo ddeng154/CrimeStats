@@ -27,7 +27,7 @@ class Team extends React.Component {
     "and RESTful APIs.",
     safin: "I’m a CS major and an aspiring software engineer," 
     +"with interests in web design and data science.",
-    shreyas: "I am junior interested in back-end software development,"
+    shreyas: "I am a junior interested in back-end software development,"
     +" with experience in Data Engineering and ML.",
     anish: "I am a junior with internship experience in data"
     +" science and machine learning, and personal experience with web design."
@@ -40,6 +40,15 @@ class Team extends React.Component {
     safin: "Frontend Developer",
     shreyas: "Full Stack Developer",
     anish: "Technical Report and Frontend Developer"
+  };
+
+  static linkedins: any = {
+    daniel: "https://www.linkedin.com/in/ddeng154/",
+    aly: "https://www.linkedin.com/in/aly-hirani/",
+    ishan: "https://www.linkedin.com/in/ishan-phadke/",
+    safin: "https://www.linkedin.com/in/safin-kasturi/",
+    shreyas: "https://www.linkedin.com/in/shreyas-konana-39b926157/",
+    anish: "https://www.linkedin.com/in/anish-yellaturu-5955a3187/"
   };
 
   state = {
@@ -55,11 +64,12 @@ class Team extends React.Component {
       for (let n of Team.names) {
         const stats = response.data.find(s => s.name === n);
         const b: string = Team.bios[n];
+        const l: string = Team.linkedins[n];
         const r: string = Team.roles[n];
         const c = stats ? stats.commits : 0;
         const i = stats ? stats.issues : 0;
         const t = stats ? stats.tests : 0;
-        info.set(n, new Info(n, b, r, c, i, t));
+        info.set(n, new Info(n, b, l, r, c, i, t));
       }
       this.setState({ info, isLoading: false });
     });
@@ -100,15 +110,17 @@ class Team extends React.Component {
 class Info {
   name: string
   bio: string;
+  linkedin: string;
   role: string;
   commits: number;
   issues: number;
   tests: number;
 
-  constructor(n: string, b: string, r: string, c: number, i: number,
+  constructor(n: string, b: string, l: string, r: string, c: number, i: number,
     t: number) {
     this.name = n
     this.bio = b;
+    this.linkedin = l;
     this.role = r;
     this.commits = c;
     this.issues = i;
@@ -125,9 +137,9 @@ function Person({ fullName, info }: PersonProps) {
   const image = require('./images/' + info.name + '.jpg');
   return (
     <Card>
-      <Card.Img variant="top" src={image} />
+      <Card.Img variant="top" src={image}/>
       <Card.Body>
-        <Card.Title>{fullName}</Card.Title>
+        <Card.Title><a href={info.linkedin}>{fullName}</a></Card.Title>
         <Card.Text>
           {info.bio}
           <br />
