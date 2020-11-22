@@ -52,3 +52,11 @@ td, th {
   text-align: left;
 }
 
+td.longer {
+  width: 7%;
+}
+
+td.shorter {
+  width: 15%;
+}
+

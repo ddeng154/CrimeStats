@@ -21,7 +21,7 @@ class Search extends React.Component<IDParams> {
               {/* Searches counties database */}
               <Index indexName="dev_CRIMESTATS">
                 <h2>Counties</h2>        
-                <Table className="table">
+                <Table className="table" >
                   <thead>
                     <tr>
                       <th>County</th>
@@ -44,7 +44,7 @@ class Search extends React.Component<IDParams> {
               {/* Searches police department database */}
               <Index indexName="dev_PD">
                 <h2>Police Depts</h2>
-                <Table>
+                <Table className="table">
                   <thead>
                     <tr>
                       <th>ORI</th>
@@ -64,9 +64,9 @@ class Search extends React.Component<IDParams> {
                       <td>{HitPo("ori")}</td>
                       <td><Hits hitComponent={HitPo0}></Hits></td>
                       <td>{HitPo("pop")}</td>
-                      <td>{HitPo("num_male_officers")}</td>
-                      <td>{HitPo("num_female_officers")}</td>
-                      <td>{HitPo("num_civilians")}</td>
+                      <td className="longer">{HitPo("num_male_officers")}</td>
+                      <td className="longer">{HitPo("num_female_officers")}</td>
+                      <td className="longer">{HitPo("num_civilians")}</td>
                       <td>{HitPo("dept_type")}</td>
                       <td>{HitPo("div_name")}</td>
                       <td>{HitPo("reg_name")}</td>
@@ -78,7 +78,7 @@ class Search extends React.Component<IDParams> {
               {/* Searches crimes database */}
               <Index indexName="dev_CRIMES">
                 <h2>Crimes</h2>
-                <Table>
+                <Table className="table">
                   <thead>
                     <tr>
                       <th>ORI</th>
@@ -98,7 +98,7 @@ class Search extends React.Component<IDParams> {
                   <tbody>
                     <tr>
                       <td>{HitCr("ori")}</td>
-                      <td><Hits hitComponent={HitCr0}></Hits></td>
+                      <td className="shorter"><Hits hitComponent={HitCr0}></Hits></td>
                       <td>{HitCr("o_white")}</td>
                       <td>{HitCr("o_black")}</td>
                       <td>{HitCr("o_pacific")}</td>
@@ -112,6 +112,7 @@ class Search extends React.Component<IDParams> {
                     </tr>
                   </tbody>
                 </Table>
+                
               </Index>
           </div>
         </InstantSearch>
