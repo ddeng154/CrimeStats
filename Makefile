@@ -4,10 +4,6 @@ format:
 	black backend/test.py
 	black guitests/guitests.py
 	
-testpostman:
-	newman --version
-	newman run postman.json
-
 testbackend:
 	cd backend && pip install -r requirements.txt && python3 test.py
 
@@ -15,16 +11,17 @@ testfrontend:
 	cd frontend && yarn install && yarn run test
 
 testselenium:
-	pip install selenium
-	pip install webdriver_manager
-	apt-get update -q -y
-	apt-get --yes install libnss3
-	apt-get --yes install libgconf-2-4
-	apt-get install libx11-xcb1
-	curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-	apt-get update -q -y
-	apt-get install -y google-chrome-stable
-	python3 guitests/guitests.py
+	cd guitests && pip install selenium
+	cd guitests && pip install webdriver_manager
+	cd guitests && apt-get update -q -y
+	cd guitests && apt-get --yes install libnss3
+	cd guitests && apt-get --yes install libgconf-2-4
+	cd guitests && apt-get install libx11-xcb1
+	cd guitests && curl -sS -L \
+		https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+	cd guitests && apt-get update -q -y
+	cd guitests && apt-get install -y google-chrome-stable
+	cd guitests && python3 guitests.py
 
 build:
 	sudo docker build . -t "hiranialy/crimestats"
