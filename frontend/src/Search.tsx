@@ -142,7 +142,7 @@ function HitPo(attribute: string) {
 
 function HitPo0(props: any) {
   return (
-    <a href={"/policedepartments/" + props.hit.id}>
+    <a href={"/policedepartments/" + props.hit.ori}>
       <Highlight attribute="name" hit={props.hit} />
     </a>
   );
