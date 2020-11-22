@@ -6,7 +6,7 @@ import { IDParams } from './common';
 import './Search.css'
 import Table from 'react-bootstrap/Table'
 
-const client = algoliasearch('ICWNC13X5J', '4c22be32a809130f195c1d42981c39d8');
+const client = algoliasearch('LSQOXVD3TV', 'dfd1f2e4060fa24f93d82149ca0920f0');
 
 // Search page
 class Search extends React.Component<IDParams> {
@@ -67,10 +67,10 @@ class Search extends React.Component<IDParams> {
                       <td className="longer">{HitPo("num_male_officers")}</td>
                       <td className="longer">{HitPo("num_female_officers")}</td>
                       <td className="longer">{HitPo("num_civilians")}</td>
-                      <td>{HitPo("dept_type")}</td>
+                      <td className="longer">{HitPo("dept_type")}</td>
                       <td>{HitPo("div_name")}</td>
                       <td>{HitPo("reg_name")}</td>
-                      <td>{HitPo("density_per_1000")}</td>
+                      <td className="longer">{HitPo("density_per_1000")}</td>
                     </tr>
                   </tbody>
                 </Table>

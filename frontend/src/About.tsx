@@ -57,6 +57,7 @@ function About() {
         </div>
         {/* links to the source code of the website and the API. */}
         <div>
+          <img src={require("./images/gitlab-image.jpeg")} />
           <h2>Links</h2>
           <h6><a href="https://gitlab.com/alyhirani/crimestats">
             GitLab Repo</a></h6>

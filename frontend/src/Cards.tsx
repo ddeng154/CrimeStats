@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import img1 from './images/county-image.jpg';
 import img2 from './images/police-image.jpg';
 import img3 from './images/crime-image.jpg';
+import './Cards.css';
 //used to display the cards that are links to counties/police departments
 //or crimes, on the splash page
 function Cards (){
@@ -16,7 +17,9 @@ return (
                 {/* card for counties */}
                 <Link to = "/counties">
                     <Card>
-                        <Card.Img variant="top" src={img1} />
+                        <div className="image">
+                            <Card.Img variant="top" src={img1} />
+                        </div> 
                         <Card.Body>
                             <Card.Title>Counties</Card.Title>
                                 <Card.Text>
@@ -31,7 +34,9 @@ return (
                 {/* card for police departments */}
                 <Link to = "/policedepartments">
                     <Card>
-                        <Card.Img variant="top" src={img2} />
+                    <div className="image">
+                            <Card.Img variant="top" src={img2} />
+                        </div> 
                         <Card.Body>
                             <Card.Title>Police Departments</Card.Title>
                                 <Card.Text>
@@ -46,7 +51,9 @@ return (
                 {/* card for crimes */}
                 <Link to = "/crimes">
                     <Card>
-                        <Card.Img variant="top" src={img3} />
+                        <div className="image">
+                            <Card.Img variant="top" src={img3} />
+                        </div> 
                         <Card.Body>
                             <Card.Title>Crimes</Card.Title>
                                 <Card.Text>
