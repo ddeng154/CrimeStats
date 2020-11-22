@@ -9,14 +9,10 @@ testpostman:
 	newman run postman.json
 
 testbackend:
-	pip install -r backend/requirements.txt
-	cd backend
-	python3 test.py
+	cd backend && pip install -r backend/requirements.txt && python3 test.py
 
 testfrontend:
-	cd frontend
-	yarn install
-	yarn run test
+	cd frontend && yarn install && yarn run test
 
 testselenium:
 	pip install selenium
@@ -28,8 +24,7 @@ testselenium:
 	curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
 	apt-get update -q -y
 	apt-get install -y google-chrome-stable
-	cd guitests
-	python3 guitests.py
+	cd guitests && python3 guitests.py
 
 build:
 	sudo docker build . -t "hiranialy/crimestats"
