@@ -214,6 +214,10 @@ class PoliceDepartments extends React.Component {
     return (
       <div className="text-center">
         <h1>Police Departments</h1>
+        <div>
+          <Button href="/comparepolicedepartments">Compare</Button>
+        </div>
+        <br />
         <this.Sorting />
         <br />
         <this.Filters />

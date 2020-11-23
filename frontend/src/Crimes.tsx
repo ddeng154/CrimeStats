@@ -211,6 +211,10 @@ class Crimes extends React.Component {
       // title, sort/filter options, and page changing
       <div className="text-center">
         <h1>Crimes</h1>
+        <div>
+          <Button href="/comparecrimes">Compare</Button>
+        </div>
+        <br />
         <this.Sorting />
         <br />
         <this.Filters />

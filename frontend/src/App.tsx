@@ -15,6 +15,9 @@ import About from './About';
 import NotFound from './NotFound';
 import Search from './Search'
 import './App.css';
+import CompareCrimes from './CompareCrimes';
+import ComparePoliceDepartments from './ComparePoliceDepartments';
+import CompareCounties from './CompareCounties';
 //overall container for the webpage
 function App() {
   return (
@@ -44,6 +47,9 @@ function App() {
             <Route path="/policedepartments" 
             exact component = {PoliceDepartments} />
             <Route path="/crimes" exact component = {Crimes} />
+            <Route path="/comparecrimes" exact component = {CompareCrimes} />
+            <Route path="/comparepolicedepartments" exact component = {ComparePoliceDepartments} />
+            <Route path="/comparecounties" exact component = {CompareCounties} />
             <Route path="/about" exact component = {About} />
             <Route path="/" exact component = {Splash} />
             <Route path="/404" exact component={NotFound} />

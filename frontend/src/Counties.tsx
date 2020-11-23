@@ -218,6 +218,10 @@ class Counties extends React.Component {
       // title, sort/filter options, and page changing
       <div className="text-center">
         <h1>Counties</h1>
+        <div>
+          <Button href="/comparecounties">Compare</Button>
+        </div>
+        <br />
         <this.Sorting />
         <br />
         <this.Filters />
