@@ -4,6 +4,9 @@ import Team from "./Team";
 function About() {
   const gitlab_image = require("./images/gitlab-logo.png");
   const postman_image = require("./images/postman.jpg");
+  const google_image = require("./images/googlemaps_logo.jpg");
+  const fbi_image = require("./images/fbi_logo.png");
+  const census_image = require("./images/census_logo.png");
   return (
     <div className="text-center">
       <h1>About</h1>
@@ -34,23 +37,24 @@ function About() {
         <h2>Data Sources</h2>
         <h6>
           <a href="https://crime-data-explorer.fr.cloud.gov/api">
-            FBI Crime Data
+          <img src={fbi_image} alt="Error" width="100" height="100" />
+            {" "}
           </a>
         </h6>
         <h6>
           <a
             href="https://www.census.gov/data/developers
-          /data-sets/acs-1year.html"
-          >
-            United States Census Data
+          /data-sets/acs-1year.html">
+            <img src={census_image} alt="Error" width="100" height="100" />
+            {" "}
           </a>
         </h6>
         <h6>
           <a
             href="https://developers.google.com/maps/
-          premium/previous-licenses/image"
-          >
-            Google Maps API
+          premium/previous-licenses/image">
+            <img src={google_image} alt="Error" width="100" height="100" />
+            {" "}
           </a>
         </h6>
       </div>

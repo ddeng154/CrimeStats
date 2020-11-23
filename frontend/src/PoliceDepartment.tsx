@@ -35,6 +35,20 @@ class PoliceDepartment extends React.Component<IDParams> {
     isLoading: true,
   };
 
+  //checks if this PD has male officers
+  hasMales() {
+    return this.state.policeDepartment?.num_male_officers !== 0;
+  }
+
+  //checks if this PD has female officers
+  hasFemales() {
+    return this.state.policeDepartment?.num_female_officers !== 0;
+  }
+
+  //checks if this PD has civilians
+  hasCivilians() {
+    return this.state.policeDepartment?.num_civilians !== 0;
+  }
   //checks if this PD has associated counties
   hasCounties() {
     return this.state.policeDepartment?.counties.length !== 0;
@@ -167,35 +181,44 @@ class PoliceDepartment extends React.Component<IDParams> {
             <div className="d-flex justify-content-between">
               <Col>
                 <h4>Breakdown of Police Force:</h4>
-                <label style={{ color: "#E38627", fontSize: "28px" }}>
-                  Male Officers:
-                  {(
-                    (this.state.policeDepartment.num_male_officers /
-                      this.getPoliceSize()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasMales() &&
+                  <label style={{ color: "#E38627", fontSize: "28px" }}>
+                    Male Officers:
+                    {(
+                      (this.state.policeDepartment.num_male_officers /
+                        this.getPoliceSize()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#C13C37", fontSize: "28px" }}>
-                  Female Officers:
-                  {(
-                    (this.state.policeDepartment.num_female_officers /
-                      this.getPoliceSize()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasFemales() &&
+                  <label style={{ color: "#C13C37", fontSize: "28px" }}>
+                    Female Officers:
+                    {(
+                      (this.state.policeDepartment.num_female_officers /
+                        this.getPoliceSize()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#6A2135", fontSize: "28px" }}>
-                  Civilians:
-                  {(
-                    (this.state.policeDepartment.num_civilians /
-                      this.getPoliceSize()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasCivilians() &&
+                  <label style={{ color: "#6A2135", fontSize: "28px" }}>
+                    Civilians:
+                    {(
+                      (this.state.policeDepartment.num_civilians /
+                        this.getPoliceSize()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
               </Col>
               <Col>
                 <PieChart

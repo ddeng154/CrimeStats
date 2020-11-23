@@ -37,6 +37,51 @@ class Crime extends React.Component<IDParams> {
   state: CrimeState = {
     isLoading: true,
   };
+
+  //methods to return whether there is a non-zero
+  //quantity of offenders of each group
+  hasOBlack() {
+    return this.state.crime?.o_black !== 0;
+  }
+
+  hasOWhite() {
+    return this.state.crime?.o_white !== 0;
+  }
+
+  hasOPacific() {
+    return this.state.crime?.o_pacific !== 0;
+  }
+
+  hasONative() {
+    return this.state.crime?.o_native !== 0;
+  }
+
+  hasOAsian() {
+    return this.state.crime?.o_asian !== 0;
+  }
+
+  //methods to return whether there is a non-zero
+  //quantity of victims of each group
+  hasVBlack() {
+    return this.state.crime?.v_black !== 0;
+  }
+
+  hasVWhite() {
+    return this.state.crime?.v_white !== 0;
+  }
+
+  hasVPacific() {
+    return this.state.crime?.v_pacific !== 0;
+  }
+
+  hasVNative() {
+    return this.state.crime?.v_native !== 0;
+  }
+
+  hasVAsian() {
+    return this.state.crime?.v_asian !== 0;
+  }
+
   //does it have counties associated?
   hasCounties() {
     return this.state.crime?.counties.length !== 0;
@@ -103,6 +148,7 @@ class Crime extends React.Component<IDParams> {
                   </a>{" "}
                 </td>
               </tr>
+              {/* {headerCols(this.state.crime)} */}
               <tr>
                 <th scope="row">No. of White Offenders</th>
                 <td> {this.state.crime.o_white} </td>
@@ -142,7 +188,7 @@ class Crime extends React.Component<IDParams> {
               <tr>
                 <th scope="row">No. of Asian Victims</th>
                 <td> {this.state.crime.v_asian} </td>
-              </tr>
+              </tr>*/
               {/* if crime has counties involved, show them */}
               {this.hasCounties() && (
                 <tr>
@@ -165,50 +211,65 @@ class Crime extends React.Component<IDParams> {
               <Col>
                 {/* display pie chart of demographics of offenders */}
                 <h4>Racial Breakdown of Offenders:</h4>
-                <label style={{ color: "#E38627", fontSize: "28px" }}>
-                  Black:
-                  {(
-                    (this.state.crime.o_black / this.getTotalOffenders()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasOBlack() && 
+                  <label style={{ color: "#E38627", fontSize: "28px" }}>
+                    Black:
+                    {(
+                      (this.state.crime.o_black / this.getTotalOffenders()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#C13C37", fontSize: "28px" }}>
-                  White:
-                  {(
-                    (this.state.crime.o_white / this.getTotalOffenders()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasOWhite() &&
+                  <label style={{ color: "#C13C37", fontSize: "28px" }}>
+                    White:
+                    {(
+                      (this.state.crime.o_white / this.getTotalOffenders()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#6A2135", fontSize: "28px" }}>
-                  Pacific:
-                  {(
-                    (this.state.crime.o_pacific / this.getTotalOffenders()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasOPacific() &&
+                  <label style={{ color: "#6A2135", fontSize: "28px" }}>
+                    Pacific:
+                    {(
+                      (this.state.crime.o_pacific / this.getTotalOffenders()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#2757E3", fontSize: "28px" }}>
-                  Native:
-                  {(
-                    (this.state.crime.o_native / this.getTotalOffenders()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasONative() &&
+                  <label style={{ color: "#2757E3", fontSize: "28px" }}>
+                    Native:
+                    {(
+                      (this.state.crime.o_native / this.getTotalOffenders()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#E327B7", fontSize: "28px" }}>
-                  Asian:
-                  {(
-                    (this.state.crime.o_asian / this.getTotalOffenders()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasOAsian() &&
+                  <label style={{ color: "#E327B7", fontSize: "28px" }}>
+                    Asian:
+                    {(
+                      (this.state.crime.o_asian / this.getTotalOffenders()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
               </Col>
               <Col>
                 <PieChart
@@ -247,50 +308,65 @@ class Crime extends React.Component<IDParams> {
               <Col>
                 {/* display pie chart of demographics of victims */}
                 <h4>Racial Breakdown of Victims:</h4>
-                <label style={{ color: "#E38627", fontSize: "28px" }}>
-                  Black:
-                  {(
-                    (this.state.crime.v_black / this.getTotalVictims()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasVBlack() &&
+                  <label style={{ color: "#E38627", fontSize: "28px" }}>
+                    Black:
+                    {(
+                      (this.state.crime.v_black / this.getTotalVictims()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#C13C37", fontSize: "28px" }}>
-                  White:
-                  {(
-                    (this.state.crime.v_white / this.getTotalVictims()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasVWhite() &&
+                  <label style={{ color: "#C13C37", fontSize: "28px" }}>
+                    White:
+                    {(
+                      (this.state.crime.v_white / this.getTotalVictims()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#6A2135", fontSize: "28px" }}>
-                  Pacific:
-                  {(
-                    (this.state.crime.v_pacific / this.getTotalVictims()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasVPacific() &&
+                  <label style={{ color: "#6A2135", fontSize: "28px" }}>
+                    Pacific:
+                    {(
+                      (this.state.crime.v_pacific / this.getTotalVictims()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#2757E3", fontSize: "28px" }}>
-                  Native:
-                  {(
-                    (this.state.crime.v_native / this.getTotalVictims()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasVNative() &&
+                  <label style={{ color: "#2757E3", fontSize: "28px" }}>
+                    Native:
+                    {(
+                      (this.state.crime.v_native / this.getTotalVictims()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
                 <br />
-                <label style={{ color: "#E327B7", fontSize: "28px" }}>
-                  Asian:
-                  {(
-                    (this.state.crime.v_asian / this.getTotalVictims()) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </label>
+                {
+                  this.hasVAsian() &&
+                  <label style={{ color: "#E327B7", fontSize: "28px" }}>
+                    Asian:
+                    {(
+                      (this.state.crime.v_asian / this.getTotalVictims()) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </label>
+                }
               </Col>
             </div>
           </Container>
@@ -338,5 +414,27 @@ class Crime extends React.Component<IDParams> {
     }
   }
 }
+
+
+// const crimeFields = ['No. of White Offenders', 'No. of Black Offenders', 'No. of Pacific Offenders', 'No. of Native Offenders', 
+//   'No. of Asian Offenders', 'No. of White Victims', 'No. of Black Victims', 'No. of Pacific Victims', 'No. of Native Victims', 
+//   'No. of Asian Victims']
+// const crimeData = ['o_white', 'o_black', 'o_pacific', 'o_native', 'o_asian', 'v_white', 'v_black', 'v_pacific', 'v_native', 'v_asian']
+// function headerCols(crime: CrimeData) {
+//   var data = new Array(crimeData.length)
+//   var i: Number = 0
+//   var num: String
+//   for (num in crimeData)
+//   {
+//     data[i] = crime[num]
+//     i++
+//   }
+//   return crimeFields.map((crimeField, index) => (
+//     <tr>
+//       <th scope="row">{crimeField}</th>
+//       <td> {data[index]} </td>
+//     </tr>
+//   ));
+// }
 
 export default Crime;

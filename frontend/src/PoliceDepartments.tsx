@@ -245,16 +245,7 @@ class PoliceDepartments extends React.Component {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>ORI</th>
-              <th>Name</th>
-              <th>Population</th>
-              <th>No. Male Officers</th>
-              <th>No. Female Officers</th>
-              <th>No. Civilians</th>
-              <th>Department Type</th>
-              <th>Division Name</th>
-              <th>Region Name</th>
-              <th>Density per 1000</th>
+              {headerCols()}
             </tr>
           </thead>
           <tbody>{this.state.elements.map(PoliceDepartmentRow)}</tbody>
@@ -265,8 +256,27 @@ class PoliceDepartments extends React.Component {
   }
 }
 
+const policeFields = ['ORI', 'Name', 'Population', 'No. Male Officers', 
+  'No. Female Officers', 'No. Civilians', 'Department Type', 'Division Name', 'Region Name', 'Density per 1000']
+function headerCols() {
+  return policeFields.map(policeField => (
+  <th>
+    {policeField}
+  </th>
+  ));
+}
+
 //returns the table row with data for each PD
 function PoliceDepartmentRow(pd: PoliceDepartmentData) {
+  const policeDatas = [pd.pop, pd.num_male_officers, pd.num_female_officers, pd.num_civilians, 
+    pd.dept_type, pd.div_name, pd.reg_name, pd.density_per_1000]
+  function TableVals() {
+    return policeDatas.map(policeData => (
+      <td>
+        {policeData}
+      </td>
+      ));
+}
   return (
     <tr key={pd.ori}>
       <td>{pd.ori}</td>
@@ -275,16 +285,11 @@ function PoliceDepartmentRow(pd: PoliceDepartmentData) {
           {pd.name}
         </Nav.Link>
       </td>
-      <td>{pd.pop}</td>
-      <td>{pd.num_male_officers}</td>
-      <td>{pd.num_female_officers}</td>
-      <td>{pd.num_civilians}</td>
-      <td>{pd.dept_type}</td>
-      <td>{pd.div_name}</td>
-      <td>{pd.reg_name}</td>
-      <td>{pd.density_per_1000}</td>
+     {TableVals()}
     </tr>
   );
 }
+
+
 
 export default PoliceDepartments;

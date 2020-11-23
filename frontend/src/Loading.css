@@ -11,8 +11,3 @@
   justify-content: center;
   object-fit: contain;
 }
-
-.loading > h1 {
-  color: black;
-  font-size: 88px;
-}

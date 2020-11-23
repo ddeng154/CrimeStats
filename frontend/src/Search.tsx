@@ -7,11 +7,48 @@ import "./Search.css";
 import Table from "react-bootstrap/Table";
 
 const client = algoliasearch("LSQOXVD3TV", "dfd1f2e4060fa24f93d82149ca0920f0");
+const policeFields = ['ORI', 'Name', 'Population', 'No. Male Officers', 
+  'No. Female Officers', 'No. Civilians', 'Department Type', 'Division Name', 'Region Name', 'Density per 1000']
+function headerColsPolice() {
+  return policeFields.map(policeField => (
+  <th>
+    {policeField}
+  </th>
+  ));
+}
 
+const crimeFields = ['ORI', 'Type', 'No. White Offenders', 'No. Black Offenders', 'No. Pacific Offenders', 'No. Native Offenders', 'No. Asian Offenders',
+'No. White Victims', 'No. Black Victims', 'No. Pacific Victims', 'No. Native Victims', 'No. Asian Victims']
+function headerColsCrime() {
+  return crimeFields.map(crimeField => (
+  <th>
+    {crimeField}
+  </th>
+  ));
+}
+{/* <td>{HitCr("o_white")}</td>
+                    <td>{HitCr("o_black")}</td>
+                    <td>{HitCr("o_pacific")}</td>
+                    <td>{HitCr("o_native")}</td>
+                    <td>{HitCr("o_asian")}</td>
+                    <td>{HitCr("v_white")}</td>
+                    <td>{HitCr("v_black")}</td>
+                    <td>{HitCr("v_pacific")}</td>
+                    <td>{HitCr("v_native")}</td>
+                    <td>{HitCr("v_asian")}</td> */}
+const crimeVals = ['o_white', 'o_black', 'o_pacific', 'o_native', 'o_asian', 'v_white', 'v_black', 'v_pacific', 'v_native', 'v_asian']
+function tableValsCrime() {
+  return crimeVals.map(crimeVal => (
+  <th>
+    {HitCr(crimeVal)}
+  </th>
+  ));
+}
 // Search page
 class Search extends React.Component<IDParams> {
   render() {
     return (
+      
       <div className="ais-InstantSearch">
         {/* Algolia Instant search wrapper */}
         <InstantSearch indexName="dev_CRIMESTATS" searchClient={client}>
@@ -44,21 +81,13 @@ class Search extends React.Component<IDParams> {
               </Table>
             </Index>
             {/* Searches police department database */}
+            
             <Index indexName="dev_PD">
               <h2>Police Depts</h2>
               <Table className="table">
                 <thead>
                   <tr>
-                    <th>ORI</th>
-                    <th>Name</th>
-                    <th>Population</th>
-                    <th>No. Male Officers</th>
-                    <th>No. Female Officers</th>
-                    <th>No. Civilians</th>
-                    <th>Department Type</th>
-                    <th>Division Name</th>
-                    <th>Region Name</th>
-                    <th>Density per 1000</th>
+                    {headerColsPolice()}
                   </tr>
                 </thead>
                 <tbody>
@@ -85,18 +114,7 @@ class Search extends React.Component<IDParams> {
               <Table className="table">
                 <thead>
                   <tr>
-                    <th>ORI</th>
-                    <th>Type</th>
-                    <th>No. White Offenders</th>
-                    <th>No. Black Offenders</th>
-                    <th>No. Pacific Offenders</th>
-                    <th>No. Native Offenders</th>
-                    <th>No. Asian Offenders</th>
-                    <th>No. White Victims</th>
-                    <th>No. Black Victims</th>
-                    <th>No. Pacific Victims</th>
-                    <th>No. Native Victims</th>
-                    <th>No. Asian Victims</th>
+                    {headerColsCrime()}
                   </tr>
                 </thead>
                 <tbody>
@@ -105,16 +123,7 @@ class Search extends React.Component<IDParams> {
                     <td className="shorter">
                       <Hits hitComponent={HitCr0}></Hits>
                     </td>
-                    <td>{HitCr("o_white")}</td>
-                    <td>{HitCr("o_black")}</td>
-                    <td>{HitCr("o_pacific")}</td>
-                    <td>{HitCr("o_native")}</td>
-                    <td>{HitCr("o_asian")}</td>
-                    <td>{HitCr("v_white")}</td>
-                    <td>{HitCr("v_black")}</td>
-                    <td>{HitCr("v_pacific")}</td>
-                    <td>{HitCr("v_native")}</td>
-                    <td>{HitCr("v_asian")}</td>
+                    {tableValsCrime()}
                   </tr>
                 </tbody>
               </Table>
