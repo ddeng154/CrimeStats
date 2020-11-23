@@ -26,6 +26,7 @@ function About() {
       {/* calls the element to display the information about the developers */}
       <div>
         <h2>Meet Our Team</h2>
+        <h5>Team Lead: Aly Hirani</h5>
         <Team />
       </div>
       {/* links to the databases and data sources the site uses and displays */}
