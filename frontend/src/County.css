@@ -1,22 +1,22 @@
 .split {
-    height: 100%;
-    width: 50%;
-    z-index: 1;
-    top: 0;
-    position: absolute;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-top: 50px;
-  }
-  
-  .left {
-    left: 0;
-  }
-  
-  .right {
-    right: 0;
-  }
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+  top: 0;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 50px;
+}
 
-  /* .container {
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+/* .container {
       overflow: auto;
   } */

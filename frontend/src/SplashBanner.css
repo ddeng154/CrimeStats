@@ -1,38 +1,38 @@
 .banner-container {
-    background-image: url('./images/splash-image.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    object-fit: contain;
-    margin-bottom: 3vh;
+  background-image: url("./images/splash-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  object-fit: contain;
+  margin-bottom: 3vh;
 }
 
 .banner-container > h1 {
-    color: white;
-    font-size: 100px;
-    margin-top: -5%;
-    position: absolute;
-    top: 50%;
-    background: rgb(5, 5, 5, 0.25);
+  color: white;
+  font-size: 100px;
+  margin-top: -5%;
+  position: absolute;
+  top: 50%;
+  background: rgb(5, 5, 5, 0.25);
 }
 
 .banner-container > p {
-    margin-top: 8px;
-    color: white;
-    font-size: 32px;
-    background: rgb(5, 5, 5, 0.6);
-    position: absolute;
-    top: 60%;
+  margin-top: 8px;
+  color: white;
+  font-size: 32px;
+  background: rgb(5, 5, 5, 0.6);
+  position: absolute;
+  top: 60%;
 }
 
 .banner-container > img {
-    filter: invert(100%);
-    position: absolute;
-    bottom: 3%;
-    border-bottom: black;
+  filter: invert(100%);
+  position: absolute;
+  bottom: 3%;
+  border-bottom: black;
 }

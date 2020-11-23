@@ -1,11 +1,11 @@
 .image {
-    overflow: hidden;
+  overflow: hidden;
 }
 
-.image img{
-    transition: all .5s ease;
+.image img {
+  transition: all 0.5s ease;
 }
 
-.image:hover img{
-    transform: scale(1.05);
+.image:hover img {
+  transform: scale(1.05);
 }
