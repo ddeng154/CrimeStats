@@ -19,9 +19,11 @@ def index(path):
     return render_template("index.html")
 
 
+# add gitlab data to api
 api = Api(app)
 api.add_resource(GitLabStats, "/api/gitlabstats")
 
+# allow connection to GCP database
 app.config[
     "SQLALCHEMY_DATABASE_URI"
 ] = "postgresql://postgres:cactusjack77@35.239.4.145/crimestats"
@@ -29,7 +31,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 manager = APIManager(app, flask_sqlalchemy_db=db)
 
-
+# model of county for SQLAlchemy
 class County(db.Model):
     id = db.Column(db.Unicode, primary_key=True)
     name = db.Column(db.Unicode)
@@ -46,6 +48,7 @@ class County(db.Model):
     latitude = db.Column(db.Float)
 
 
+# model of police departments for SQLAlchemy
 class Police(db.Model):
     ori = db.Column(db.Unicode, primary_key=True)
     name = db.Column(db.Unicode)
@@ -59,6 +62,7 @@ class Police(db.Model):
     density_per_1000 = db.Column(db.Float)
 
 
+# model of crimes for SQLAlchemy
 class Crime(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ori = db.Column(db.Unicode)
@@ -75,12 +79,14 @@ class Crime(db.Model):
     v_asian = db.Column(db.Integer)
 
 
+# model of link between police dpts and counties for SQLAlchemy
 class PoliceCountyLink(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     county_id = db.Column(db.Unicode)
     ori = db.Column(db.Unicode)
 
 
+# add all the endpoints for generic calls, i.e. get all police
 def AddEndpoint(model, name, single=None):
     postprocessors = {} if single is None else {"GET_SINGLE": [single]}
     manager.create_api(
@@ -88,22 +94,26 @@ def AddEndpoint(model, name, single=None):
     )
 
 
+# create the links to police departments and crimes from specific county
 def countySingle(result):
     links = PoliceCountyLink.query.filter_by(county_id=result["id"]).all()
     oris = {link.ori for link in links}
     result["police_departments"] = []
     result["crimes"] = []
     for ori in oris:
-        name = Police.query.get(ori).name
-        result["police_departments"].append({"ori": ori, "name": name})
-        result["crimes"].extend(
-            [
-                {"id": c.id, "type": c.type, "pd_name": name}
-                for c in Crime.query.filter_by(ori=ori).all()
-            ]
-        )
+        police = Police.query.get(ori)
+        if police is not None:
+            name = police.name
+            result["police_departments"].append({"ori": ori, "name": name})
+            result["crimes"].extend(
+                [
+                    {"id": c.id, "type": c.type, "pd_name": name}
+                    for c in Crime.query.filter_by(ori=ori).all()
+                ]
+            )
 
 
+# create the links to crimes and counties for a specific police department
 def policeSingle(result):
     links = PoliceCountyLink.query.filter_by(ori=result["ori"]).all()
     cids = {link.county_id for link in links}
@@ -111,11 +121,16 @@ def policeSingle(result):
         {"id": cid, "name": County.query.get(cid).name} for cid in cids
     ]
     result["crimes"] = [
-        {"id": c.id, "type": c.type}
+        {
+            "id": c.id,
+            "type": c.type,
+            "total": c.o_white + c.o_black + c.o_asian + c.o_pacific + c.o_native,
+        }
         for c in Crime.query.filter_by(ori=result["ori"]).all()
     ]
 
 
+# create the links to counties and police departments from specific crime
 def crimeSingle(result):
     links = PoliceCountyLink.query.filter_by(ori=result["ori"]).all()
     cids = {link.county_id for link in links}
