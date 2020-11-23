@@ -95,7 +95,7 @@ function About() {
           </a>
         </h6>
         <h6>
-          <a href={"https://documenter.getpostman.com/view/12923323/TVYJ4vyk"}>
+          <a href={"https://documenter.getpostman.com/view/12923323/TVewY4R5"}>
             <img src={postman_image} alt="Error" width="125" height="100" />
             {" "}
           </a>
