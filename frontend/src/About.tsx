@@ -2,6 +2,8 @@ import React from 'react';
 import Team from './Team'
 //About page
 function About() {
+    const gitlab_image = require('./images/gitlab-logo.png')
+    const postman_image = require('./images/postman.jpg')
     return (
       <div className="text-center">
         <h1>About</h1>
@@ -57,12 +59,11 @@ function About() {
         </div>
         {/* links to the source code of the website and the API. */}
         <div>
-          <img src={require("./images/gitlab-image.jpeg")} />
           <h2>Links</h2>
           <h6><a href="https://gitlab.com/alyhirani/crimestats">
-            GitLab Repo</a></h6>
-          <h6><a href={"https://documenter.getpostman.com/" + 
-          "view/12923323/TVYJ4vyk"}>Postman API Documentation</a></h6>
+          <img src={gitlab_image} width="100" height="100"/>  </a></h6>
+          <h6><a href={"https://documenter.getpostman.com/view/12923323/TVYJ4vyk"}>
+          <img src={postman_image} width="125" height="100"/>  </a></h6>
         </div>
       </div>
     );
