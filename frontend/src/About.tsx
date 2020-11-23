@@ -61,9 +61,9 @@ function About() {
         <div>
           <h2>Links</h2>
           <h6><a href="https://gitlab.com/alyhirani/crimestats">
-          <img src={gitlab_image} width="100" height="100"/>  </a></h6>
+          <img src={gitlab_image} alt="Error" width="100" height="100"/>  </a></h6>
           <h6><a href={"https://documenter.getpostman.com/view/12923323/TVYJ4vyk"}>
-          <img src={postman_image} width="125" height="100"/>  </a></h6>
+          <img src={postman_image} alt="Error" width="125" height="100"/>  </a></h6>
         </div>
       </div>
     );
