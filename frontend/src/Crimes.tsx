@@ -42,6 +42,16 @@ const FilterVals = new Map([
     ],
   ],
 ]);
+
+const crimeFields = ['ORI', 'Type', 'No. White Offenders', 'No. Black Offenders', 'No. Pacific Offenders', 'No. Native Offenders', 'No. Asian Offenders',
+'No. White Victims', 'No. Black Victims', 'No. Pacific Victims', 'No. Native Victims', 'No. Asian Victims']
+function headerColsCrime() {
+  return crimeFields.map(crimeField => (
+  <th>
+    {crimeField}
+  </th>
+  ));
+}
 //class for the current state of the crimes pagination
 class Crimes extends React.Component {
   state = {
@@ -222,6 +232,8 @@ class Crimes extends React.Component {
       );
     }
   };
+
+  
   //show loading screen if loading
   render() {
     if (this.state.isLoading) {
@@ -246,18 +258,7 @@ class Crimes extends React.Component {
         <Table striped hover>
           <thead>
             <tr>
-              <th>ORI</th>
-              <th>Type</th>
-              <th>No. White Offenders</th>
-              <th>No. Black Offenders</th>
-              <th>No. Pacific Offenders</th>
-              <th>No. Native Offenders</th>
-              <th>No. Asian Offenders</th>
-              <th>No. White Victims</th>
-              <th>No. Black Victims</th>
-              <th>No. Pacific Victims</th>
-              <th>No. Native Victims</th>
-              <th>No. Asian Victims</th>
+              {headerColsCrime()}
             </tr>
           </thead>
           <tbody>{this.state.elements.map(CrimeRow)}</tbody>
@@ -269,6 +270,15 @@ class Crimes extends React.Component {
 }
 //row of data about a given crime
 function CrimeRow(c: CrimeData) {
+  const crimeValFields = [c.o_white, c.o_black, c.o_pacific, c.o_native, 
+    c.o_asian, c.v_white, c.v_black, c.v_pacific, c.v_native, c.v_asian]
+  function rowsCrime() {
+    return crimeValFields.map(crimeValField => (
+    <td>
+      {crimeValField}
+    </td>
+    ));
+}
   return (
     //police dept. involved, and link to detailed crime page
     <tr key={c.id}>
@@ -282,16 +292,7 @@ function CrimeRow(c: CrimeData) {
           {c.type}
         </Nav.Link>
       </td>
-      <td>{c.o_white}</td>
-      <td>{c.o_black}</td>
-      <td>{c.o_pacific}</td>
-      <td>{c.o_native}</td>
-      <td>{c.o_asian}</td>
-      <td>{c.v_white}</td>
-      <td>{c.v_black}</td>
-      <td>{c.v_pacific}</td>
-      <td>{c.v_native}</td>
-      <td>{c.v_asian}</td>
+      {rowsCrime()}
     </tr>
   );
 }

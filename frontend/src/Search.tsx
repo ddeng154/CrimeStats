@@ -26,16 +26,7 @@ function headerColsCrime() {
   </th>
   ));
 }
-{/* <td>{HitCr("o_white")}</td>
-                    <td>{HitCr("o_black")}</td>
-                    <td>{HitCr("o_pacific")}</td>
-                    <td>{HitCr("o_native")}</td>
-                    <td>{HitCr("o_asian")}</td>
-                    <td>{HitCr("v_white")}</td>
-                    <td>{HitCr("v_black")}</td>
-                    <td>{HitCr("v_pacific")}</td>
-                    <td>{HitCr("v_native")}</td>
-                    <td>{HitCr("v_asian")}</td> */}
+
 const crimeVals = ['o_white', 'o_black', 'o_pacific', 'o_native', 'o_asian', 'v_white', 'v_black', 'v_pacific', 'v_native', 'v_asian']
 function tableValsCrime() {
   return crimeVals.map(crimeVal => (
@@ -44,6 +35,7 @@ function tableValsCrime() {
   </th>
   ));
 }
+
 // Search page
 class Search extends React.Component<IDParams> {
   render() {

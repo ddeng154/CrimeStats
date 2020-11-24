@@ -38,6 +38,32 @@ class Crime extends React.Component<IDParams> {
     isLoading: true,
   };
 
+  //method to generate all the rows for the table
+  CrimeRow(c: CrimeData) {
+    const crimeFields = [
+        ['No. of White Offenders', c.o_white], 
+        ['No. of Black Offenders', c.o_black],
+        ['No. of Pacific Offenders', c.o_pacific],
+        ['No. of Native Offenders', c.o_native],
+        ['No. of Asian Offenders', c.o_asian],
+        ['No. of White Victims', c.v_white],
+        ['No. of Black Victims', c.v_black],
+        ['No. of Pacific Victims', c.v_pacific],
+        ['No. of Native Victims', c.v_native],
+        ['No. of Asian Victims', c.v_asian]
+      ]  
+  
+    return crimeFields.map(c => (
+      (
+        <tr>
+          <th scope="row">{c[0]}</th>
+          <td> {c[1]} </td>
+        </tr>
+      )
+    ));
+  
+  }
+
   //methods to return whether there is a non-zero
   //quantity of offenders of each group
   hasOBlack() {
@@ -148,47 +174,7 @@ class Crime extends React.Component<IDParams> {
                   </a>{" "}
                 </td>
               </tr>
-              {/* {headerCols(this.state.crime)} */}
-              <tr>
-                <th scope="row">No. of White Offenders</th>
-                <td> {this.state.crime.o_white} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Black Offenders</th>
-                <td> {this.state.crime.o_black} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Pacific Offenders</th>
-                <td> {this.state.crime.o_pacific} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Native Offenders</th>
-                <td> {this.state.crime.o_native} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Asian Offenders</th>
-                <td> {this.state.crime.o_asian} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of White Victims</th>
-                <td> {this.state.crime.v_white} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Black Victims</th>
-                <td> {this.state.crime.v_black} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Pacific Victims</th>
-                <td> {this.state.crime.v_pacific} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Native Victims</th>
-                <td> {this.state.crime.v_native} </td>
-              </tr>
-              <tr>
-                <th scope="row">No. of Asian Victims</th>
-                <td> {this.state.crime.v_asian} </td>
-              </tr>*/
+              {this.CrimeRow(this.state.crime)}
               {/* if crime has counties involved, show them */}
               {this.hasCounties() && (
                 <tr>
@@ -415,26 +401,5 @@ class Crime extends React.Component<IDParams> {
   }
 }
 
-
-// const crimeFields = ['No. of White Offenders', 'No. of Black Offenders', 'No. of Pacific Offenders', 'No. of Native Offenders', 
-//   'No. of Asian Offenders', 'No. of White Victims', 'No. of Black Victims', 'No. of Pacific Victims', 'No. of Native Victims', 
-//   'No. of Asian Victims']
-// const crimeData = ['o_white', 'o_black', 'o_pacific', 'o_native', 'o_asian', 'v_white', 'v_black', 'v_pacific', 'v_native', 'v_asian']
-// function headerCols(crime: CrimeData) {
-//   var data = new Array(crimeData.length)
-//   var i: Number = 0
-//   var num: String
-//   for (num in crimeData)
-//   {
-//     data[i] = crime[num]
-//     i++
-//   }
-//   return crimeFields.map((crimeField, index) => (
-//     <tr>
-//       <th scope="row">{crimeField}</th>
-//       <td> {data[index]} </td>
-//     </tr>
-//   ));
-// }
 
 export default Crime;

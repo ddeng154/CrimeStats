@@ -101,6 +101,7 @@ class PoliceDepartment extends React.Component<IDParams> {
     if (this.state.isLoading) {
       return <Loading />;
     } else if (this.state.policeDepartment) {
+      
       return (
         <div>
           <h1>{this.state.policeDepartment.name}</h1>
