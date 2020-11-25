@@ -44,16 +44,18 @@ class PoliceDepartment extends React.Component<IDParams> {
       ["Dept. Type", p.dept_type],
       ["Division Name", p.div_name],
       ["Region Name", p.reg_name],
-      ["Density (per 1000)", p.density_per_1000]
-    ]
-    let index = -1
-    return list.map(p => {
+      ["Density (per 1000)", p.density_per_1000],
+    ];
+    let index = -1;
+    return list.map((p) => {
       index += 1;
 
-      return (<tr key={index}>
-        <th scope="row">{p[0]}</th>
-        <td> {p[1]} </td>
-      </tr>);
+      return (
+        <tr key={index}>
+          <th scope="row">{p[0]}</th>
+          <td> {p[1]} </td>
+        </tr>
+      );
     });
   }
 

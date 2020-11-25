@@ -52,11 +52,11 @@ class ComparePoliceDepartments extends React.Component {
       ["Dept. Type", p1.dept_type, p2.dept_type],
       ["Division Name", p1.div_name, p2.div_name],
       ["Region Name", p1.reg_name, p2.reg_name],
-      ["Density (per 1000)", p1.density_per_1000, p2.density_per_1000]
-    ]
+      ["Density (per 1000)", p1.density_per_1000, p2.density_per_1000],
+    ];
 
     let index = -1;
-    return list.map(p => {
+    return list.map((p) => {
       index += 1;
       return (
         <tr key={index}>
