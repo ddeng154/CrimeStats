@@ -43,13 +43,23 @@ const FilterVals = new Map([
   ],
 ]);
 
-const crimeFields = ['ORI', 'Type', 'No. White Offenders', 'No. Black Offenders', 'No. Pacific Offenders', 'No. Native Offenders', 'No. Asian Offenders',
-'No. White Victims', 'No. Black Victims', 'No. Pacific Victims', 'No. Native Victims', 'No. Asian Victims']
+const crimeFields = [
+  "ORI",
+  "Type",
+  "No. White Offenders",
+  "No. Black Offenders",
+  "No. Pacific Offenders",
+  "No. Native Offenders",
+  "No. Asian Offenders",
+  "No. White Victims",
+  "No. Black Victims",
+  "No. Pacific Victims",
+  "No. Native Victims",
+  "No. Asian Victims",
+];
 function headerColsCrime() {
-  return crimeFields.map(crimeField => (
-  <th key={crimeField}>
-    {crimeField}
-  </th>
+  return crimeFields.map((crimeField) => (
+    <th key={crimeField}>{crimeField}</th>
   ));
 }
 //class for the current state of the crimes pagination
@@ -233,7 +243,6 @@ class Crimes extends React.Component {
     }
   };
 
-  
   //show loading screen if loading
   render() {
     if (this.state.isLoading) {
@@ -257,9 +266,7 @@ class Crimes extends React.Component {
         {/* display the table of the crimes for the current page */}
         <Table striped hover>
           <thead>
-            <tr>
-              {headerColsCrime()}
-            </tr>
+            <tr>{headerColsCrime()}</tr>
           </thead>
           <tbody>{this.state.elements.map(CrimeRow)}</tbody>
         </Table>
@@ -270,17 +277,25 @@ class Crimes extends React.Component {
 }
 //row of data about a given crime
 function CrimeRow(c: CrimeData) {
-  const crimeValFields = [c.o_white, c.o_black, c.o_pacific, c.o_native, 
-    c.o_asian, c.v_white, c.v_black, c.v_pacific, c.v_native, c.v_asian]
+  const crimeValFields = [
+    c.o_white,
+    c.o_black,
+    c.o_pacific,
+    c.o_native,
+    c.o_asian,
+    c.v_white,
+    c.v_black,
+    c.v_pacific,
+    c.v_native,
+    c.v_asian,
+  ];
   function rowsCrime() {
     let index = -1;
-    return crimeValFields.map(crimeValField => {
+    return crimeValFields.map((crimeValField) => {
       index += 1;
-    return <td key={index}>
-      {crimeValField}
-    </td>
+      return <td key={index}>{crimeValField}</td>;
     });
-}
+  }
   return (
     //police dept. involved, and link to detailed crime page
     <tr key={c.id}>

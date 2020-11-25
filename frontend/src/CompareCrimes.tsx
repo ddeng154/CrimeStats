@@ -46,7 +46,11 @@ class CompareCrimes extends React.Component {
   }
 
   handleSubmit() {
-    this.setState({ isLoading: true, element1: undefined, element2: undefined });
+    this.setState({
+      isLoading: true,
+      element1: undefined,
+      element2: undefined,
+    });
     if (this.state.id1 && this.state.id2) {
       const request1 = axios.get<CrimeData>("/api/crimes/" + this.state.id1);
       const request2 = axios.get<CrimeData>("/api/crimes/" + this.state.id2);
@@ -62,7 +66,7 @@ class CompareCrimes extends React.Component {
           })
         )
         .catch((_) => {
-          this.setState({ isLoading: false })
+          this.setState({ isLoading: false });
         });
     }
   }

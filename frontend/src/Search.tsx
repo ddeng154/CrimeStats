@@ -7,40 +7,60 @@ import "./Search.css";
 import Table from "react-bootstrap/Table";
 
 const client = algoliasearch("LSQOXVD3TV", "dfd1f2e4060fa24f93d82149ca0920f0");
-const policeFields = ['ORI', 'Name', 'Population', 'No. Male Officers', 
-  'No. Female Officers', 'No. Civilians', 'Department Type', 'Division Name', 'Region Name', 'Density per 1000']
+const policeFields = [
+  "ORI",
+  "Name",
+  "Population",
+  "No. Male Officers",
+  "No. Female Officers",
+  "No. Civilians",
+  "Department Type",
+  "Division Name",
+  "Region Name",
+  "Density per 1000",
+];
 function headerColsPolice() {
-  return policeFields.map(policeField => (
-  <th>
-    {policeField}
-  </th>
-  ));
+  return policeFields.map((policeField) => <th>{policeField}</th>);
 }
 
-const crimeFields = ['ORI', 'Type', 'No. White Offenders', 'No. Black Offenders', 'No. Pacific Offenders', 'No. Native Offenders', 'No. Asian Offenders',
-'No. White Victims', 'No. Black Victims', 'No. Pacific Victims', 'No. Native Victims', 'No. Asian Victims']
+const crimeFields = [
+  "ORI",
+  "Type",
+  "No. White Offenders",
+  "No. Black Offenders",
+  "No. Pacific Offenders",
+  "No. Native Offenders",
+  "No. Asian Offenders",
+  "No. White Victims",
+  "No. Black Victims",
+  "No. Pacific Victims",
+  "No. Native Victims",
+  "No. Asian Victims",
+];
 function headerColsCrime() {
-  return crimeFields.map(crimeField => (
-  <th>
-    {crimeField}
-  </th>
-  ));
+  return crimeFields.map((crimeField) => <th>{crimeField}</th>);
 }
 
-const crimeVals = ['o_white', 'o_black', 'o_pacific', 'o_native', 'o_asian', 'v_white', 'v_black', 'v_pacific', 'v_native', 'v_asian']
+const crimeVals = [
+  "o_white",
+  "o_black",
+  "o_pacific",
+  "o_native",
+  "o_asian",
+  "v_white",
+  "v_black",
+  "v_pacific",
+  "v_native",
+  "v_asian",
+];
 function tableValsCrime() {
-  return crimeVals.map(crimeVal => (
-  <th>
-    {HitCr(crimeVal)}
-  </th>
-  ));
+  return crimeVals.map((crimeVal) => <th>{HitCr(crimeVal)}</th>);
 }
 
 // Search page
 class Search extends React.Component<IDParams> {
   render() {
     return (
-      
       <div className="ais-InstantSearch">
         {/* Algolia Instant search wrapper */}
         <InstantSearch indexName="dev_CRIMESTATS" searchClient={client}>
@@ -73,14 +93,12 @@ class Search extends React.Component<IDParams> {
               </Table>
             </Index>
             {/* Searches police department database */}
-            
+
             <Index indexName="dev_PD">
               <h2>Police Depts</h2>
               <Table className="table">
                 <thead>
-                  <tr>
-                    {headerColsPolice()}
-                  </tr>
+                  <tr>{headerColsPolice()}</tr>
                 </thead>
                 <tbody>
                   <tr>
@@ -105,9 +123,7 @@ class Search extends React.Component<IDParams> {
               <h2>Crimes</h2>
               <Table className="table">
                 <thead>
-                  <tr>
-                    {headerColsCrime()}
-                  </tr>
+                  <tr>{headerColsCrime()}</tr>
                 </thead>
                 <tbody>
                   <tr>

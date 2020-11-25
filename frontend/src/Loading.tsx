@@ -7,11 +7,11 @@ function Loading() {
   return (
     <div className="loading">
       <Loader
-         type="TailSpin"
-         color="#00BFFF"
-         height={100}
-         width={100}
-         timeout={5000} //5 secs
+        type="TailSpin"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        timeout={5000} //5 secs
       />
     </div>
   );

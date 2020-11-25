@@ -101,7 +101,6 @@ class PoliceDepartment extends React.Component<IDParams> {
     if (this.state.isLoading) {
       return <Loading />;
     } else if (this.state.policeDepartment) {
-      
       return (
         <div>
           <h1>{this.state.policeDepartment.name}</h1>
@@ -182,8 +181,7 @@ class PoliceDepartment extends React.Component<IDParams> {
             <div className="d-flex justify-content-between">
               <Col>
                 <h4>Breakdown of Police Force:</h4>
-                {
-                  this.hasMales() &&
+                {this.hasMales() && (
                   <label style={{ color: "#E38627", fontSize: "28px" }}>
                     Male Officers:
                     {(
@@ -193,10 +191,9 @@ class PoliceDepartment extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasFemales() &&
+                {this.hasFemales() && (
                   <label style={{ color: "#C13C37", fontSize: "28px" }}>
                     Female Officers:
                     {(
@@ -206,10 +203,9 @@ class PoliceDepartment extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasCivilians() &&
+                {this.hasCivilians() && (
                   <label style={{ color: "#6A2135", fontSize: "28px" }}>
                     Civilians:
                     {(
@@ -219,7 +215,7 @@ class PoliceDepartment extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
               </Col>
               <Col>
                 <PieChart

@@ -244,9 +244,7 @@ class PoliceDepartments extends React.Component {
         {/* Table of basic model data */}
         <Table striped bordered hover>
           <thead>
-            <tr>
-              {headerCols()}
-            </tr>
+            <tr>{headerCols()}</tr>
           </thead>
           <tbody>{this.state.elements.map(PoliceDepartmentRow)}</tbody>
         </Table>
@@ -256,31 +254,44 @@ class PoliceDepartments extends React.Component {
   }
 }
 
-const policeFields = ['Name', 'Population', 'No. Male Officers', 
-  'No. Female Officers', 'No. Civilians', 'Department Type', 'Division Name', 'Region Name', 'Density per 1000']
+const policeFields = [
+  "Name",
+  "Population",
+  "No. Male Officers",
+  "No. Female Officers",
+  "No. Civilians",
+  "Department Type",
+  "Division Name",
+  "Region Name",
+  "Density per 1000",
+];
 function headerCols() {
   let index = -1;
-  return policeFields.map(policeField => {
+  return policeFields.map((policeField) => {
     index += 1;
-  return <th key={index}>
-    {policeField}
-  </th>
+    return <th key={index}>{policeField}</th>;
   });
 }
 
 //returns the table row with data for each PD
 function PoliceDepartmentRow(pd: PoliceDepartmentData) {
-  const policeDatas = [pd.pop, pd.num_male_officers, pd.num_female_officers, pd.num_civilians, 
-    pd.dept_type, pd.div_name, pd.reg_name, pd.density_per_1000]
+  const policeDatas = [
+    pd.pop,
+    pd.num_male_officers,
+    pd.num_female_officers,
+    pd.num_civilians,
+    pd.dept_type,
+    pd.div_name,
+    pd.reg_name,
+    pd.density_per_1000,
+  ];
   function TableVals() {
     let index = 1;
-    return policeDatas.map(policeData => {
+    return policeDatas.map((policeData) => {
       index += 1;
-      return <td key={index}>
-        {policeData}
-      </td>
+      return <td key={index}>{policeData}</td>;
     });
-}
+  }
   return (
     <tr key={pd.ori}>
       <td>
@@ -288,11 +299,9 @@ function PoliceDepartmentRow(pd: PoliceDepartmentData) {
           {pd.name}
         </Nav.Link>
       </td>
-     {TableVals()}
+      {TableVals()}
     </tr>
   );
 }
-
-
 
 export default PoliceDepartments;

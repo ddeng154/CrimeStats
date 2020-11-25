@@ -42,32 +42,27 @@ class County extends React.Component<IDParams> {
   //methods to check if this county has a non-zero population of a specific
   //demographic group
   hasBlacks() {
-    if (this.state.county)
-      return this.state.county?.black_pop > 0;
+    if (this.state.county) return this.state.county?.black_pop > 0;
     return false;
   }
 
   hasWhites() {
-    if (this.state.county)
-      return this.state.county?.white_pop > 0;
+    if (this.state.county) return this.state.county?.white_pop > 0;
     return false;
   }
 
   hasPacifics() {
-    if (this.state.county)
-      return this.state.county?.pacific_pop > 0;
+    if (this.state.county) return this.state.county?.pacific_pop > 0;
     return false;
   }
 
   hasNatives() {
-    if (this.state.county)
-      return this.state.county?.native_pop > 0;
+    if (this.state.county) return this.state.county?.native_pop > 0;
     return false;
   }
 
   hasAsians() {
-    if (this.state.county)
-      return this.state.county?.asian_pop > 0;
+    if (this.state.county) return this.state.county?.asian_pop > 0;
     return false;
   }
   //does it have crimes/PDs associated?
@@ -115,41 +110,36 @@ class County extends React.Component<IDParams> {
                 <th scope="row">Total Population</th>
                 <td> {this.state.county.total_pop} </td>
               </tr>
-              {
-                this.hasBlacks() && 
+              {this.hasBlacks() && (
                 <tr>
                   <th scope="row">Black Population</th>
                   <td> {this.state.county.black_pop} </td>
                 </tr>
-              }
-              {
-                this.hasWhites() && 
+              )}
+              {this.hasWhites() && (
                 <tr>
                   <th scope="row">White Population</th>
                   <td> {this.state.county.white_pop} </td>
                 </tr>
-              }
-              {
-                this.hasPacifics() && 
+              )}
+              {this.hasPacifics() && (
                 <tr>
                   <th scope="row">Pacific Population</th>
                   <td> {this.state.county.pacific_pop} </td>
                 </tr>
-              }
-              {
-                this.hasNatives() && 
+              )}
+              {this.hasNatives() && (
                 <tr>
                   <th scope="row">Native Population</th>
                   <td> {this.state.county.native_pop} </td>
                 </tr>
-              }
-              {
-                this.hasAsians() && 
+              )}
+              {this.hasAsians() && (
                 <tr>
                   <th scope="row">Asian Population</th>
                   <td> {this.state.county.asian_pop} </td>
                 </tr>
-              }
+              )}
               <tr>
                 <th scope="row">Area (sq. miles)</th>
                 <td> {this.state.county.area} </td>
@@ -213,8 +203,7 @@ class County extends React.Component<IDParams> {
               <Col>
                 {/* display pie chart of demographics of county pop. */}
                 <h4>Racial Breakdown of County Population:</h4>
-                {
-                  this.hasBlacks() &&
+                {this.hasBlacks() && (
                   <label style={{ color: "#E38627", fontSize: "28px" }}>
                     Black Population:
                     {(
@@ -224,10 +213,9 @@ class County extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasWhites() && 
+                {this.hasWhites() && (
                   <label style={{ color: "#C13C37", fontSize: "28px" }}>
                     White Population:
                     {(
@@ -237,10 +225,9 @@ class County extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasPacifics() && 
+                {this.hasPacifics() && (
                   <label style={{ color: "#6A2135", fontSize: "28px" }}>
                     Pacific Population:
                     {(
@@ -250,10 +237,9 @@ class County extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasNatives() && 
+                {this.hasNatives() && (
                   <label style={{ color: "#2757E3", fontSize: "28px" }}>
                     Native Population:
                     {(
@@ -263,10 +249,9 @@ class County extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasAsians() && 
+                {this.hasAsians() && (
                   <label style={{ color: "#E327B7", fontSize: "28px" }}>
                     Asian Population:
                     {(
@@ -276,8 +261,7 @@ class County extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
-                
+                )}
               </Col>
               <Col>
                 <PieChart
@@ -323,6 +307,5 @@ class County extends React.Component<IDParams> {
     }
   }
 }
-
 
 export default County;

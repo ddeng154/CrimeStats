@@ -37,24 +37,23 @@ function About() {
         <h2>Data Sources</h2>
         <h6>
           <a href="https://crime-data-explorer.fr.cloud.gov/api">
-          <img src={fbi_image} alt="Error" width="100" height="100" />
-            {" "}
+            <img src={fbi_image} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
         <h6>
           <a
             href="https://www.census.gov/data/developers
-          /data-sets/acs-1year.html">
-            <img src={census_image} alt="Error" width="100" height="100" />
-            {" "}
+          /data-sets/acs-1year.html"
+          >
+            <img src={census_image} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
         <h6>
           <a
             href="https://developers.google.com/maps/
-          premium/previous-licenses/image">
-            <img src={google_image} alt="Error" width="100" height="100" />
-            {" "}
+          premium/previous-licenses/image"
+          >
+            <img src={google_image} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
       </div>
@@ -95,14 +94,12 @@ function About() {
         <h2>Links</h2>
         <h6>
           <a href="https://gitlab.com/alyhirani/crimestats">
-            <img src={gitlab_image} alt="Error" width="100" height="100" />
-            {" "}
+            <img src={gitlab_image} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
         <h6>
           <a href={"https://documenter.getpostman.com/view/12923323/TVewY4R5"}>
-            <img src={postman_image} alt="Error" width="125" height="100" />
-            {" "}
+            <img src={postman_image} alt="Error" width="125" height="100" />{" "}
           </a>
         </h6>
       </div>

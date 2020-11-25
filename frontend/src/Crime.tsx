@@ -41,26 +41,27 @@ class Crime extends React.Component<IDParams> {
   //method to generate all the rows for the table
   CrimeRow(c: CrimeData) {
     const crimeFields = [
-        ['No. of White Offenders', c.o_white], 
-        ['No. of Black Offenders', c.o_black],
-        ['No. of Pacific Offenders', c.o_pacific],
-        ['No. of Native Offenders', c.o_native],
-        ['No. of Asian Offenders', c.o_asian],
-        ['No. of White Victims', c.v_white],
-        ['No. of Black Victims', c.v_black],
-        ['No. of Pacific Victims', c.v_pacific],
-        ['No. of Native Victims', c.v_native],
-        ['No. of Asian Victims', c.v_asian]
-      ]  
+      ["No. of White Offenders", c.o_white],
+      ["No. of Black Offenders", c.o_black],
+      ["No. of Pacific Offenders", c.o_pacific],
+      ["No. of Native Offenders", c.o_native],
+      ["No. of Asian Offenders", c.o_asian],
+      ["No. of White Victims", c.v_white],
+      ["No. of Black Victims", c.v_black],
+      ["No. of Pacific Victims", c.v_pacific],
+      ["No. of Native Victims", c.v_native],
+      ["No. of Asian Victims", c.v_asian],
+    ];
     let index = -1;
-    return crimeFields.map(c => {
+    return crimeFields.map((c) => {
       index += 1;
-      return <tr key={index}>
+      return (
+        <tr key={index}>
           <th scope="row">{c[0]}</th>
           <td> {c[1]} </td>
         </tr>
+      );
     });
-  
   }
 
   //methods to return whether there is a non-zero
@@ -196,8 +197,7 @@ class Crime extends React.Component<IDParams> {
               <Col>
                 {/* display pie chart of demographics of offenders */}
                 <h4>Racial Breakdown of Offenders:</h4>
-                {
-                  this.hasOBlack() && 
+                {this.hasOBlack() && (
                   <label style={{ color: "#E38627", fontSize: "28px" }}>
                     Black:
                     {(
@@ -206,10 +206,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasOWhite() &&
+                {this.hasOWhite() && (
                   <label style={{ color: "#C13C37", fontSize: "28px" }}>
                     White:
                     {(
@@ -218,10 +217,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasOPacific() &&
+                {this.hasOPacific() && (
                   <label style={{ color: "#6A2135", fontSize: "28px" }}>
                     Pacific:
                     {(
@@ -230,10 +228,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasONative() &&
+                {this.hasONative() && (
                   <label style={{ color: "#2757E3", fontSize: "28px" }}>
                     Native:
                     {(
@@ -242,10 +239,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasOAsian() &&
+                {this.hasOAsian() && (
                   <label style={{ color: "#E327B7", fontSize: "28px" }}>
                     Asian:
                     {(
@@ -254,7 +250,7 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
               </Col>
               <Col>
                 <PieChart
@@ -293,8 +289,7 @@ class Crime extends React.Component<IDParams> {
               <Col>
                 {/* display pie chart of demographics of victims */}
                 <h4>Racial Breakdown of Victims:</h4>
-                {
-                  this.hasVBlack() &&
+                {this.hasVBlack() && (
                   <label style={{ color: "#E38627", fontSize: "28px" }}>
                     Black:
                     {(
@@ -303,10 +298,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasVWhite() &&
+                {this.hasVWhite() && (
                   <label style={{ color: "#C13C37", fontSize: "28px" }}>
                     White:
                     {(
@@ -315,10 +309,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasVPacific() &&
+                {this.hasVPacific() && (
                   <label style={{ color: "#6A2135", fontSize: "28px" }}>
                     Pacific:
                     {(
@@ -327,10 +320,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasVNative() &&
+                {this.hasVNative() && (
                   <label style={{ color: "#2757E3", fontSize: "28px" }}>
                     Native:
                     {(
@@ -339,10 +331,9 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
                 <br />
-                {
-                  this.hasVAsian() &&
+                {this.hasVAsian() && (
                   <label style={{ color: "#E327B7", fontSize: "28px" }}>
                     Asian:
                     {(
@@ -351,7 +342,7 @@ class Crime extends React.Component<IDParams> {
                     ).toFixed(2)}
                     %
                   </label>
-                }
+                )}
               </Col>
             </div>
           </Container>
@@ -399,6 +390,5 @@ class Crime extends React.Component<IDParams> {
     }
   }
 }
-
 
 export default Crime;
