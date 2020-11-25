@@ -2,11 +2,11 @@ import React from "react";
 import Team from "./Team";
 //About page
 function About() {
-  const gitlab_image = require("./images/gitlab-logo.png");
-  const postman_image = require("./images/postman.jpg");
-  const google_image = require("./images/googlemaps_logo.jpg");
-  const fbi_image = require("./images/fbi_logo.png");
-  const census_image = require("./images/census_logo.png");
+  const gitlab_img = require("./images/gitlab-logo.png");
+  const postman_img = require("./images/postman.jpg");
+  const google_img = require("./images/googlemaps_logo.jpg");
+  const fbi_img = require("./images/fbi_logo.png");
+  const census_img = require("./images/census_logo.png");
   return (
     <div className="text-center">
       <h1>About</h1>
@@ -37,7 +37,7 @@ function About() {
         <h2>Data Sources</h2>
         <h6>
           <a href="https://crime-data-explorer.fr.cloud.gov/api">
-            <img src={fbi_image} alt="Error" width="100" height="100" />{" "}
+            <img src={fbi_img} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
         <h6>
@@ -45,7 +45,7 @@ function About() {
             href="https://www.census.gov/data/developers
           /data-sets/acs-1year.html"
           >
-            <img src={census_image} alt="Error" width="100" height="100" />{" "}
+            <img src={census_img} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
         <h6>
@@ -53,7 +53,7 @@ function About() {
             href="https://developers.google.com/maps/
           premium/previous-licenses/image"
           >
-            <img src={google_image} alt="Error" width="100" height="100" />{" "}
+            <img src={google_img} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
       </div>
@@ -94,12 +94,12 @@ function About() {
         <h2>Links</h2>
         <h6>
           <a href="https://gitlab.com/alyhirani/crimestats">
-            <img src={gitlab_image} alt="Error" width="100" height="100" />{" "}
+            <img src={gitlab_img} alt="Error" width="100" height="100" />{" "}
           </a>
         </h6>
         <h6>
           <a href={"https://documenter.getpostman.com/view/12923323/TVewY4R5"}>
-            <img src={postman_image} alt="Error" width="125" height="100" />{" "}
+            <img src={postman_img} alt="Error" width="125" height="100" />{" "}
           </a>
         </h6>
       </div>

@@ -45,6 +45,32 @@ class CompareCrimes extends React.Component {
     this.handleID2Change = this.handleID2Change.bind(this);
   }
 
+  CrimeRow(c1: CrimeData, c2: CrimeData) {
+    const crimeFields = [
+      ["No. of White Offenders", c1.o_white, c2.o_white],
+      ["No. of Black Offenders", c1.o_black, c2.o_black],
+      ["No. of Pacific Offenders", c1.o_pacific, c2.o_pacific],
+      ["No. of Native Offenders", c1.o_native, c2.o_native],
+      ["No. of Asian Offenders", c1.o_asian, c2.o_asian],
+      ["No. of White Victims", c1.v_white, c2.v_white],
+      ["No. of Black Victims", c1.v_black, c2.v_black],
+      ["No. of Pacific Victims", c1.v_pacific, c2.v_pacific],
+      ["No. of Native Victims", c1.v_native, c2.v_native],
+      ["No. of Asian Victims", c1.v_asian, c2.v_asian],
+    ];
+    let index = -1;
+    return crimeFields.map((c) => {
+      index += 1;
+      return (
+        <tr key={index}>
+          <th scope="row">{c[0]}</th>
+          <td> {c[1]} </td>
+          <td> {c[2]} </td>
+        </tr>
+      );
+    });
+  }
+
   handleSubmit() {
     this.setState({
       isLoading: true,
@@ -133,56 +159,7 @@ class CompareCrimes extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>No. of White Offenders</td>
-                <td>{this.state.element1!.o_white}</td>
-                <td>{this.state.element2!.o_white}</td>
-              </tr>
-              <tr>
-                <td>No. of Black Offenders</td>
-                <td>{this.state.element1!.o_black}</td>
-                <td>{this.state.element2!.o_black}</td>
-              </tr>
-              <tr>
-                <td>No. of Pacific Offenders</td>
-                <td>{this.state.element1!.o_pacific}</td>
-                <td>{this.state.element2!.o_pacific}</td>
-              </tr>
-              <tr>
-                <td>No. of Native Offenders</td>
-                <td>{this.state.element1!.o_native}</td>
-                <td>{this.state.element2!.o_native}</td>
-              </tr>
-              <tr>
-                <td>No. of Asian Offenders</td>
-                <td>{this.state.element1!.o_asian}</td>
-                <td>{this.state.element2!.o_asian}</td>
-              </tr>
-              <tr>
-                <td>No. of White Victims</td>
-                <td>{this.state.element1!.v_white}</td>
-                <td>{this.state.element2!.v_white}</td>
-              </tr>
-              <tr>
-                <td>No. of Black Victims</td>
-                <td>{this.state.element1!.v_black}</td>
-                <td>{this.state.element2!.v_black}</td>
-              </tr>
-              <tr>
-                <td>No. of Pacific Victims</td>
-                <td>{this.state.element1!.v_pacific}</td>
-                <td>{this.state.element2!.v_pacific}</td>
-              </tr>
-              <tr>
-                <td>No. of Native Victims</td>
-                <td>{this.state.element1!.v_native}</td>
-                <td>{this.state.element2!.v_native}</td>
-              </tr>
-              <tr>
-                <td>No. of Asian Victims</td>
-                <td>{this.state.element1!.v_asian}</td>
-                <td>{this.state.element2!.v_asian}</td>
-              </tr>
+              {this.CrimeRow(this.state.element1, this.state.element2)}
             </tbody>
           </table>
         </div>

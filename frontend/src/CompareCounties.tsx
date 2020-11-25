@@ -45,6 +45,32 @@ class CompareCounties extends React.Component {
     this.handleID2Change = this.handleID2Change.bind(this);
   }
 
+  //get table data
+  CountyRow(c1: CountyData, c2: CountyData) {
+    const countyFields = [
+      ["State", c1.state, c2.state],
+      ["Median Income", c1.median_income, c2.median_income],
+      ["Total Population", c1.total_pop, c2.total_pop],
+      ["Black Population", c1.black_pop, c2.black_pop],
+      ["White Population", c1.white_pop, c2.white_pop],
+      ["Pacific Population", c1.pacific_pop, c2.pacific_pop],
+      ["Native Population", c1.native_pop, c2.native_pop],
+      ["Asian Population", c1.asian_pop, c2.asian_pop],
+      ["Area", c1.area, c2.area],
+    ];
+    let index = -1;
+    return countyFields.map((c) => {
+      index += 1;
+      return (
+        <tr key={index}>
+          <th scope="row">{c[0]}</th>
+          <td> {c[1]} </td>
+          <td> {c[2]} </td>
+        </tr>
+      );
+    });
+  }
+
   handleSubmit() {
     this.setState({
       isLoading: true,
@@ -131,51 +157,7 @@ class CompareCounties extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>State</td>
-                <td>{this.state.element1!.state}</td>
-                <td>{this.state.element2!.state}</td>
-              </tr>
-              <tr>
-                <td>Median Income</td>
-                <td>{this.state.element1!.median_income}</td>
-                <td>{this.state.element2!.median_income}</td>
-              </tr>
-              <tr>
-                <td>Total Population</td>
-                <td>{this.state.element1!.total_pop}</td>
-                <td>{this.state.element2!.total_pop}</td>
-              </tr>
-              <tr>
-                <td>Black Population</td>
-                <td>{this.state.element1!.black_pop}</td>
-                <td>{this.state.element2!.black_pop}</td>
-              </tr>
-              <tr>
-                <td>White Population</td>
-                <td>{this.state.element1!.white_pop}</td>
-                <td>{this.state.element2!.white_pop}</td>
-              </tr>
-              <tr>
-                <td>Pacific Population</td>
-                <td>{this.state.element1!.pacific_pop}</td>
-                <td>{this.state.element2!.pacific_pop}</td>
-              </tr>
-              <tr>
-                <td>Native Population</td>
-                <td>{this.state.element1!.native_pop}</td>
-                <td>{this.state.element2!.native_pop}</td>
-              </tr>
-              <tr>
-                <td>Asian Population</td>
-                <td>{this.state.element1!.asian_pop}</td>
-                <td>{this.state.element2!.asian_pop}</td>
-              </tr>
-              <tr>
-                <td>Area</td>
-                <td>{this.state.element1!.area}</td>
-                <td>{this.state.element2!.area}</td>
-              </tr>
+              {this.CountyRow(this.state.element1, this.state.element2)}
             </tbody>
           </table>
         </div>

@@ -34,6 +34,30 @@ class PoliceDepartment extends React.Component<IDParams> {
   state: PoliceDepartmentState = {
     isLoading: true,
   };
+  //add data to table
+  getRows(p: PoliceDepartmentData) {
+    const list = [
+      ["Population", p.pop],
+      ["Male Officers", p.num_male_officers],
+      ["Female Officers", p.num_female_officers],
+      ["Civilians", p.num_civilians],
+      ["Dept. Type", p.dept_type],
+      ["Division Name", p.div_name],
+      ["Region Name", p.reg_name],
+      ["Density (per 1000)", p.density_per_1000],
+    ];
+    let index = -1;
+    return list.map((p) => {
+      index += 1;
+
+      return (
+        <tr key={index}>
+          <th scope="row">{p[0]}</th>
+          <td> {p[1]} </td>
+        </tr>
+      );
+    });
+  }
 
   //checks if this PD has male officers
   hasMales() {
@@ -107,38 +131,7 @@ class PoliceDepartment extends React.Component<IDParams> {
           {/* table with basic model data */}
           <table className="table">
             <tbody>
-              <tr>
-                <th scope="row">Population</th>
-                <td> {this.state.policeDepartment.pop} </td>
-              </tr>
-              <tr>
-                <th scope="row">Male officers</th>
-                <td> {this.state.policeDepartment.num_male_officers} </td>
-              </tr>
-              <tr>
-                <th scope="row">Female officers</th>
-                <td> {this.state.policeDepartment.num_female_officers} </td>
-              </tr>
-              <tr>
-                <th scope="row">Civilians</th>
-                <td> {this.state.policeDepartment.num_civilians} </td>
-              </tr>
-              <tr>
-                <th scope="row">Dept. type</th>
-                <td> {this.state.policeDepartment.dept_type} </td>
-              </tr>
-              <tr>
-                <th scope="row">Division name</th>
-                <td> {this.state.policeDepartment.div_name} </td>
-              </tr>
-              <tr>
-                <th scope="row">Region name</th>
-                <td> {this.state.policeDepartment.reg_name} </td>
-              </tr>
-              <tr>
-                <th scope="row">Density (per 1000)</th>
-                <td> {this.state.policeDepartment.density_per_1000} </td>
-              </tr>
+              {this.getRows(this.state.policeDepartment)}
               {
                 // only show associated counties if they exist
                 this.hasCounties() && (
