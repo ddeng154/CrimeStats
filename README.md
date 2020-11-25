@@ -1,7 +1,7 @@
 # Crime Stats
 
 ## General Info
-* Git SHA: dc2c029e8a4d5973b6cace9f49738dbbc1b28474
+* Git SHA: 621c2788c372c11f37e35f83a6b991b1bffd570d
 * Project Leader: Aly Hirani
 * Website: https://crimestats.me
 * Pipelines: https://gitlab.com/alyhirani/crimestats/-/pipelines
