@@ -22,7 +22,8 @@
   clear: both;
 }
 
-.ais-Highlight-highlighted, .ais-Snippet-highlighted {
+.ais-Highlight-highlighted,
+.ais-Snippet-highlighted {
   background-color: #ffc168;
 }
 
@@ -46,9 +47,17 @@ li {
   padding: 0;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #999;
   padding: 0.5rem;
   text-align: left;
 }
 
+td.longer {
+  width: 7%;
+}
+
+td.shorter {
+  width: 15%;
+}

@@ -1,71 +1,71 @@
-.main-footer{
-    color: #ffffff;
-    background-color:#272727;
-    padding: 43m 0 2rem 0;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    justify-content: center;
-    align-self: center;  
-    margin-top: 1rem;
-    height: 100%;
+.main-footer {
+  color: #ffffff;
+  background-color: #272727;
+  padding: 43m 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  justify-content: center;
+  align-self: center;
+  margin-top: 1rem;
+  height: 100%;
 }
 
 .container {
-    width: 100%;
-    max-width: 1000px;
-    display: flex;
-    justify-content: left;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: left;
 }
 
 .footer-link-wrapper {
-    display: flex;
+  display: flex;
 }
 
 .footer-link-items {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 16px;
-    text-align: left;
-    width: 160px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 16px;
+  text-align: left;
+  width: 160px;
+  box-sizing: border-box;
 }
 
 .footer-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 16px;
-    text-align: left;
-    width: 300px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 16px;
+  text-align: left;
+  width: 300px;
+  box-sizing: border-box;
 }
 
 .footer-link-items h2 {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .footer-link-items > h2 {
-    color: #fff;
+  color: #fff;
 }
 
 .footer-link-items a {
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 8px;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 8px;
 }
 
 .footer-link-items a:hover {
-    color: #bdbdbd;
-    transition: 0.3s ease-out;
+  color: #bdbdbd;
+  transition: 0.3s ease-out;
 }
 
 .footer-cp-wrapper {
-    display: flex;
+  display: flex;
 }
 
 hr {
-    background-color: white;
-    width: 98%;
+  background-color: white;
+  width: 98%;
 }

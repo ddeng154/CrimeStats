@@ -1,27 +1,12 @@
-postman:
-    stage: test
-    image:
-        name: postman/newman_alpine33
-        entrypoint: [""]
-    script:
-        - newman --version
-        - newman run postman.json
-
 backend:
     stage: test
     image: python
-    script:
-        - pip install -r backend/requirements.txt
-        - cd backend
-        - python3 test.py
+    script: make testbackend
 
 frontend:
     stage: test
     image: node
-    script:
-        - cd frontend
-        - yarn install
-        - yarn run test
+    script: make testfrontend
 
 selenium:
     stage: test
@@ -39,3 +24,12 @@ selenium:
         - apt-get install -y google-chrome-stable
         - cd guitests
         - python3 guitests.py
+
+postman:
+    stage: test
+    image:
+        name: postman/newman_alpine33
+        entrypoint: [""]
+    script:
+        - newman --version
+        - newman run postman.json

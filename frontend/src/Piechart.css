@@ -1,11 +1,11 @@
 .chart-container {
-    height: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 400px;
-  }
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
 
-  /* Split the screen in half */
+/* Split the screen in half */
 .split {
   height: 100%;
   width: 50%;
