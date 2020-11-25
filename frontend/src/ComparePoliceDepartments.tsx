@@ -1,6 +1,7 @@
 import React from "react";
 import axios, { AxiosResponse } from "axios";
 import { Button } from "react-bootstrap";
+import Loading from "./Loading";
 
 type PoliceDepartmentData = {
   ori: string;
@@ -31,7 +32,7 @@ class ComparePoliceDepartments extends React.Component {
     id2: "",
     element1: undefined,
     element2: undefined,
-    isLoading: true,
+    isLoading: false,
   };
 
   constructor(props: {}) {
@@ -42,7 +43,7 @@ class ComparePoliceDepartments extends React.Component {
   }
 
   handleSubmit() {
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, element1: undefined, element2: undefined });
     if (this.state.id1 && this.state.id2) {
       const request1 = axios.get<PoliceDepartmentData>(
         "/api/police_departments/" + this.state.id1
@@ -61,7 +62,9 @@ class ComparePoliceDepartments extends React.Component {
             });
           })
         )
-        .catch((_) => {});
+        .catch((_) => {
+          this.setState({ isLoading: false })
+        });
     }
   }
 
@@ -91,6 +94,13 @@ class ComparePoliceDepartments extends React.Component {
       </div>
     );
     if (this.state.isLoading) {
+      return (
+        <div className="text-center">
+          {Form}
+          <Loading />
+        </div>
+      );
+    } else if (!this.state.element1 || !this.state.element2) {
       return (
         <div className="text-center">
           {Form}

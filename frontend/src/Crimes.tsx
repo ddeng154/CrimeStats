@@ -47,7 +47,7 @@ const crimeFields = ['ORI', 'Type', 'No. White Offenders', 'No. Black Offenders'
 'No. White Victims', 'No. Black Victims', 'No. Pacific Victims', 'No. Native Victims', 'No. Asian Victims']
 function headerColsCrime() {
   return crimeFields.map(crimeField => (
-  <th>
+  <th key={crimeField}>
     {crimeField}
   </th>
   ));
@@ -273,11 +273,13 @@ function CrimeRow(c: CrimeData) {
   const crimeValFields = [c.o_white, c.o_black, c.o_pacific, c.o_native, 
     c.o_asian, c.v_white, c.v_black, c.v_pacific, c.v_native, c.v_asian]
   function rowsCrime() {
-    return crimeValFields.map(crimeValField => (
-    <td>
+    let index = -1;
+    return crimeValFields.map(crimeValField => {
+      index += 1;
+    return <td key={index}>
       {crimeValField}
     </td>
-    ));
+    });
 }
   return (
     //police dept. involved, and link to detailed crime page

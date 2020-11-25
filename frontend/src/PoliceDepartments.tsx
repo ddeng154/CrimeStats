@@ -256,14 +256,16 @@ class PoliceDepartments extends React.Component {
   }
 }
 
-const policeFields = ['ORI', 'Name', 'Population', 'No. Male Officers', 
+const policeFields = ['Name', 'Population', 'No. Male Officers', 
   'No. Female Officers', 'No. Civilians', 'Department Type', 'Division Name', 'Region Name', 'Density per 1000']
 function headerCols() {
-  return policeFields.map(policeField => (
-  <th>
+  let index = -1;
+  return policeFields.map(policeField => {
+    index += 1;
+  return <th key={index}>
     {policeField}
   </th>
-  ));
+  });
 }
 
 //returns the table row with data for each PD
@@ -271,15 +273,16 @@ function PoliceDepartmentRow(pd: PoliceDepartmentData) {
   const policeDatas = [pd.pop, pd.num_male_officers, pd.num_female_officers, pd.num_civilians, 
     pd.dept_type, pd.div_name, pd.reg_name, pd.density_per_1000]
   function TableVals() {
-    return policeDatas.map(policeData => (
-      <td>
+    let index = 1;
+    return policeDatas.map(policeData => {
+      index += 1;
+      return <td key={index}>
         {policeData}
       </td>
-      ));
+    });
 }
   return (
     <tr key={pd.ori}>
-      <td>{pd.ori}</td>
       <td>
         <Nav.Link key={pd.name} href={"/policedepartments/" + pd.ori}>
           {pd.name}

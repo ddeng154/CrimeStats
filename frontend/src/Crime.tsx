@@ -52,15 +52,14 @@ class Crime extends React.Component<IDParams> {
         ['No. of Native Victims', c.v_native],
         ['No. of Asian Victims', c.v_asian]
       ]  
-  
-    return crimeFields.map(c => (
-      (
-        <tr>
+    let index = -1;
+    return crimeFields.map(c => {
+      index += 1;
+      return <tr key={index}>
           <th scope="row">{c[0]}</th>
           <td> {c[1]} </td>
         </tr>
-      )
-    ));
+    });
   
   }
 
