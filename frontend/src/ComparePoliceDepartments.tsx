@@ -42,6 +42,32 @@ class ComparePoliceDepartments extends React.Component {
     this.handleID2Change = this.handleID2Change.bind(this);
   }
 
+  //get table data
+  getRows(p1: PoliceDepartmentData, p2: PoliceDepartmentData) {
+    const list = [
+      ["Population", p1.pop, p2.pop],
+      ["Male Officers", p1.num_male_officers, p2.num_male_officers],
+      ["Female Officers", p1.num_female_officers, p2.num_female_officers],
+      ["Civilians", p1.num_civilians, p2.num_civilians],
+      ["Dept. Type", p1.dept_type, p2.dept_type],
+      ["Division Name", p1.div_name, p2.div_name],
+      ["Region Name", p1.reg_name, p2.reg_name],
+      ["Density (per 1000)", p1.density_per_1000, p2.density_per_1000]
+    ]
+
+    let index = -1;
+    return list.map(p => {
+      index += 1;
+      return (
+        <tr key={index}>
+          <th scope="row">{p[0]}</th>
+          <td> {p[1]} </td>
+          <td> {p[2]} </td>
+        </tr>
+      );
+    });
+  }
+
   handleSubmit() {
     this.setState({
       isLoading: true,
@@ -133,46 +159,7 @@ class ComparePoliceDepartments extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Population</td>
-                <td>{this.state.element1!.pop}</td>
-                <td>{this.state.element2!.pop}</td>
-              </tr>
-              <tr>
-                <td>Male officers</td>
-                <td>{this.state.element1!.num_male_officers}</td>
-                <td>{this.state.element2!.num_male_officers}</td>
-              </tr>
-              <tr>
-                <td>Female officers</td>
-                <td>{this.state.element1!.num_female_officers}</td>
-                <td>{this.state.element2!.num_female_officers}</td>
-              </tr>
-              <tr>
-                <td>Civilians</td>
-                <td>{this.state.element1!.num_civilians}</td>
-                <td>{this.state.element2!.num_civilians}</td>
-              </tr>
-              <tr>
-                <td>Dept. type</td>
-                <td>{this.state.element1!.dept_type}</td>
-                <td>{this.state.element2!.dept_type}</td>
-              </tr>
-              <tr>
-                <td>Division name</td>
-                <td>{this.state.element1!.div_name}</td>
-                <td>{this.state.element2!.div_name}</td>
-              </tr>
-              <tr>
-                <td>Region name</td>
-                <td>{this.state.element1!.reg_name}</td>
-                <td>{this.state.element2!.reg_name}</td>
-              </tr>
-              <tr>
-                <td>Density (per 1000)</td>
-                <td>{this.state.element1!.density_per_1000}</td>
-                <td>{this.state.element2!.density_per_1000}</td>
-              </tr>
+              {this.getRows(this.state.element1, this.state.element2)}
             </tbody>
           </table>
         </div>
