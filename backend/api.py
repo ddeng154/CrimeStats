@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_cors import CORS
-from flask_restful import Api
+from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager
 from gitlab import Stats as GitLabStats
@@ -22,6 +22,7 @@ def index(path):
 # add gitlab data to api
 api = Api(app)
 api.add_resource(GitLabStats, "/api/gitlabstats")
+
 
 # allow connection to GCP database
 app.config[
@@ -85,6 +86,24 @@ class PoliceCountyLink(db.Model):
     county_id = db.Column(db.Unicode)
     ori = db.Column(db.Unicode)
 
+
+class Income_to_Total_Crimes(Resource):
+    def get(self):
+        counties = County.query.all()
+        data = []
+        for county in counties:
+            county_obj = {'name': county.name, 'median_income': county.median_income, 'total': 0}
+            links = PoliceCountyLink.query.filter_by(county_id=county.id).all()
+            oris = {link.ori for link in links}
+            for ori in oris:
+                police = Police.query.get(ori)
+                if police is not None:
+                    for r_crime in Crime.query.filter_by(ori=ori).all():
+                        county_obj['total'] = r_crime.o_asian + r_crime.o_white + r_crime.o_black + r_crime.o_pacific + r_crime.o_native
+            data.append(county_obj)
+        return data
+
+api.add_resource(Income_to_Total_Crimes, "/api/test")
 
 # add all the endpoints for generic calls, i.e. get all police
 def AddEndpoint(model, name, single=None):
