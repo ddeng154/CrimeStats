@@ -26,6 +26,7 @@ class Header extends React.Component {
             <Nav.Link href="/policedepartments">Police Departments</Nav.Link>
             <Nav.Link href="/crimes">Crimes</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/visualizations">Visualizations</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
             <SearchBar query={this.state.query} onChange={this.onChange} />

@@ -23,6 +23,7 @@ import "./App.css";
 import CompareCrimes from "./CompareCrimes";
 import ComparePoliceDepartments from "./ComparePoliceDepartments";
 import CompareCounties from "./CompareCounties";
+import Visualizations from "./Visualizations";
 //overall container for the webpage
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
             <Route path="/" exact component={Splash} />
             <Route path="/404" exact component={NotFound} />
             <Route path="/search" exact component={Search} />
+            <Route path="/visualizations" exact component={Visualizations} />
             {/* if url does not exist, reroute to 404 */}
             <Route path="*">
               <Redirect to="/404" />
