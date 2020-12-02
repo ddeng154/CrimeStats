@@ -70,7 +70,11 @@ function App() {
             <Route path="/404" exact component={NotFound} />
             <Route path="/search" exact component={Search} />
             <Route path="/visualizations" exact component={Visualizations} />
-            <Route path = "/providervisualizations" exact component={JobStopVisualizations} />
+            <Route
+              path="/providervisualizations"
+              exact
+              component={JobStopVisualizations}
+            />
             {/* if url does not exist, reroute to 404 */}
             <Route path="*">
               <Redirect to="/404" />

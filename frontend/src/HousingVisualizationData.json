@@ -1,42 +1,42 @@
 [
-    {
-        "name" : "Miami, Florida",
-        "percentage" : 81.8
-    },
-    {
-        "name" : "Reno, Nevada",
-        "percentage" : 81.93
-    },
-    {
-        "name" : "Santa Ana, California",
-        "percentage" : 83.13
-    },
-    {
-        "name" : "Boston, Massachusetts",
-        "percentage" : 89.79
-    },
-    {
-        "name" : "Anaheim, California",
-        "percentage" : 95.19
-    },
-    {
-        "name" : "New York, New York",
-        "percentage" : 96.26
-    },
-    {
-        "name" : "Irvine, California",
-        "percentage" : 97.48
-    },
-    {
-        "name" : "Long Beach, California",
-        "percentage" : 97.65
-    },
-    {
-        "name" : "Fremont, California",
-        "percentage" : 98.52
-    },
-    {
-        "name" : "Seattle, Washington",
-        "percentage" : 98.58
-    }
+  {
+    "name": "Miami, Florida",
+    "percentage": 81.8
+  },
+  {
+    "name": "Reno, Nevada",
+    "percentage": 81.93
+  },
+  {
+    "name": "Santa Ana, California",
+    "percentage": 83.13
+  },
+  {
+    "name": "Boston, Massachusetts",
+    "percentage": 89.79
+  },
+  {
+    "name": "Anaheim, California",
+    "percentage": 95.19
+  },
+  {
+    "name": "New York, New York",
+    "percentage": 96.26
+  },
+  {
+    "name": "Irvine, California",
+    "percentage": 97.48
+  },
+  {
+    "name": "Long Beach, California",
+    "percentage": 97.65
+  },
+  {
+    "name": "Fremont, California",
+    "percentage": 98.52
+  },
+  {
+    "name": "Seattle, Washington",
+    "percentage": 98.58
+  }
 ]
