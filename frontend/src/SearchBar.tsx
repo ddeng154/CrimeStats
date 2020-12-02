@@ -19,7 +19,7 @@ const SearchBar = ({ query, onChange }: { query: string; onChange: any }) => {
       />
       {/* On press, go to search page */}
       <Link to={"/search/" + query}>
-        <button>Search</button>
+        <button className="btn btn-outline-secondary">Go</button>
       </Link>
     </form>
   );

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Lubbock County Sheriff's Office",
+    "pop": 30971,
+    "density_per_1000": 15.95
+  },
+  {
+    "name": "Los Angeles County Sheriff's Office",
+    "pop": 953542,
+    "density_per_1000": 16.71
+  },
+  {
+    "name": "Tulsa County Sheriff's Office",
+    "pop": 34457,
+    "density_per_1000": 16.89
+  },
+  {
+    "name": "Multnomah County Sheriff's Office",
+    "pop": 45041,
+    "density_per_1000": 17.21
+  },
+  {
+    "name": "Santa Clara County Sheriff's Office",
+    "pop": 67403,
+    "density_per_1000": 25.46
+  },
+  {
+    "name": "Johnson County Sheriff's Office",
+    "pop": 22271,
+    "density_per_1000": 28.51
+  },
+  {
+    "name": "Oklahoma County Sheriff's Office",
+    "pop": 20437,
+    "density_per_1000": 28.92
+  },
+  {
+    "name": "Tarrant County Sheriff's Office",
+    "pop": 42313,
+    "density_per_1000": 33.37
+  },
+  {
+    "name": "Orange County Sheriff's Office",
+    "pop": 110893,
+    "density_per_1000": 33.57
+  },
+  {
+    "name": "Cook County Sheriff's Office",
+    "pop": 80645,
+    "density_per_1000": 67.18
+  }
+]
